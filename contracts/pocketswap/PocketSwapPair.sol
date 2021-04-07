@@ -9,6 +9,7 @@ import '@uniswap/v2-core/contracts/libraries/Math.sol';
 import '@uniswap/v2-core/contracts/libraries/UQ112x112.sol';
 
 import './PocketSwapERC20.sol';
+import './interfaces/IPocketSwapFactory.sol';
 
 contract PocketSwapPair is IUniswapV2Pair, PocketSwapERC20 {
     using SafeMath  for uint;
@@ -179,9 +180,10 @@ contract PocketSwapPair is IUniswapV2Pair, PocketSwapERC20 {
         uint amount1In = balance1 > _reserve1 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
         require(amount0In > 0 || amount1In > 0, 'PocketSwap: INSUFFICIENT_INPUT_AMOUNT');
         { // scope for reserve{0,1}Adjusted, avoids stack too deep errors
-            uint balance0Adjusted = balance0.mul(1000).sub(amount0In.mul(3));
-            uint balance1Adjusted = balance1.mul(1000).sub(amount1In.mul(3));
-            require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1000**2), 'PocketSwap: K');
+            uint fee = IPocketSwapFactory(factory).fee();
+            uint balance0Adjusted = balance0.mul(1e9).sub(amount0In.mul(fee));
+            uint balance1Adjusted = balance1.mul(1e9).sub(amount1In.mul(fee));
+            require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9**2), 'PocketSwap: K');
         }
 
         _update(balance0, balance1, _reserve0, _reserve1);

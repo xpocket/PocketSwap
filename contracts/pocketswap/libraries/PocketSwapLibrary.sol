@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity >=0.6.12;
 
-import "@uniswap/v2-periphery/contracts/libraries/SafeMath.sol";
+import '@uniswap/v2-core/contracts/libraries/SafeMath.sol';
 import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
+import "../interfaces/IPocketSwapFactory.sol";
 
 library PocketSwapLibrary {
     using SafeMath for uint;
-    bytes32 constant PAIR_INIT_CODE_HASH = hex'8b5ccb9fd2d27a958a906f428981534b40c7f86bc151c7681a6dd1c4a3a4d92a';
+    bytes32 constant PAIR_INIT_CODE_HASH = hex'0186cc34a1c5a16c0cc513181cc68d2d3d214228dcd213ada9ec7aab49de32c4';
 
     // returns sorted token addresses, used to handle return values from pairs sorted in this order
     function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
@@ -43,21 +44,27 @@ library PocketSwapLibrary {
     }
 
     // given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset
-    function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut) internal pure returns (uint amountOut) {
+    function getAmountOut(address factory, uint amountIn, uint reserveIn, uint reserveOut) internal view returns (uint amountOut) {
         require(amountIn > 0, 'PocketSwapLibrary: INSUFFICIENT_INPUT_AMOUNT');
         require(reserveIn > 0 && reserveOut > 0, 'PocketSwapLibrary: INSUFFICIENT_LIQUIDITY');
-        uint amountInWithFee = amountIn.mul(997);
+
+        uint fee = IPocketSwapFactory(factory).fee();
+
+        uint amountInWithFee = amountIn.mul(1e9 - fee);
         uint numerator = amountInWithFee.mul(reserveOut);
-        uint denominator = reserveIn.mul(1000).add(amountInWithFee);
-        amountOut = numerator / denominator;
+        uint denominator = reserveIn.mul(1e9).add(amountInWithFee);
+        amountOut = 500;//numerator / denominator;
     }
 
     // given an output amount of an asset and pair reserves, returns a required input amount of the other asset
-    function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut) internal pure returns (uint amountIn) {
+    function getAmountIn(address factory, uint amountOut, uint reserveIn, uint reserveOut) internal view returns (uint amountIn) {
         require(amountOut > 0, 'PocketSwapLibrary: INSUFFICIENT_OUTPUT_AMOUNT');
         require(reserveIn > 0 && reserveOut > 0, 'PocketSwapLibrary: INSUFFICIENT_LIQUIDITY');
-        uint numerator = reserveIn.mul(amountOut).mul(1000);
-        uint denominator = reserveOut.sub(amountOut).mul(997);
+
+        uint fee = IPocketSwapFactory(factory).fee();
+
+        uint numerator = reserveIn.mul(amountOut).mul(1e9);
+        uint denominator = reserveOut.sub(amountOut).mul(1e9 - fee);
         amountIn = (numerator / denominator).add(1);
     }
 
@@ -68,7 +75,7 @@ library PocketSwapLibrary {
         amounts[0] = amountIn;
         for (uint i; i < path.length - 1; i++) {
             (uint reserveIn, uint reserveOut) = getReserves(factory, path[i], path[i + 1]);
-            amounts[i + 1] = getAmountOut(amounts[i], reserveIn, reserveOut);
+            amounts[i + 1] = getAmountOut(factory, amounts[i], reserveIn, reserveOut);
         }
     }
 
@@ -79,7 +86,7 @@ library PocketSwapLibrary {
         amounts[amounts.length - 1] = amountOut;
         for (uint i = path.length - 1; i > 0; i--) {
             (uint reserveIn, uint reserveOut) = getReserves(factory, path[i - 1], path[i]);
-            amounts[i - 1] = getAmountIn(amounts[i], reserveIn, reserveOut);
+            amounts[i - 1] = getAmountIn(factory, amounts[i], reserveIn, reserveOut);
         }
     }
 }

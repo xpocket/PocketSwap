@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity >=0.6.12;
 
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol';
 
 import './PocketSwapPair.sol';
+import './interfaces/IPocketSwapFactory.sol';
 
-contract PocketSwapFactory is IUniswapV2Factory {
+contract PocketSwapFactory is IUniswapV2Factory, IPocketSwapFactory {
     address public override feeTo;
     address public override feeToSetter;
+    uint256 public override fee = 3e6; // 1e9 = 100%; 1e8 = 10%; 1e7 = 1%; 1e6 = 0.1% ....
 
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
@@ -37,6 +38,12 @@ contract PocketSwapFactory is IUniswapV2Factory {
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);
         emit PairCreated(token0, token1, pair, allPairs.length);
+    }
+
+    function setFee(uint256 _fee) external override {
+        require(msg.sender == feeToSetter, 'PocketSwap:FORBIDDEN');
+        require(_fee < 1e18, 'PocketSwap:BIG_FEE');
+        fee = _fee;
     }
 
     function setFeeTo(address _feeTo) external override {

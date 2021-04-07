@@ -1,15 +1,14 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity >=0.6.12;
 
-import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
-import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 import '@uniswap/lib/contracts/libraries/TransferHelper.sol';
 import '@uniswap/v2-periphery/contracts/interfaces/IWETH.sol';
 
 import "./libraries/PocketSwapLibrary.sol";
 import "./PocketSwapFactory.sol";
+import "./interfaces/IPocketSwapRouter.sol";
 
-contract PocketSwapRouter is IUniswapV2Router02 {
+contract PocketSwapRouter is IPocketSwapRouter {
     using SafeMath for uint;
 
     address public override immutable factory;
@@ -343,7 +342,7 @@ contract PocketSwapRouter is IUniswapV2Router02 {
                 (uint reserve0, uint reserve1,) = pair.getReserves();
                 (uint reserveInput, uint reserveOutput) = input == token0 ? (reserve0, reserve1) : (reserve1, reserve0);
                 amountInput = IERC20(input).balanceOf(address(pair)).sub(reserveInput);
-                amountOutput = PocketSwapLibrary.getAmountOut(amountInput, reserveInput, reserveOutput);
+                amountOutput = PocketSwapLibrary.getAmountOut(factory, amountInput, reserveInput, reserveOutput);
             }
             (uint amount0Out, uint amount1Out) = input == token0 ? (uint(0), amountOutput) : (amountOutput, uint(0));
             address to = i < path.length - 2 ? PocketSwapLibrary.pairFor(factory, output, path[i + 2]) : _to;
@@ -423,22 +422,22 @@ contract PocketSwapRouter is IUniswapV2Router02 {
 
     function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut)
     public
-    pure
+    view
     virtual
     override
     returns (uint amountOut)
     {
-        return PocketSwapLibrary.getAmountOut(amountIn, reserveIn, reserveOut);
+        return PocketSwapLibrary.getAmountOut(factory, amountIn, reserveIn, reserveOut);
     }
 
     function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut)
     public
-    pure
+    view
     virtual
     override
     returns (uint amountIn)
     {
-        return PocketSwapLibrary.getAmountIn(amountOut, reserveIn, reserveOut);
+        return PocketSwapLibrary.getAmountIn(factory, amountOut, reserveIn, reserveOut);
     }
 
     function getAmountsOut(uint amountIn, address[] memory path)
