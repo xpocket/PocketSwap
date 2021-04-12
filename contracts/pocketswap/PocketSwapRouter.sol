@@ -159,6 +159,13 @@ contract PocketSwapRouter is IPocketSwapRouter {
         (amountA, amountB) = removeLiquidity(tokenA, tokenB, liquidity, amountAMin, amountBMin, to, deadline);
     }
 
+    function pairFor(
+        address tokenA,
+        address tokenB
+    ) external view returns (address) {
+        return PocketSwapLibrary.pairFor(factory, tokenA, tokenB);
+    }
+
     function removeLiquidityETHWithPermit(
         address token,
         uint liquidity,

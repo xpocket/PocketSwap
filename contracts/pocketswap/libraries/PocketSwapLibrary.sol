@@ -7,7 +7,7 @@ import "../interfaces/IPocketSwapFactory.sol";
 
 library PocketSwapLibrary {
     using SafeMath for uint;
-    bytes32 constant PAIR_INIT_CODE_HASH = hex'0186cc34a1c5a16c0cc513181cc68d2d3d214228dcd213ada9ec7aab49de32c4';
+    bytes32 constant PAIR_INIT_CODE_HASH = hex'b6e53240773e46241262d2583d9f7b663cdb995ec96b14d6a1ad6216ef4de940';
 
     // returns sorted token addresses, used to handle return values from pairs sorted in this order
     function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
@@ -47,13 +47,17 @@ library PocketSwapLibrary {
     function getAmountOut(address factory, uint amountIn, uint reserveIn, uint reserveOut) internal view returns (uint amountOut) {
         require(amountIn > 0, 'PocketSwapLibrary: INSUFFICIENT_INPUT_AMOUNT');
         require(reserveIn > 0 && reserveOut > 0, 'PocketSwapLibrary: INSUFFICIENT_LIQUIDITY');
-
-        uint fee = IPocketSwapFactory(factory).fee();
-
-        uint amountInWithFee = amountIn.mul(1e9 - fee);
+        uint amountInWithFee = amountIn.mul(997);
         uint numerator = amountInWithFee.mul(reserveOut);
-        uint denominator = reserveIn.mul(1e9).add(amountInWithFee);
-        amountOut = 500;//numerator / denominator;
+        uint denominator = reserveIn.mul(1000).add(amountInWithFee);
+        amountOut = numerator / denominator;
+//
+//        uint fee = IPocketSwapFactory(factory).fee();
+//
+//        uint amountWithFee = amountIn.mul(1e9 - fee);
+//        uint reservesRatio = FullMath.mulDiv(reserveOut, 1, reserveIn);
+//
+//        amountOut = FullMath.mulDiv(amountWithFee, reservesRatio, 1e9);
     }
 
     // given an output amount of an asset and pair reserves, returns a required input amount of the other asset

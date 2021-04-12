@@ -163,6 +163,10 @@ contract PocketSwapPair is IUniswapV2Pair, PocketSwapERC20 {
         require(amount0Out > 0 || amount1Out > 0, 'PocketSwap: INSUFFICIENT_OUTPUT_AMOUNT');
         (uint112 _reserve0, uint112 _reserve1,) = getReserves(); // gas savings
         require(amount0Out < _reserve0 && amount1Out < _reserve1, 'PocketSwap: INSUFFICIENT_LIQUIDITY');
+//revert(string(abi.encodePacked(
+//'Balances: ', uint2str(IERC20(token0).balanceOf(address(this))), ' : ', uint2str(IERC20(token1).balanceOf(address(this))),
+//'Reserves: ', uint2str(_reserve0), ' : ', uint2str(_reserve1)
+//)));
 
         uint balance0;
         uint balance1;
@@ -183,12 +187,33 @@ contract PocketSwapPair is IUniswapV2Pair, PocketSwapERC20 {
             uint fee = IPocketSwapFactory(factory).fee();
             uint balance0Adjusted = balance0.mul(1e9).sub(amount0In.mul(fee));
             uint balance1Adjusted = balance1.mul(1e9).sub(amount1In.mul(fee));
-            require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9**2), 'PocketSwap: K');
+            require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9**2), string(abi.encodePacked(
+                'PocketSwap: K: ', uint2str(balance0), ' : ', uint2str(amount0In)
+            )));
         }
 
         _update(balance0, balance1, _reserve0, _reserve1);
         emit Swap(msg.sender, amount0In, amount1In, amount0Out, amount1Out, to);
     }
+
+function uint2str(uint _i) internal pure returns (string memory _uintAsString) {
+if (_i == 0) {
+return "0";
+}
+uint j = _i;
+uint len;
+while (j != 0) {
+len++;
+j /= 10;
+}
+bytes memory bstr = new bytes(len);
+uint k = len - 1;
+while (_i != 0) {
+bstr[k--] = byte(uint8(48 + _i % 10));
+_i /= 10;
+}
+return string(bstr);
+}
 
     // force balances to match reserves
     function skim(address to) external override lock {
