@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity >=0.6.12;
 
-import '@uniswap/v2-core/contracts/interfaces/IUniswapV2ERC20.sol';
-import '@uniswap/v2-core/contracts/libraries/SafeMath.sol';
+import './libraries/SafeMath.sol';
+import "./interfaces/IPocketSwapERC20.sol";
 
-contract PocketSwapERC20 is IUniswapV2ERC20 {
+contract PocketSwapERC20 is IPocketSwapERC20 {
     using SafeMath for uint;
 
     string public constant override name = 'PocketSwap';
@@ -19,10 +19,7 @@ contract PocketSwapERC20 is IUniswapV2ERC20 {
     bytes32 public override constant PERMIT_TYPEHASH = 0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
     mapping(address => uint) public override nonces;
 
-    event Approval(address indexed owner, address indexed spender, uint value);
-    event Transfer(address indexed from, address indexed to, uint value);
-
-    constructor() public {
+    constructor() {
         uint chainId;
         assembly {
             chainId := chainid()

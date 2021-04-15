@@ -4,4 +4,4 @@ const fs = require('fs')
 const rawPairCode = fs.readFileSync('build/contracts/PocketSwapPair.json')
 const pairCode = JSON.parse(rawPairCode)
 
-console.log(`Pair init code: hex'${web3.utils.keccak256(pairCode.bytecode).split('x')[1]}'`)
+console.log(`Pair init code: ${web3.utils.keccak256(pairCode.bytecode)}`)

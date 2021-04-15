@@ -5,7 +5,7 @@ pragma solidity >=0.6.12;
 import './PocketSwapPair.sol';
 import './interfaces/IPocketSwapFactory.sol';
 
-contract PocketSwapFactory is IUniswapV2Factory, IPocketSwapFactory {
+contract PocketSwapFactory is IPocketSwapFactory {
     address public override feeTo;
     address public override feeToSetter;
     uint256 public override fee = 3e6; // 1e9 = 100%; 1e8 = 10%; 1e7 = 1%; 1e6 = 0.1% ....
@@ -13,9 +13,7 @@ contract PocketSwapFactory is IUniswapV2Factory, IPocketSwapFactory {
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
 
-    event PairCreated(address indexed token0, address indexed token1, address pair, uint);
-
-    constructor(address _feeToSetter) public {
+    constructor(address _feeToSetter) {
         feeToSetter = _feeToSetter;
     }
 
@@ -33,7 +31,8 @@ contract PocketSwapFactory is IUniswapV2Factory, IPocketSwapFactory {
         assembly {
             pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
-        IUniswapV2Pair(pair).initialize(token0, token1);
+
+        PocketSwapPair(pair).initialize(token0, token1);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);

@@ -1,13 +1,15 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity >=0.6.12;
 
-import '@uniswap/v2-core/contracts/libraries/SafeMath.sol';
-import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
+import './PairAddress.sol';
+import './SafeMath.sol';
 import "../interfaces/IPocketSwapFactory.sol";
+import "../interfaces/IPocketSwapPair.sol";
+import "../../../Uniswap/uniswap-lib/contracts/libraries/AddressStringUtil.sol";
 
 library PocketSwapLibrary {
     using SafeMath for uint;
-    bytes32 constant PAIR_INIT_CODE_HASH = hex'b6e53240773e46241262d2583d9f7b663cdb995ec96b14d6a1ad6216ef4de940';
+    using AddressStringUtil for address;
 
     // returns sorted token addresses, used to handle return values from pairs sorted in this order
     function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
@@ -16,23 +18,10 @@ library PocketSwapLibrary {
         require(token0 != address(0), 'PocketSwapLibrary: ZERO_ADDRESS');
     }
 
-
-    // calculates the CREATE2 address for a pair without making any external calls
-    function pairFor(address factory, address tokenA, address tokenB)
-    internal pure returns (address pair) {
-        (address token0, address token1) = sortTokens(tokenA, tokenB);
-        pair = address(uint(keccak256(abi.encodePacked(
-                hex'ff',
-                factory,
-                keccak256(abi.encodePacked(token0, token1)),
-                PAIR_INIT_CODE_HASH
-            ))));
-    }
-
     // fetches and sorts the reserves for a pair
     function getReserves(address factory, address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB) {
         (address token0,) = sortTokens(tokenA, tokenB);
-        (uint reserve0, uint reserve1,) = IUniswapV2Pair(pairFor(factory, tokenA, tokenB)).getReserves();
+        (uint reserve0, uint reserve1,) = IPocketSwapPair(PairAddress.computeAddress(factory, tokenA, tokenB)).getReserves();
         (reserveA, reserveB) = tokenA == token0 ? (reserve0, reserve1) : (reserve1, reserve0);
     }
 

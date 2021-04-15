@@ -1,0 +1,1662 @@
+{
+  "contractName": "CallbackValidation",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Provides validation for callbacks from PocketSwap Pairs\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/CallbackValidation.sol\":\"CallbackValidation\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapERC20.sol\":{\"keccak256\":\"0x370ec833d0b2d89243a8c49fa7b42c36e8c2e7877bb521e089f34d91a6ceb853\",\"urls\":[\"bzz-raw://40bff1a74f556b1c84d25d22d077b868fcc4c37d275b13290af35764c0dc2dd9\",\"dweb:/ipfs/Qmf7T8xYfu16mXRExXbipDNnw1ohjQ7mKTeBaDafzGqS6U\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol\":{\"keccak256\":\"0x5b477c2ed876faebabeb74cc0782b0ab94604e6c9c6b353f2feb590a9d4bb8be\",\"urls\":[\"bzz-raw://a7fa647b58f49f1edec40d08ce21c57eb09d6d997bff51e45f5131e37250a621\",\"dweb:/ipfs/QmShnFxuyiyiDW3YCKNTWgxrYuqfY2L1BF7LGghjp4byfS\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/CallbackValidation.sol\":{\"keccak256\":\"0x0815fb1defb178d9b162b088e7433af7b34e77d6d42341f86cae72d6bb6687c1\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://212e24243825879227cba9898467be237512315f42907b9a543a49247614d825\",\"dweb:/ipfs/QmZSkneFuKa3MNqYQ9tSj5k5huLRRTG2uCyeNPfA7mqoXi\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol\":{\"keccak256\":\"0x11adc16cf3936222fa23aa93cc4884b5bdb3fd368e54c767f86aa94537b795a3\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d542e6cde73d3810bd2f93158b668bcefb3a12029b85cdda991cfc19168ba441\",\"dweb:/ipfs/QmV2UXfoJUN1cAsDPGzKwgnB7WRUdRzGJ5CHnwe4S1R3wH\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220edcc4815ce7d9379e410833fb3fdfdee3b605a600b90d22f35405aece6576d2664736f6c63430007060033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220edcc4815ce7d9379e410833fb3fdfdee3b605a600b90d22f35405aece6576d2664736f6c63430007060033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "213:1092:28:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "213:1092:28:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.6.12;\n\nimport \"../interfaces/IPocketSwapPair.sol\";\nimport \"./PairAddress.sol\";\n\n/// @notice Provides validation for callbacks from PocketSwap Pairs\nlibrary CallbackValidation {\n    /// @notice Returns the address of a valid PocketSwap Pair\n    /// @param factory The contract address of the PocketSwap factory\n    /// @param tokenA The contract address of either token0 or token1\n    /// @param tokenB The contract address of the other token\n    /// @return pair The pair contract address\n    function verifyCallback(\n        address factory,\n        address tokenA,\n        address tokenB\n    ) internal view returns (IPocketSwapPair pair) {\n        return verifyCallback(factory, PairAddress.getPairKey(tokenA, tokenB));\n    }\n\n    /// @notice Returns the address of a valid PocketSwap Pair\n    /// @param factory The contract address of the PocketSwap factory\n    /// @param pairKey The identifying key of the pair\n    /// @return pair The pair contract address\n    function verifyCallback(address factory, PairAddress.PairKey memory pairKey)\n    internal\n    view\n    returns (IPocketSwapPair pair)\n    {\n        pair = IPocketSwapPair(PairAddress.computeAddress(factory, pairKey));\n        require(msg.sender == address(pair));\n    }\n}",
+  "sourcePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/CallbackValidation.sol",
+  "ast": {
+    "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/CallbackValidation.sol",
+    "exportedSymbols": {
+      "CallbackValidation": [
+        4119
+      ],
+      "IPocketSwapERC20": [
+        3550
+      ],
+      "IPocketSwapPair": [
+        3809
+      ],
+      "PairAddress": [
+        4328
+      ]
+    },
+    "id": 4120,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4062,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:25:28"
+      },
+      {
+        "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol",
+        "file": "../interfaces/IPocketSwapPair.sol",
+        "id": 4063,
+        "nodeType": "ImportDirective",
+        "scope": 4120,
+        "sourceUnit": 3810,
+        "src": "72:43:28",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol",
+        "file": "./PairAddress.sol",
+        "id": 4064,
+        "nodeType": "ImportDirective",
+        "scope": 4120,
+        "sourceUnit": 4329,
+        "src": "116:27:28",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 4065,
+          "nodeType": "StructuredDocumentation",
+          "src": "145:68:28",
+          "text": "@notice Provides validation for callbacks from PocketSwap Pairs"
+        },
+        "fullyImplemented": true,
+        "id": 4119,
+        "linearizedBaseContracts": [
+          4119
+        ],
+        "name": "CallbackValidation",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4086,
+              "nodeType": "Block",
+              "src": "706:87:28",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 4078,
+                        "name": "factory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4068,
+                        "src": "738:7:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "id": 4081,
+                            "name": "tokenA",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4070,
+                            "src": "770:6:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 4082,
+                            "name": "tokenB",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4072,
+                            "src": "778:6:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "id": 4079,
+                            "name": "PairAddress",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4328,
+                            "src": "747:11:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_PairAddress_$4328_$",
+                              "typeString": "type(library PairAddress)"
+                            }
+                          },
+                          "id": 4080,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getPairKey",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 4234,
+                          "src": "747:22:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_address_$_t_address_$returns$_t_struct$_PairKey_$4206_memory_ptr_$",
+                            "typeString": "function (address,address) pure returns (struct PairAddress.PairKey memory)"
+                          }
+                        },
+                        "id": 4083,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "747:38:28",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                          "typeString": "struct PairAddress.PairKey memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                          "typeString": "struct PairAddress.PairKey memory"
+                        }
+                      ],
+                      "id": 4077,
+                      "name": "verifyCallback",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4087,
+                        4118
+                      ],
+                      "referencedDeclaration": 4118,
+                      "src": "723:14:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_address_$_t_struct$_PairKey_$4206_memory_ptr_$returns$_t_contract$_IPocketSwapPair_$3809_$",
+                        "typeString": "function (address,struct PairAddress.PairKey memory) view returns (contract IPocketSwapPair)"
+                      }
+                    },
+                    "id": 4084,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "723:63:28",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                      "typeString": "contract IPocketSwapPair"
+                    }
+                  },
+                  "functionReturnParameters": 4076,
+                  "id": 4085,
+                  "nodeType": "Return",
+                  "src": "716:70:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 4066,
+              "nodeType": "StructuredDocumentation",
+              "src": "246:307:28",
+              "text": "@notice Returns the address of a valid PocketSwap Pair\n @param factory The contract address of the PocketSwap factory\n @param tokenA The contract address of either token0 or token1\n @param tokenB The contract address of the other token\n @return pair The pair contract address"
+            },
+            "id": 4087,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyCallback",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4073,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4068,
+                  "mutability": "mutable",
+                  "name": "factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4087,
+                  "src": "591:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4067,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "591:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4070,
+                  "mutability": "mutable",
+                  "name": "tokenA",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4087,
+                  "src": "616:14:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4069,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "616:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4072,
+                  "mutability": "mutable",
+                  "name": "tokenB",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4087,
+                  "src": "640:14:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4071,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "640:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "581:79:28"
+            },
+            "returnParameters": {
+              "id": 4076,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4075,
+                  "mutability": "mutable",
+                  "name": "pair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4087,
+                  "src": "684:20:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                    "typeString": "contract IPocketSwapPair"
+                  },
+                  "typeName": {
+                    "id": 4074,
+                    "name": "IPocketSwapPair",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3809,
+                    "src": "684:15:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                      "typeString": "contract IPocketSwapPair"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "683:22:28"
+            },
+            "scope": 4119,
+            "src": "558:235:28",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 4117,
+              "nodeType": "Block",
+              "src": "1172:131:28",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 4105,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 4097,
+                      "name": "pair",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4095,
+                      "src": "1182:4:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                        "typeString": "contract IPocketSwapPair"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "id": 4101,
+                              "name": "factory",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4090,
+                              "src": "1232:7:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            {
+                              "id": 4102,
+                              "name": "pairKey",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4092,
+                              "src": "1241:7:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                                "typeString": "struct PairAddress.PairKey memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              {
+                                "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                                "typeString": "struct PairAddress.PairKey memory"
+                              }
+                            ],
+                            "expression": {
+                              "id": 4099,
+                              "name": "PairAddress",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4328,
+                              "src": "1205:11:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_PairAddress_$4328_$",
+                                "typeString": "type(library PairAddress)"
+                              }
+                            },
+                            "id": 4100,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "computeAddress",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 4327,
+                            "src": "1205:26:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_struct$_PairKey_$4206_memory_ptr_$returns$_t_address_$",
+                              "typeString": "function (address,struct PairAddress.PairKey memory) pure returns (address)"
+                            }
+                          },
+                          "id": 4103,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1205:44:28",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 4098,
+                        "name": "IPocketSwapPair",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3809,
+                        "src": "1189:15:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IPocketSwapPair_$3809_$",
+                          "typeString": "type(contract IPocketSwapPair)"
+                        }
+                      },
+                      "id": 4104,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1189:61:28",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                        "typeString": "contract IPocketSwapPair"
+                      }
+                    },
+                    "src": "1182:68:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                      "typeString": "contract IPocketSwapPair"
+                    }
+                  },
+                  "id": 4106,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1182:68:28"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 4114,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 4108,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "1268:3:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 4109,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "1268:10:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "id": 4112,
+                              "name": "pair",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4095,
+                              "src": "1290:4:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                                "typeString": "contract IPocketSwapPair"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                                "typeString": "contract IPocketSwapPair"
+                              }
+                            ],
+                            "id": 4111,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1282:7:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 4110,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1282:7:28",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 4113,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1282:13:28",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1268:27:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 4107,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1260:7:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 4115,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1260:36:28",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4116,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1260:36:28"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 4088,
+              "nodeType": "StructuredDocumentation",
+              "src": "799:230:28",
+              "text": "@notice Returns the address of a valid PocketSwap Pair\n @param factory The contract address of the PocketSwap factory\n @param pairKey The identifying key of the pair\n @return pair The pair contract address"
+            },
+            "id": 4118,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "verifyCallback",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4093,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4090,
+                  "mutability": "mutable",
+                  "name": "factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4118,
+                  "src": "1058:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4089,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1058:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4092,
+                  "mutability": "mutable",
+                  "name": "pairKey",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4118,
+                  "src": "1075:34:28",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                    "typeString": "struct PairAddress.PairKey"
+                  },
+                  "typeName": {
+                    "id": 4091,
+                    "name": "PairAddress.PairKey",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4206,
+                    "src": "1075:19:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PairKey_$4206_storage_ptr",
+                      "typeString": "struct PairAddress.PairKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1057:53:28"
+            },
+            "returnParameters": {
+              "id": 4096,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4095,
+                  "mutability": "mutable",
+                  "name": "pair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4118,
+                  "src": "1146:20:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                    "typeString": "contract IPocketSwapPair"
+                  },
+                  "typeName": {
+                    "id": 4094,
+                    "name": "IPocketSwapPair",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3809,
+                    "src": "1146:15:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                      "typeString": "contract IPocketSwapPair"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1145:22:28"
+            },
+            "scope": 4119,
+            "src": "1034:269:28",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4120,
+        "src": "213:1092:28"
+      }
+    ],
+    "src": "45:1260:28"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/CallbackValidation.sol",
+      "exportedSymbols": {
+        "CallbackValidation": [
+          4119
+        ],
+        "IPocketSwapERC20": [
+          3550
+        ],
+        "IPocketSwapPair": [
+          3809
+        ],
+        "PairAddress": [
+          4328
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 4062,
+        "name": "PragmaDirective",
+        "src": "45:25:28"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3810,
+          "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol",
+          "file": "../interfaces/IPocketSwapPair.sol",
+          "scope": 4120,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4063,
+        "name": "ImportDirective",
+        "src": "72:43:28"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 4329,
+          "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol",
+          "file": "./PairAddress.sol",
+          "scope": 4120,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4064,
+        "name": "ImportDirective",
+        "src": "116:27:28"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            4119
+          ],
+          "name": "CallbackValidation",
+          "scope": 4120
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@notice Provides validation for callbacks from PocketSwap Pairs"
+            },
+            "id": 4065,
+            "name": "StructuredDocumentation",
+            "src": "145:68:28"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "verifyCallback",
+              "scope": 4119,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Returns the address of a valid PocketSwap Pair\n @param factory The contract address of the PocketSwap factory\n @param tokenA The contract address of either token0 or token1\n @param tokenB The contract address of the other token\n @return pair The pair contract address"
+                },
+                "id": 4066,
+                "name": "StructuredDocumentation",
+                "src": "246:307:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "factory",
+                      "scope": 4087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4067,
+                        "name": "ElementaryTypeName",
+                        "src": "591:7:28"
+                      }
+                    ],
+                    "id": 4068,
+                    "name": "VariableDeclaration",
+                    "src": "591:15:28"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "tokenA",
+                      "scope": 4087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4069,
+                        "name": "ElementaryTypeName",
+                        "src": "616:7:28"
+                      }
+                    ],
+                    "id": 4070,
+                    "name": "VariableDeclaration",
+                    "src": "616:14:28"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "tokenB",
+                      "scope": 4087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4071,
+                        "name": "ElementaryTypeName",
+                        "src": "640:7:28"
+                      }
+                    ],
+                    "id": 4072,
+                    "name": "VariableDeclaration",
+                    "src": "640:14:28"
+                  }
+                ],
+                "id": 4073,
+                "name": "ParameterList",
+                "src": "581:79:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "pair",
+                      "scope": 4087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IPocketSwapPair",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IPocketSwapPair",
+                          "referencedDeclaration": 3809,
+                          "type": "contract IPocketSwapPair"
+                        },
+                        "id": 4074,
+                        "name": "UserDefinedTypeName",
+                        "src": "684:15:28"
+                      }
+                    ],
+                    "id": 4075,
+                    "name": "VariableDeclaration",
+                    "src": "684:20:28"
+                  }
+                ],
+                "id": 4076,
+                "name": "ParameterList",
+                "src": "683:22:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 4076
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract IPocketSwapPair",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                                  "typeString": "struct PairAddress.PairKey memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                4087,
+                                4118
+                              ],
+                              "referencedDeclaration": 4118,
+                              "type": "function (address,struct PairAddress.PairKey memory) view returns (contract IPocketSwapPair)",
+                              "value": "verifyCallback"
+                            },
+                            "id": 4077,
+                            "name": "Identifier",
+                            "src": "723:14:28"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4068,
+                              "type": "address",
+                              "value": "factory"
+                            },
+                            "id": 4078,
+                            "name": "Identifier",
+                            "src": "738:7:28"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "struct PairAddress.PairKey memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "getPairKey",
+                                  "referencedDeclaration": 4234,
+                                  "type": "function (address,address) pure returns (struct PairAddress.PairKey memory)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4328,
+                                      "type": "type(library PairAddress)",
+                                      "value": "PairAddress"
+                                    },
+                                    "id": 4079,
+                                    "name": "Identifier",
+                                    "src": "747:11:28"
+                                  }
+                                ],
+                                "id": 4080,
+                                "name": "MemberAccess",
+                                "src": "747:22:28"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4070,
+                                  "type": "address",
+                                  "value": "tokenA"
+                                },
+                                "id": 4081,
+                                "name": "Identifier",
+                                "src": "770:6:28"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4072,
+                                  "type": "address",
+                                  "value": "tokenB"
+                                },
+                                "id": 4082,
+                                "name": "Identifier",
+                                "src": "778:6:28"
+                              }
+                            ],
+                            "id": 4083,
+                            "name": "FunctionCall",
+                            "src": "747:38:28"
+                          }
+                        ],
+                        "id": 4084,
+                        "name": "FunctionCall",
+                        "src": "723:63:28"
+                      }
+                    ],
+                    "id": 4085,
+                    "name": "Return",
+                    "src": "716:70:28"
+                  }
+                ],
+                "id": 4086,
+                "name": "Block",
+                "src": "706:87:28"
+              }
+            ],
+            "id": 4087,
+            "name": "FunctionDefinition",
+            "src": "558:235:28"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "verifyCallback",
+              "scope": 4119,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Returns the address of a valid PocketSwap Pair\n @param factory The contract address of the PocketSwap factory\n @param pairKey The identifying key of the pair\n @return pair The pair contract address"
+                },
+                "id": 4088,
+                "name": "StructuredDocumentation",
+                "src": "799:230:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "factory",
+                      "scope": 4118,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4089,
+                        "name": "ElementaryTypeName",
+                        "src": "1058:7:28"
+                      }
+                    ],
+                    "id": 4090,
+                    "name": "VariableDeclaration",
+                    "src": "1058:15:28"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "pairKey",
+                      "scope": 4118,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct PairAddress.PairKey",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "PairAddress.PairKey",
+                          "referencedDeclaration": 4206,
+                          "type": "struct PairAddress.PairKey"
+                        },
+                        "id": 4091,
+                        "name": "UserDefinedTypeName",
+                        "src": "1075:19:28"
+                      }
+                    ],
+                    "id": 4092,
+                    "name": "VariableDeclaration",
+                    "src": "1075:34:28"
+                  }
+                ],
+                "id": 4093,
+                "name": "ParameterList",
+                "src": "1057:53:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "pair",
+                      "scope": 4118,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IPocketSwapPair",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IPocketSwapPair",
+                          "referencedDeclaration": 3809,
+                          "type": "contract IPocketSwapPair"
+                        },
+                        "id": 4094,
+                        "name": "UserDefinedTypeName",
+                        "src": "1146:15:28"
+                      }
+                    ],
+                    "id": 4095,
+                    "name": "VariableDeclaration",
+                    "src": "1146:20:28"
+                  }
+                ],
+                "id": 4096,
+                "name": "ParameterList",
+                "src": "1145:22:28"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract IPocketSwapPair"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4095,
+                              "type": "contract IPocketSwapPair",
+                              "value": "pair"
+                            },
+                            "id": 4097,
+                            "name": "Identifier",
+                            "src": "1182:4:28"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "contract IPocketSwapPair",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3809,
+                                  "type": "type(contract IPocketSwapPair)",
+                                  "value": "IPocketSwapPair"
+                                },
+                                "id": 4098,
+                                "name": "Identifier",
+                                "src": "1189:15:28"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        },
+                                        {
+                                          "typeIdentifier": "t_struct$_PairKey_$4206_memory_ptr",
+                                          "typeString": "struct PairAddress.PairKey memory"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "computeAddress",
+                                      "referencedDeclaration": 4327,
+                                      "type": "function (address,struct PairAddress.PairKey memory) pure returns (address)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 4328,
+                                          "type": "type(library PairAddress)",
+                                          "value": "PairAddress"
+                                        },
+                                        "id": 4099,
+                                        "name": "Identifier",
+                                        "src": "1205:11:28"
+                                      }
+                                    ],
+                                    "id": 4100,
+                                    "name": "MemberAccess",
+                                    "src": "1205:26:28"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4090,
+                                      "type": "address",
+                                      "value": "factory"
+                                    },
+                                    "id": 4101,
+                                    "name": "Identifier",
+                                    "src": "1232:7:28"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4092,
+                                      "type": "struct PairAddress.PairKey memory",
+                                      "value": "pairKey"
+                                    },
+                                    "id": 4102,
+                                    "name": "Identifier",
+                                    "src": "1241:7:28"
+                                  }
+                                ],
+                                "id": 4103,
+                                "name": "FunctionCall",
+                                "src": "1205:44:28"
+                              }
+                            ],
+                            "id": 4104,
+                            "name": "FunctionCall",
+                            "src": "1189:61:28"
+                          }
+                        ],
+                        "id": 4105,
+                        "name": "Assignment",
+                        "src": "1182:68:28"
+                      }
+                    ],
+                    "id": 4106,
+                    "name": "ExpressionStatement",
+                    "src": "1182:68:28"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                4294967278,
+                                4294967278
+                              ],
+                              "referencedDeclaration": 4294967278,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 4107,
+                            "name": "Identifier",
+                            "src": "1260:7:28"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4294967281,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 4108,
+                                    "name": "Identifier",
+                                    "src": "1268:3:28"
+                                  }
+                                ],
+                                "id": 4109,
+                                "name": "MemberAccess",
+                                "src": "1268:10:28"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3809",
+                                          "typeString": "contract IPocketSwapPair"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(address)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "name": "address"
+                                        },
+                                        "id": 4110,
+                                        "name": "ElementaryTypeName",
+                                        "src": "1282:7:28"
+                                      }
+                                    ],
+                                    "id": 4111,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "1282:7:28"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4095,
+                                      "type": "contract IPocketSwapPair",
+                                      "value": "pair"
+                                    },
+                                    "id": 4112,
+                                    "name": "Identifier",
+                                    "src": "1290:4:28"
+                                  }
+                                ],
+                                "id": 4113,
+                                "name": "FunctionCall",
+                                "src": "1282:13:28"
+                              }
+                            ],
+                            "id": 4114,
+                            "name": "BinaryOperation",
+                            "src": "1268:27:28"
+                          }
+                        ],
+                        "id": 4115,
+                        "name": "FunctionCall",
+                        "src": "1260:36:28"
+                      }
+                    ],
+                    "id": 4116,
+                    "name": "ExpressionStatement",
+                    "src": "1260:36:28"
+                  }
+                ],
+                "id": 4117,
+                "name": "Block",
+                "src": "1172:131:28"
+              }
+            ],
+            "id": 4118,
+            "name": "FunctionDefinition",
+            "src": "1034:269:28"
+          }
+        ],
+        "id": 4119,
+        "name": "ContractDefinition",
+        "src": "213:1092:28"
+      }
+    ],
+    "id": 4120,
+    "name": "SourceUnit",
+    "src": "45:1260:28"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-04-15T14:52:35.527Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Provides validation for callbacks from PocketSwap Pairs",
+    "version": 1
+  }
+}

@@ -1,0 +1,355 @@
+{
+  "contractName": "BlockTimestamp",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Base contract that is overridden for tests\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Function for getting block timestamp\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol\":\"BlockTimestamp\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol\":{\"keccak256\":\"0xed68b27a79f12bf5edca45f424077a89e3b153ba4b88875ae69cebb2ac00122e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d3cb02a341bce0a78969d412ead6d6912e5e8d5098be054b80d8fd4b5d1a8a2a\",\"dweb:/ipfs/QmUgzLs9NxA7ddndEtsiTAVQPGpvJuwsHEsdTekTHEs4GU\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.6.12;\n\n/// @title Function for getting block timestamp\n/// @dev Base contract that is overridden for tests\nabstract contract BlockTimestamp {\n    /// @dev Method that exists purely to be overridden for tests\n    /// @return The current block timestamp\n    function _blockTimestamp() internal view virtual returns (uint256) {\n        return block.timestamp;\n    }\n}\n",
+  "sourcePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol",
+  "ast": {
+    "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol",
+    "exportedSymbols": {
+      "BlockTimestamp": [
+        2456
+      ]
+    },
+    "id": 2457,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2444,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:25:9"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 2445,
+          "nodeType": "StructuredDocumentation",
+          "src": "72:100:9",
+          "text": "@title Function for getting block timestamp\n @dev Base contract that is overridden for tests"
+        },
+        "fullyImplemented": true,
+        "id": 2456,
+        "linearizedBaseContracts": [
+          2456
+        ],
+        "name": "BlockTimestamp",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2454,
+              "nodeType": "Block",
+              "src": "388:39:9",
+              "statements": [
+                {
+                  "expression": {
+                    "expression": {
+                      "id": 2451,
+                      "name": "block",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4294967292,
+                      "src": "405:5:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_magic_block",
+                        "typeString": "block"
+                      }
+                    },
+                    "id": 2452,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "timestamp",
+                    "nodeType": "MemberAccess",
+                    "src": "405:15:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 2450,
+                  "id": 2453,
+                  "nodeType": "Return",
+                  "src": "398:22:9"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 2446,
+              "nodeType": "StructuredDocumentation",
+              "src": "211:105:9",
+              "text": "@dev Method that exists purely to be overridden for tests\n @return The current block timestamp"
+            },
+            "id": 2455,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_blockTimestamp",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2447,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "345:2:9"
+            },
+            "returnParameters": {
+              "id": 2450,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2449,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2455,
+                  "src": "379:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2448,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "379:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "378:9:9"
+            },
+            "scope": 2456,
+            "src": "321:106:9",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 2457,
+        "src": "172:257:9"
+      }
+    ],
+    "src": "45:385:9"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol",
+      "exportedSymbols": {
+        "BlockTimestamp": [
+          2456
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 2444,
+        "name": "PragmaDirective",
+        "src": "45:25:9"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            2456
+          ],
+          "name": "BlockTimestamp",
+          "scope": 2457
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title Function for getting block timestamp\n @dev Base contract that is overridden for tests"
+            },
+            "id": 2445,
+            "name": "StructuredDocumentation",
+            "src": "72:100:9"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_blockTimestamp",
+              "scope": 2456,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@dev Method that exists purely to be overridden for tests\n @return The current block timestamp"
+                },
+                "id": 2446,
+                "name": "StructuredDocumentation",
+                "src": "211:105:9"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2447,
+                "name": "ParameterList",
+                "src": "345:2:9"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 2455,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 2448,
+                        "name": "ElementaryTypeName",
+                        "src": "379:7:9"
+                      }
+                    ],
+                    "id": 2449,
+                    "name": "VariableDeclaration",
+                    "src": "379:7:9"
+                  }
+                ],
+                "id": 2450,
+                "name": "ParameterList",
+                "src": "378:9:9"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 2450
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "timestamp",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4294967292,
+                              "type": "block",
+                              "value": "block"
+                            },
+                            "id": 2451,
+                            "name": "Identifier",
+                            "src": "405:5:9"
+                          }
+                        ],
+                        "id": 2452,
+                        "name": "MemberAccess",
+                        "src": "405:15:9"
+                      }
+                    ],
+                    "id": 2453,
+                    "name": "Return",
+                    "src": "398:22:9"
+                  }
+                ],
+                "id": 2454,
+                "name": "Block",
+                "src": "388:39:9"
+              }
+            ],
+            "id": 2455,
+            "name": "FunctionDefinition",
+            "src": "321:106:9"
+          }
+        ],
+        "id": 2456,
+        "name": "ContractDefinition",
+        "src": "172:257:9"
+      }
+    ],
+    "id": 2457,
+    "name": "SourceUnit",
+    "src": "45:385:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-04-15T12:53:06.212Z",
+  "devdoc": {
+    "details": "Base contract that is overridden for tests",
+    "kind": "dev",
+    "methods": {},
+    "title": "Function for getting block timestamp",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

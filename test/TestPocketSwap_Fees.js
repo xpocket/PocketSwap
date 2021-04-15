@@ -3,6 +3,8 @@ const PocketSwapFactory = artifacts.require("pocketswap/PocketSwapFactory.sol")
 const PocketSwapRouter = artifacts.require("pocketswap/PocketSwapRouter.sol")
 const PocketSwapPair = artifacts.require("pocketswap/PocketSwapPair.sol")
 
+const pocketSwapHelper = require('../helpers/Helper')
+
 contract("PocketSwap Fees", accounts => {
     let token_1
     let token_2
@@ -11,7 +13,9 @@ contract("PocketSwap Fees", accounts => {
     let router
     let pair
 
-    const deadline = () => { return parseInt(Date.now() / 1000) + 15 * 60 }
+    const deadline = () => {
+        return parseInt(Date.now() / 1000) + 15 * 60
+    }
     //
     // Factory address:  0x6Be8eDd2Ed105471fC6A86c72296C98A63019229
     // Token1 address:  0x789E5d218BEd461b2bA7561E425Ec64b3F36A7D9
@@ -31,10 +35,12 @@ contract("PocketSwap Fees", accounts => {
             ERC20.new(),
             PocketSwapFactory.new(accounts[0])
         ]).then(([a, b, c, d]) => [token_1, token_2, WETH, factory] = [a, b, c, d])
+            .then(([a, b, c, d]) => console.log(`Token1:${a.address}\nToken2:${b.address}\nWETH:${c.address}\nfactory:${d.address}`))
             .then(() => PocketSwapRouter.new(factory.address, WETH.address))
             .then(a => router = a)
+            .then(a => console.log('Router: ', a.address))
             .then(() => factory.createPair(token_1.address, token_2.address))
-            .then(() => router.pairFor(token_1.address, token_2.address))
+            .then(() => factory.getPair(token_1.address, token_2.address))
             .then(a => PocketSwapPair.at(a))
             .then(p => pair = p)
             .then(() => console.log('Pair address: ', pair.address))
@@ -59,57 +65,58 @@ contract("PocketSwap Fees", accounts => {
         await token_1.mint(accounts[1], BigInt(1e20).toString(), {from: accounts[1]})
         await token_1.approve(router.address, BigInt(1e20).toString(), {from: accounts[1]})
 
-        await router.addLiquidity(
-            token_1.address,                    // tokenA
-            token_2.address,                    // tokenB
-            BigInt(1e24).toString(),      // amountADesired
-            BigInt(1e24).toString(),      // amountBDesired
-            BigInt(1e24).toString(),      // amountAMin
-            BigInt(1e24).toString(),      // amountBMin
-            accounts[0],                        // to
-            deadline(),                         // deadline, 15 minutes
-            {from: accounts[0]})
-        await router.addLiquidity(
-            token_1.address,                    // tokenA
-            token_2.address,                    // tokenB
-            BigInt(1e24).toString(),      // amountADesired
-            BigInt(1e24).toString(),      // amountBDesired
-            BigInt(1e24).toString(),      // amountAMin
-            BigInt(1e24).toString(),      // amountBMin
-            accounts[2],                        // to
-            deadline(),                         // deadline, 15 minutes
-            {from: accounts[2]})
+        await router.addLiquidity({
+            token0: token_1.address,
+            token1: token_2.address,
+            recipient: accounts[0],
+            amount0Desired: BigInt(1e24).toString(),
+            amount1Desired: BigInt(1e24).toString(),
+            amount0Min: BigInt(1e24).toString(),
+            amount1Min: BigInt(1e24).toString(),
+            deadline: deadline(),
+        }, {from: accounts[0]})
+        await router.addLiquidity({
+            token0: token_1.address,
+            token1: token_2.address,
+            recipient: accounts[2],
+            amount0Desired: BigInt(1e24).toString(),
+            amount1Desired: BigInt(1e24).toString(),
+            amount0Min: BigInt(1e24).toString(),
+            amount1Min: BigInt(1e24).toString(),
+            deadline: deadline(),
+        }, {from: accounts[2]})
 
         let acc0LiquidityBalance = await pair.balanceOf(accounts[0])
-        assert.equal(acc0LiquidityBalance, Math.sqrt(1e24*1e24), 'Liquidity Balance')
+        assert.equal(acc0LiquidityBalance, Math.sqrt(1e24 * 1e24), 'Liquidity Balance')
 
         const out = await router.getAmountsOut(BigInt(1e20).toString(), [token_1.address, token_2.address]);
         const outRef = out[1]
 
         // assert.equal(outRef.toString(), "99700000000000000000", 'correct exchange - 0.3%')
 
-        await router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
-            BigInt(1e20).toString(),      // amountIn
-            outRef.toString(),                  // amountOutMin
-            [token_1.address, token_2.address], // path
-            accounts[1],                        // to
-            deadline(),                         // deadline, 15 minutes
-            {from: accounts[1]})
+        await router.swap({
+            tokenIn: token_1.address,
+            tokenOut: token_2.address, // path
+            recipient: accounts[1],
+            deadline: deadline(),
+            amountIn: BigInt(1e20).toString(),
+            amountOutMinimum: BigInt(1e20).toString(),
+        }, {from: accounts[1]})
 
-        await router.removeLiquidity(
-            token_1.address,                   // tokenA,
-            token_2.address,                   // tokenB,
-            acc0LiquidityBalance,              // liquidity,
-            "0",         // amountAMin,
-            "0",          // amountBMin,
-            accounts[0],                       // to,
-            deadline(),                        // deadline
-            {from: accounts[0]})
+        await router.removeLiquidity({
+            tokenA: token_1.address,
+            tokenB: token_2.address,
+            liquidity: acc0LiquidityBalance,
+            amountAMin: "0",
+            amountBMin: "0",
+            recipient: accounts[0],
+            deadline: deadline(),
+        }, {from: accounts[0]})
 
         let acc0Balance1 = await token_1.balanceOf(accounts[0]);
         let acc0Balance2 = await token_2.balanceOf(accounts[0]);
 
-   //      assert.equal(acc0Balance1.toString(), "10099999999999999996806", "Token1: 0.3% Fee to LP")
+        //      assert.equal(acc0Balance1.toString(), "10099999999999999996806", "Token1: 0.3% Fee to LP")
         assert.equal(acc0Balance1.toString(), "1010030000000000000000000", "Token1: 0.3% Fee to LP")
         assert.equal(acc0Balance2.toString(), "1000000000000000000000", "Token2: 0.3% Fee to LP")
     })
