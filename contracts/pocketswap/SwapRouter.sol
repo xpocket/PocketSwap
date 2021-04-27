@@ -85,7 +85,6 @@ SwapProcessing
         uint256 amount1Delta,
         bytes calldata _data
     ) external override {
-        revert("123241");
         SwapCallbackData memory data = abi.decode(_data, (SwapCallbackData));
         (address tokenIn, address tokenOut) = data.path.decodeFirstPool();
         CallbackValidation.verifyCallback(factory, tokenIn, tokenOut);
@@ -96,15 +95,13 @@ SwapProcessing
 
         if (isExactInput) {
             pay(tokenIn, data.payer, msg.sender, amountToPay);
-        } else {
-            // either initiate the next swap or pay
+        } else { // either initiate the next swap or pay
             if (data.path.hasMultiplePools()) {
                 data.path = data.path.skipToken();
                 exactOutputInternal(amountToPay, msg.sender, 0, data);
             } else {
                 amountInCached = amountToPay;
-                tokenIn = tokenOut;
-                // swap in/out because exact output swaps are reversed
+                tokenIn = tokenOut; // swap in/out because exact output swaps are reversed
                 pay(tokenIn, data.payer, msg.sender, amountToPay);
             }
         }
@@ -128,7 +125,7 @@ SwapProcessing
     public
     view
     virtual
-        /*override*/
+    /*override*/
     returns (uint amountOut)
     {
         return PocketSwapLibrary.getAmountOut(factory, amountIn, reserveIn, reserveOut);
@@ -138,7 +135,7 @@ SwapProcessing
     public
     view
     virtual
-        /*override*/
+    /*override*/
     returns (uint amountIn)
     {
         return PocketSwapLibrary.getAmountIn(factory, amountOut, reserveIn, reserveOut);
@@ -148,7 +145,7 @@ SwapProcessing
     public
     view
     virtual
-        /*override*/
+    /*override*/
     returns (uint[] memory amounts)
     {
         return PocketSwapLibrary.getAmountsOut(factory, amountIn, path);
@@ -158,7 +155,7 @@ SwapProcessing
     public
     view
     virtual
-        /*override*/
+    /*override*/
     returns (uint[] memory amounts)
     {
         return PocketSwapLibrary.getAmountsIn(factory, amountOut, path);

@@ -16,19 +16,7 @@ library CallbackValidation {
         address tokenA,
         address tokenB
     ) internal view returns (IPocketSwapPair pair) {
-        return verifyCallback(factory, PairAddress.getPairKey(tokenA, tokenB));
-    }
-
-    /// @notice Returns the address of a valid PocketSwap Pair
-    /// @param factory The contract address of the PocketSwap factory
-    /// @param pairKey The identifying key of the pair
-    /// @return pair The pair contract address
-    function verifyCallback(address factory, PairAddress.PairKey memory pairKey)
-    internal
-    view
-    returns (IPocketSwapPair pair)
-    {
-        pair = IPocketSwapPair(PairAddress.computeAddress(factory, pairKey));
+        pair = IPocketSwapPair(PairAddress.computeAddress(factory, tokenA, tokenB));
         require(msg.sender == address(pair));
     }
 }

@@ -4,6 +4,7 @@ pragma solidity >=0.6.12;
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
 import './libraries/Math.sol';
+import './libraries/Strings.sol';
 import './libraries/UQ112x112.sol';
 
 import './PocketSwapERC20.sol';
@@ -162,10 +163,6 @@ StorageData
         (uint112 _reserve0, uint112 _reserve1,) = getReserves();
         // gas savings
         require(amount0Out < _reserve0 && amount1Out < _reserve1, 'PocketSwap: INSUFFICIENT_LIQUIDITY');
-        //revert(string(abi.encodePacked(
-        //'Balances: ', uint2str(IERC20(token0).balanceOf(address(this))), ' : ', uint2str(IERC20(token1).balanceOf(address(this))),
-        //'Reserves: ', uint2str(_reserve0), ' : ', uint2str(_reserve1)
-        //)));
 
         uint balance0;
         uint balance1;
@@ -173,15 +170,12 @@ StorageData
             address _token0 = token0;
             address _token1 = token1;
             require(to != _token0 && to != _token1, 'PocketSwap: INVALID_TO');
-            if (amount0Out > 0) _safeTransfer(_token0, to, amount0Out);
-            // optimistically transfer tokens
-            if (amount1Out > 0) _safeTransfer(_token1, to, amount1Out);
-            // optimistically transfer tokens
+            if (amount0Out > 0) _safeTransfer(_token0, to, amount0Out); // optimistically transfer tokens
+            if (amount1Out > 0) _safeTransfer(_token1, to, amount1Out); // optimistically transfer tokens
             if (data.length > 0) {
-                try IPocketSwapCallback(to).pocketSwapCallback(amount0Out, amount1Out, data) {
-                    revert( "OK!!");
+                try IPocketSwapCallback(msg.sender).pocketSwapCallback(amount0Out, amount1Out, data) {
                 } catch Error(string memory reason) {
-                    revert("NOK: ");
+                    revert(string(abi.encodePacked("NOK: ", reason)));
                 } catch {
                     revert("UNKNWN!");
                 }

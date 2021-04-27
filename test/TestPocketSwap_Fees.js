@@ -94,14 +94,23 @@ contract("PocketSwap Fees", accounts => {
 
         // assert.equal(outRef.toString(), "99700000000000000000", 'correct exchange - 0.3%')
 
+        const wasToken1 = await token_1.balanceOf(accounts[1])
+        const wasToken2 = await token_2.balanceOf(accounts[2])
+
         await router.swap({
             tokenIn: token_1.address,
-            tokenOut: token_2.address, // path
+            tokenOut: token_2.address,
             recipient: accounts[1],
             deadline: deadline(),
             amountIn: BigInt(1e20).toString(),
-            amountOutMinimum: BigInt(1e20).toString(),
+            amountOutMinimum: BigInt(1e10).toString(),
         }, {from: accounts[1]})
+
+        const nowToken1 = await token_1.balanceOf(accounts[1])
+        const nowToken2 = await token_2.balanceOf(accounts[2])
+
+        assert.equal(wasToken1-nowToken1, BigInt(1e20), "Token1 spent: 1e20")
+        assert.equal(nowToken2-wasToken2, BigInt(1e18), "Token2 received: 1e18")
 
         await router.removeLiquidity({
             tokenA: token_1.address,
