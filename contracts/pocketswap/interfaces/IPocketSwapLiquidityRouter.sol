@@ -17,7 +17,7 @@ interface IPocketSwapLiquidityRouter {
     function addLiquidity(AddLiquidityParams calldata params)
     external
     payable
-    returns (uint amountA, uint amountB, uint liquidity);
+    returns (uint amountA, uint amountB, uint amountPocket, uint liquidity);
 
     struct RemoveLiquidityParams {
         address tokenA;

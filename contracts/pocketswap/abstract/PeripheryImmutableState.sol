@@ -10,9 +10,12 @@ abstract contract PeripheryImmutableState is IPeripheryImmutableState {
     address public immutable override factory;
     /// @inheritdoc IPeripheryImmutableState
     address public immutable override WETH9;
+    /// @inheritdoc IPeripheryImmutableState
+    address public immutable override pocket;
 
-    constructor(address _factory, address _WETH9) {
+    constructor(address _factory, address _WETH9, address _pocketToken) {
         factory = _factory;
         WETH9 = _WETH9;
+        pocket = _pocketToken;
     }
 }

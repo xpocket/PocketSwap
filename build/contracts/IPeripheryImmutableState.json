@@ -26,9 +26,22 @@
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pocket",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WETH9\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"WETH9()\":{\"returns\":{\"_0\":\"Returns the address of WETH9\"}},\"factory()\":{\"returns\":{\"_0\":\"Returns the address of the PocketSwap factory\"}}},\"title\":\"Immutable state\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Functions that return immutable state of the router\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":\"IPeripheryImmutableState\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":{\"keccak256\":\"0x0de3c50774f9ef40c98c0ec9ce2c18a4b3511823afc4839fa9a902b1d714ec2a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3e84d0a8960331befd456cc170946dad1f7fa42699c094ffcca001b6bb48630f\",\"dweb:/ipfs/QmSKbns6dSawRCr2pBdp7wG2vVajXPoePXQQvebUMVvMK2\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WETH9\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pocket\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"WETH9()\":{\"returns\":{\"_0\":\"Returns the address of WETH9\"}},\"factory()\":{\"returns\":{\"_0\":\"Returns the address of the PocketSwap factory\"}},\"pocket()\":{\"returns\":{\"_0\":\"Returns the address of POCKET token\"}}},\"title\":\"Immutable state\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Functions that return immutable state of the router\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":\"IPeripheryImmutableState\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":{\"keccak256\":\"0x39f3de492b6c939b4bd5da2ddf3e56112b69194f58213c966f05ed510509fa44\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c4c194eed2e8aa3d03dcfb4998d421379c8c0b51c0eaa3a33b069f3861928735\",\"dweb:/ipfs/QmUfLpP7Q7Nm1Y8CHKf2ZQw6PGHJh9VqbJCovhNzFoHGfg\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -36,21 +49,21 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Immutable state\n/// @notice Functions that return immutable state of the router\ninterface IPeripheryImmutableState {\n    /// @return Returns the address of the PocketSwap factory\n    function factory() external view returns (address);\n\n    /// @return Returns the address of WETH9\n    function WETH9() external view returns (address);\n}\n",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Immutable state\n/// @notice Functions that return immutable state of the router\ninterface IPeripheryImmutableState {\n    /// @return Returns the address of the PocketSwap factory\n    function factory() external view returns (address);\n\n    /// @return Returns the address of WETH9\n    function WETH9() external view returns (address);\n\n    /// @return Returns the address of POCKET token\n    function pocket() external view returns (address);\n}\n",
   "sourcePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol",
   "ast": {
     "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol",
     "exportedSymbols": {
       "IPeripheryImmutableState": [
-        3138
+        3535
       ]
     },
-    "id": 3139,
+    "id": 3536,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3124,
+        "id": 3515,
         "literals": [
           "solidity",
           ">=",
@@ -66,50 +79,50 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3125,
+          "id": 3516,
           "nodeType": "StructuredDocumentation",
           "src": "71:91:15",
           "text": "@title Immutable state\n @notice Functions that return immutable state of the router"
         },
         "fullyImplemented": false,
-        "id": 3138,
+        "id": 3535,
         "linearizedBaseContracts": [
-          3138
+          3535
         ],
         "name": "IPeripheryImmutableState",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 3126,
+              "id": 3517,
               "nodeType": "StructuredDocumentation",
               "src": "203:57:15",
               "text": "@return Returns the address of the PocketSwap factory"
             },
             "functionSelector": "c45a0155",
-            "id": 3131,
+            "id": 3522,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "factory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3127,
+              "id": 3518,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "281:2:15"
             },
             "returnParameters": {
-              "id": 3130,
+              "id": 3521,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3129,
+                  "id": 3520,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3131,
+                  "scope": 3522,
                   "src": "307:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -118,7 +131,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3128,
+                    "id": 3519,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "307:7:15",
@@ -133,7 +146,7 @@
               ],
               "src": "306:9:15"
             },
-            "scope": 3138,
+            "scope": 3535,
             "src": "265:51:15",
             "stateMutability": "view",
             "virtual": false,
@@ -141,35 +154,35 @@
           },
           {
             "documentation": {
-              "id": 3132,
+              "id": 3523,
               "nodeType": "StructuredDocumentation",
               "src": "322:40:15",
               "text": "@return Returns the address of WETH9"
             },
             "functionSelector": "4aa4a4fc",
-            "id": 3137,
+            "id": 3528,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "WETH9",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3133,
+              "id": 3524,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "381:2:15"
             },
             "returnParameters": {
-              "id": 3136,
+              "id": 3527,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3135,
+                  "id": 3526,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3137,
+                  "scope": 3528,
                   "src": "407:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -178,7 +191,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3134,
+                    "id": 3525,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "407:7:15",
@@ -193,25 +206,85 @@
               ],
               "src": "406:9:15"
             },
-            "scope": 3138,
+            "scope": 3535,
             "src": "367:49:15",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 3529,
+              "nodeType": "StructuredDocumentation",
+              "src": "422:47:15",
+              "text": "@return Returns the address of POCKET token"
+            },
+            "functionSelector": "cccef9e2",
+            "id": 3534,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "pocket",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3530,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "489:2:15"
+            },
+            "returnParameters": {
+              "id": 3533,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3532,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3534,
+                  "src": "515:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3531,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "515:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "514:9:15"
+            },
+            "scope": 3535,
+            "src": "474:50:15",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3139,
-        "src": "162:256:15"
+        "scope": 3536,
+        "src": "162:364:15"
       }
     ],
-    "src": "45:374:15"
+    "src": "45:482:15"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol",
       "exportedSymbols": {
         "IPeripheryImmutableState": [
-          3138
+          3535
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -226,7 +299,7 @@
             ".0"
           ]
         },
-        "id": 3124,
+        "id": 3515,
         "name": "PragmaDirective",
         "src": "45:24:15"
       },
@@ -242,17 +315,17 @@
           "contractKind": "interface",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            3138
+            3535
           ],
           "name": "IPeripheryImmutableState",
-          "scope": 3139
+          "scope": 3536
         },
         "children": [
           {
             "attributes": {
               "text": "@title Immutable state\n @notice Functions that return immutable state of the router"
             },
-            "id": 3125,
+            "id": 3516,
             "name": "StructuredDocumentation",
             "src": "71:91:15"
           },
@@ -266,7 +339,7 @@
                 null
               ],
               "name": "factory",
-              "scope": 3138,
+              "scope": 3535,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -276,7 +349,7 @@
                 "attributes": {
                   "text": "@return Returns the address of the PocketSwap factory"
                 },
-                "id": 3126,
+                "id": 3517,
                 "name": "StructuredDocumentation",
                 "src": "203:57:15"
               },
@@ -287,7 +360,7 @@
                   ]
                 },
                 "children": [],
-                "id": 3127,
+                "id": 3518,
                 "name": "ParameterList",
                 "src": "281:2:15"
               },
@@ -298,7 +371,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "",
-                      "scope": 3131,
+                      "scope": 3522,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -311,22 +384,22 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3128,
+                        "id": 3519,
                         "name": "ElementaryTypeName",
                         "src": "307:7:15"
                       }
                     ],
-                    "id": 3129,
+                    "id": 3520,
                     "name": "VariableDeclaration",
                     "src": "307:7:15"
                   }
                 ],
-                "id": 3130,
+                "id": 3521,
                 "name": "ParameterList",
                 "src": "306:9:15"
               }
             ],
-            "id": 3131,
+            "id": 3522,
             "name": "FunctionDefinition",
             "src": "265:51:15"
           },
@@ -340,7 +413,7 @@
                 null
               ],
               "name": "WETH9",
-              "scope": 3138,
+              "scope": 3535,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -350,7 +423,7 @@
                 "attributes": {
                   "text": "@return Returns the address of WETH9"
                 },
-                "id": 3132,
+                "id": 3523,
                 "name": "StructuredDocumentation",
                 "src": "322:40:15"
               },
@@ -361,7 +434,7 @@
                   ]
                 },
                 "children": [],
-                "id": 3133,
+                "id": 3524,
                 "name": "ParameterList",
                 "src": "381:2:15"
               },
@@ -372,7 +445,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "",
-                      "scope": 3137,
+                      "scope": 3528,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -385,42 +458,116 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3134,
+                        "id": 3525,
                         "name": "ElementaryTypeName",
                         "src": "407:7:15"
                       }
                     ],
-                    "id": 3135,
+                    "id": 3526,
                     "name": "VariableDeclaration",
                     "src": "407:7:15"
                   }
                 ],
-                "id": 3136,
+                "id": 3527,
                 "name": "ParameterList",
                 "src": "406:9:15"
               }
             ],
-            "id": 3137,
+            "id": 3528,
             "name": "FunctionDefinition",
             "src": "367:49:15"
+          },
+          {
+            "attributes": {
+              "functionSelector": "cccef9e2",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "pocket",
+              "scope": 3535,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@return Returns the address of POCKET token"
+                },
+                "id": 3529,
+                "name": "StructuredDocumentation",
+                "src": "422:47:15"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3530,
+                "name": "ParameterList",
+                "src": "489:2:15"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 3534,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3531,
+                        "name": "ElementaryTypeName",
+                        "src": "515:7:15"
+                      }
+                    ],
+                    "id": 3532,
+                    "name": "VariableDeclaration",
+                    "src": "515:7:15"
+                  }
+                ],
+                "id": 3533,
+                "name": "ParameterList",
+                "src": "514:9:15"
+              }
+            ],
+            "id": 3534,
+            "name": "FunctionDefinition",
+            "src": "474:50:15"
           }
         ],
-        "id": 3138,
+        "id": 3535,
         "name": "ContractDefinition",
-        "src": "162:256:15"
+        "src": "162:364:15"
       }
     ],
-    "id": 3139,
+    "id": 3536,
     "name": "SourceUnit",
-    "src": "45:374:15"
+    "src": "45:482:15"
   },
   "compiler": {
     "name": "solc",
     "version": "0.7.6+commit.7338295f.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.3.3",
-  "updatedAt": "2021-04-15T12:53:06.221Z",
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-28T11:20:15.105Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
@@ -432,6 +579,11 @@
       "factory()": {
         "returns": {
           "_0": "Returns the address of the PocketSwap factory"
+        }
+      },
+      "pocket()": {
+        "returns": {
+          "_0": "Returns the address of POCKET token"
         }
       }
     },

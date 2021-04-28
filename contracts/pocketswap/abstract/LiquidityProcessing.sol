@@ -6,6 +6,7 @@ import "../interfaces/IPocketSwapLiquidityRouter.sol";
 import "../interfaces/IPocketSwapRouter.sol";
 import '../interfaces/IPocketSwapFactory.sol';
 import "../libraries/Path.sol";
+import "../libraries/Math.sol";
 import "../libraries/PocketSwapLibrary.sol";
 import "./PeripheryImmutableState.sol";
 
@@ -29,8 +30,8 @@ IPocketSwapLiquidityRouter
         LiquidityCallbackData memory data
     )
     internal
-    returns (uint amountA, uint amountB) {
-        address _factory = factory;
+    returns (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket) {
+        address _factory = factory; // gas saving
         (address tokenA, address tokenB) = data.path.decodeFirstPool();
 
         // create the pair if it doesn't exist yet
@@ -51,6 +52,21 @@ IPocketSwapLiquidityRouter
                 assert(amountAOptimal <= amountADesired);
                 require(amountAOptimal >= amountAMin, 'PocketSwapRouter: INSUFFICIENT_A_AMOUNT');
                 (amountA, amountB) = (amountAOptimal, amountBDesired);
+            }
+        }
+
+        amountAPocket = 0;
+        amountBPocket = 0;
+        if (tokenA != address(pocket) && tokenB != address(pocket)) {
+            address[] memory path = new address[](2);
+            path[0] = pocket;
+            path[1] = tokenA;
+            if (IPocketSwapFactory(_factory).getPair(tokenA, pocket) != address(0)) {
+                amountAPocket = PocketSwapLibrary.getAmountsIn(address(this), amountA, path)[0];
+            }
+            path[1] = tokenB;
+            if (IPocketSwapFactory(_factory).getPair(tokenB, pocket) != address(0)) {
+                amountBPocket = PocketSwapLibrary.getAmountsIn(address(this), amountB, path)[0];
             }
         }
     }

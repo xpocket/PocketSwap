@@ -12,6 +12,6 @@ PeripheryValidation,
 SwapRouter,
 LiquidityRouter
 {
-    constructor(address _factory, address _WETH9)
-    PeripheryImmutableState(_factory, _WETH9) {}
+    constructor(address _factory, address _WETH9, address _pocketToken)
+    PeripheryImmutableState(_factory, _WETH9, _pocketToken) {}
 }

@@ -9,4 +9,7 @@ interface IPeripheryImmutableState {
 
     /// @return Returns the address of WETH9
     function WETH9() external view returns (address);
+
+    /// @return Returns the address of POCKET token
+    function pocket() external view returns (address);
 }
