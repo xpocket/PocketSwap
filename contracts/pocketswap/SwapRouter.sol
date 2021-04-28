@@ -93,17 +93,17 @@ SwapProcessing
         ? (tokenIn < tokenOut, uint256(amount0Delta))
         : (tokenOut < tokenIn, uint256(amount1Delta));
 
-        if (isExactInput) {
+        /*if (isExactInput) {
             pay(tokenIn, data.payer, msg.sender, amountToPay);
-        } else { // either initiate the next swap or pay
+        } else */{ // either initiate the next swap or pay
             if (data.path.hasMultiplePools()) {
                 data.path = data.path.skipToken();
                 exactOutputInternal(amountToPay, msg.sender, 0, data);
-            } else {
+            }/* else {
                 amountInCached = amountToPay;
                 tokenIn = tokenOut; // swap in/out because exact output swaps are reversed
                 pay(tokenIn, data.payer, msg.sender, amountToPay);
-            }
+            }*/
         }
     }
 

@@ -190,9 +190,7 @@ StorageData
             uint fee = IPocketSwapFactory(factory).fee();
             uint balance0Adjusted = balance0.mul(1e9).sub(amount0In.mul(fee));
             uint balance1Adjusted = balance1.mul(1e9).sub(amount1In.mul(fee));
-            require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9 ** 2), string(abi.encodePacked(
-                    'PocketSwap: K: ', uint2str(balance0), ' : ', uint2str(amount0In)
-                )));
+            require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9 ** 2), "PocketSwap: K");
         }
 
         _update(balance0, balance1, _reserve0, _reserve1);

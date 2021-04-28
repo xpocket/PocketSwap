@@ -3,6 +3,7 @@ pragma solidity >=0.6.12;
 
 import './PairAddress.sol';
 import './SafeMath.sol';
+import './FullMath.sol';
 import "../interfaces/IPocketSwapFactory.sol";
 import "../interfaces/IPocketSwapPair.sol";
 import "../../../Uniswap/uniswap-lib/contracts/libraries/AddressStringUtil.sol";
@@ -36,17 +37,18 @@ library PocketSwapLibrary {
     function getAmountOut(address factory, uint amountIn, uint reserveIn, uint reserveOut) internal view returns (uint amountOut) {
         require(amountIn > 0, 'PocketSwapLibrary: INSUFFICIENT_INPUT_AMOUNT');
         require(reserveIn > 0 && reserveOut > 0, 'PocketSwapLibrary: INSUFFICIENT_LIQUIDITY');
-        uint amountInWithFee = amountIn.mul(997);
+//        uint amountInWithFee = amountIn.mul(997);
+//        uint numerator = amountInWithFee.mul(reserveOut);
+//        uint denominator = reserveIn.mul(1000).add(amountInWithFee);
+//        amountOut = numerator / denominator;
+//
+        uint fee = IPocketSwapFactory(factory).fee();
+
+        uint amountInWithFee = amountIn.mul(1e9 - fee);
         uint numerator = amountInWithFee.mul(reserveOut);
-        uint denominator = reserveIn.mul(1000).add(amountInWithFee);
+        uint denominator = reserveIn.mul(1e9).add(amountInWithFee);
+
         amountOut = numerator / denominator;
-//
-//        uint fee = IPocketSwapFactory(factory).fee();
-//
-//        uint amountWithFee = amountIn.mul(1e9 - fee);
-//        uint reservesRatio = FullMath.mulDiv(reserveOut, 1, reserveIn);
-//
-//        amountOut = FullMath.mulDiv(amountWithFee, reservesRatio, 1e9);
     }
 
     // given an output amount of an asset and pair reserves, returns a required input amount of the other asset

@@ -160,7 +160,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WETH9\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount0Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.AddLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"addLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.RemoveLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"removeLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/LiquidityRouter.sol\":\"LiquidityRouter\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/Uniswap/uniswap-lib/contracts/libraries/AddressStringUtil.sol\":{\"keccak256\":\"0x1edf9591b1858ce9093a4baaf816280d92bd1441e911a82bf509b8d2bb3195ce\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://bb7600744f3ce303df65f763ad7eec56223b9687e19476d992b95ccaf45eaf99\",\"dweb:/ipfs/QmPHDpxSbifD4ThEmM5hZoyfd9K9NMg9k6WZvFhFSFK42w\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/LiquidityRouter.sol\":{\"keccak256\":\"0xa1cc0781e3c93e8d0a44651c93e7e76da15657acb8734681eaa716d392b4fe68\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://ad1aeb0014434c9c1fbea89b54ae427f684b29ce7bd1adfee87c09165dcc7e6c\",\"dweb:/ipfs/QmZDersba3m6cXNqnxzD52gpTVjPZGcNb3DrWbsxmXevrh\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol\":{\"keccak256\":\"0xed68b27a79f12bf5edca45f424077a89e3b153ba4b88875ae69cebb2ac00122e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d3cb02a341bce0a78969d412ead6d6912e5e8d5098be054b80d8fd4b5d1a8a2a\",\"dweb:/ipfs/QmUgzLs9NxA7ddndEtsiTAVQPGpvJuwsHEsdTekTHEs4GU\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/LiquidityProcessing.sol\":{\"keccak256\":\"0xeef735084783fe0fd694a4484fcfaa89fd3bc8f8f79970169b6e6f51c8276996\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://6984aca43ad66d491e89c914309d6c11496157c619dd95045aa56c3860bcb454\",\"dweb:/ipfs/Qmad1YxX1oqHXeb5NzeNHjeNaJ8TrJhrhZyJRunSgTgTFZ\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryImmutableState.sol\":{\"keccak256\":\"0x0f93b48f84dc4d1a153178b707f7fad27fca6cfc4f072bd4927f60f4a93a40b5\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://0d0efd95c8d750e821ba00febee6444273d40774c9585a9c18b47dad4ce0468f\",\"dweb:/ipfs/QmcDFLEdrEWSfy4NGeTExqRDktvyoiMePkhLFcJCivCRaQ\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryValidation.sol\":{\"keccak256\":\"0xda528932c9296a8e09c5940bd0888267fb202be95552e5d1f49e3264e0443f16\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://4e8186f7c32d10e0993132651f8ccee3d1f9b2dcfbf88757f61cf71c7cd22dc4\",\"dweb:/ipfs/QmXenqdntAcP38kQ5Ncu27QvTA9MCTdobtz6MQGRZAAttw\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":{\"keccak256\":\"0x0de3c50774f9ef40c98c0ec9ce2c18a4b3511823afc4839fa9a902b1d714ec2a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3e84d0a8960331befd456cc170946dad1f7fa42699c094ffcca001b6bb48630f\",\"dweb:/ipfs/QmSKbns6dSawRCr2pBdp7wG2vVajXPoePXQQvebUMVvMK2\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapERC20.sol\":{\"keccak256\":\"0x370ec833d0b2d89243a8c49fa7b42c36e8c2e7877bb521e089f34d91a6ceb853\",\"urls\":[\"bzz-raw://40bff1a74f556b1c84d25d22d077b868fcc4c37d275b13290af35764c0dc2dd9\",\"dweb:/ipfs/Qmf7T8xYfu16mXRExXbipDNnw1ohjQ7mKTeBaDafzGqS6U\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapFactory.sol\":{\"keccak256\":\"0xf8e1615fcec19b3341bb9b0cf13d04fa8586bffe85b5b5dfd022e8351967adf8\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://3ec16bc2e0bc6d92e2a6286297b20b428e5a2cbc2e6739a8f297db19714c84be\",\"dweb:/ipfs/QmdLCSTE3exqD6a4mHfZhngpArhbUM8kQQetbDBBTnZZKu\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapLiquidityRouter.sol\":{\"keccak256\":\"0x8bf49f4ca0b9a9d1d10df75dcb37869407f423e35b4ff481727da512e353e4d8\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://6d1192bbd114be4db374ab948ef0fb51adc6b761c0ebc89a3db5452020dba295\",\"dweb:/ipfs/QmSEuTdDdH94wzFzQpbNoMzHrc15jAKKaqY9o5b6gfPxNG\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol\":{\"keccak256\":\"0x5b477c2ed876faebabeb74cc0782b0ab94604e6c9c6b353f2feb590a9d4bb8be\",\"urls\":[\"bzz-raw://a7fa647b58f49f1edec40d08ce21c57eb09d6d997bff51e45f5131e37250a621\",\"dweb:/ipfs/QmShnFxuyiyiDW3YCKNTWgxrYuqfY2L1BF7LGghjp4byfS\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapRouter.sol\":{\"keccak256\":\"0x0f82eb81d6120ca760947fdcee6b2c9fbd802e9e7611ab5eee68f02932f5c28c\",\"urls\":[\"bzz-raw://eb768cf099570e3785e2911c17ffe9b393416b00fc97749068224d809c600cb3\",\"dweb:/ipfs/QmT7MJxoJ8roHxVZbTaFYeNSXn4skoNqSRc2tXCRem2WBX\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/callback/IPocketSwapCallback.sol\":{\"keccak256\":\"0xffbcd8cdb9c7d99b074a3ae0910741cd15299ca3e8b839bd1fc6e603f41b7416\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ba374100d9322737f1b0d77967d2ea7efb0aca8c699977cbe288de1e81d93f15\",\"dweb:/ipfs/QmSfUvwjqGPHfdRWVazC2QgsJFc3LDrhykQ2tbccDr3Dhv\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/BytesLib.sol\":{\"keccak256\":\"0xe3f32ff71155048b7df6cce81cbd5c1a642589083550a0c7609ffcab0f603ed1\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c72bcdf4acf6d12562e8a4cd4ff9d66b249bf4d7ca8862c6d424964684cabffb\",\"dweb:/ipfs/QmQqnzPPExnxeWgx3akMCFUchxMTriS4xsQ9pMSaY6b1tB\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol\":{\"keccak256\":\"0x21ff8b2d89c8699eea3b31f4aac6e356dd487a843dd8b9144dbbcadc3ce6512a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6288a4312ec844f815e3c54dd2747a125673f1c543e624325a05cd7a6d624ae2\",\"dweb:/ipfs/QmdxLyvNumDBm1gVcTw8hR6YRvhko3QrEnCBTgUHxReCNx\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/Path.sol\":{\"keccak256\":\"0xf145381d62cca33d5911f3b8ad46e094cb2fda0941512d4be328eadfe28d2847\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://54d10e0c6ddb048e3ab705a6d67ebc1f7e97c81e9bbc74dadf8bd1e865a67435\",\"dweb:/ipfs/QmUuvJNpxS4q215HWfoAb8cvwK3vMsPvC3x29iQCnYFiSB\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PocketSwapLibrary.sol\":{\"keccak256\":\"0x749a769a54c7012c9840d51c127a797b1460876e73ed371da7c99af6415be464\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://cf0534ae798b91488df946cba9b1e1bd624d5d479227009f1cca2c3375edf851\",\"dweb:/ipfs/Qman5TfYhWfA6djzjvsaU5S9JsRQ9qA25BhzeSo6zA2Ko9\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/SafeMath.sol\":{\"keccak256\":\"0x9ea215227e02c4462247124b424db9dc7364f7d5ac0961debf46c16d5861ad21\",\"urls\":[\"bzz-raw://1c02a26140f0789d05f820916aaebb2981ce714b67022f0bb7c635c91454f490\",\"dweb:/ipfs/QmR5BDEdyncBMss8vRgzK6jsGrBRkk4wqgNNHNmzi36k11\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/TransferHelper.sol\":{\"keccak256\":\"0xea0834dbcc078c90c7dd5b9b118606f3de06dc6373becfcec6dbb823ba3582dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://892a95126757501574ff9ddb556b5dd6c88dc131171794df2c7025ca2a892951\",\"dweb:/ipfs/QmbZWtiCiNF8Ly2So6G1Ehq6MEdDcWMaaFgqwE4hnHodqK\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xbd74f587ab9b9711801baf667db1426e4a03fd2d7f15af33e0e0d0394e7cef76\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d0913dfbfce90d170df0d496ad7596c0778518e5fa7aba6c32562522546f66b\",\"dweb:/ipfs/QmR6B8nLj2PJf5e1JWD9Nk7ErkAwkqUwadCnvE82FJr1RU\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WETH9\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount0Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.AddLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"addLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.RemoveLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"removeLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/LiquidityRouter.sol\":\"LiquidityRouter\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/Uniswap/uniswap-lib/contracts/libraries/AddressStringUtil.sol\":{\"keccak256\":\"0x1edf9591b1858ce9093a4baaf816280d92bd1441e911a82bf509b8d2bb3195ce\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://bb7600744f3ce303df65f763ad7eec56223b9687e19476d992b95ccaf45eaf99\",\"dweb:/ipfs/QmPHDpxSbifD4ThEmM5hZoyfd9K9NMg9k6WZvFhFSFK42w\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/LiquidityRouter.sol\":{\"keccak256\":\"0xa1cc0781e3c93e8d0a44651c93e7e76da15657acb8734681eaa716d392b4fe68\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://ad1aeb0014434c9c1fbea89b54ae427f684b29ce7bd1adfee87c09165dcc7e6c\",\"dweb:/ipfs/QmZDersba3m6cXNqnxzD52gpTVjPZGcNb3DrWbsxmXevrh\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol\":{\"keccak256\":\"0xed68b27a79f12bf5edca45f424077a89e3b153ba4b88875ae69cebb2ac00122e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d3cb02a341bce0a78969d412ead6d6912e5e8d5098be054b80d8fd4b5d1a8a2a\",\"dweb:/ipfs/QmUgzLs9NxA7ddndEtsiTAVQPGpvJuwsHEsdTekTHEs4GU\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/LiquidityProcessing.sol\":{\"keccak256\":\"0xeef735084783fe0fd694a4484fcfaa89fd3bc8f8f79970169b6e6f51c8276996\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://6984aca43ad66d491e89c914309d6c11496157c619dd95045aa56c3860bcb454\",\"dweb:/ipfs/Qmad1YxX1oqHXeb5NzeNHjeNaJ8TrJhrhZyJRunSgTgTFZ\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryImmutableState.sol\":{\"keccak256\":\"0x0f93b48f84dc4d1a153178b707f7fad27fca6cfc4f072bd4927f60f4a93a40b5\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://0d0efd95c8d750e821ba00febee6444273d40774c9585a9c18b47dad4ce0468f\",\"dweb:/ipfs/QmcDFLEdrEWSfy4NGeTExqRDktvyoiMePkhLFcJCivCRaQ\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryValidation.sol\":{\"keccak256\":\"0xda528932c9296a8e09c5940bd0888267fb202be95552e5d1f49e3264e0443f16\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://4e8186f7c32d10e0993132651f8ccee3d1f9b2dcfbf88757f61cf71c7cd22dc4\",\"dweb:/ipfs/QmXenqdntAcP38kQ5Ncu27QvTA9MCTdobtz6MQGRZAAttw\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":{\"keccak256\":\"0x0de3c50774f9ef40c98c0ec9ce2c18a4b3511823afc4839fa9a902b1d714ec2a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3e84d0a8960331befd456cc170946dad1f7fa42699c094ffcca001b6bb48630f\",\"dweb:/ipfs/QmSKbns6dSawRCr2pBdp7wG2vVajXPoePXQQvebUMVvMK2\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapERC20.sol\":{\"keccak256\":\"0x370ec833d0b2d89243a8c49fa7b42c36e8c2e7877bb521e089f34d91a6ceb853\",\"urls\":[\"bzz-raw://40bff1a74f556b1c84d25d22d077b868fcc4c37d275b13290af35764c0dc2dd9\",\"dweb:/ipfs/Qmf7T8xYfu16mXRExXbipDNnw1ohjQ7mKTeBaDafzGqS6U\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapFactory.sol\":{\"keccak256\":\"0xf8e1615fcec19b3341bb9b0cf13d04fa8586bffe85b5b5dfd022e8351967adf8\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://3ec16bc2e0bc6d92e2a6286297b20b428e5a2cbc2e6739a8f297db19714c84be\",\"dweb:/ipfs/QmdLCSTE3exqD6a4mHfZhngpArhbUM8kQQetbDBBTnZZKu\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapLiquidityRouter.sol\":{\"keccak256\":\"0x8bf49f4ca0b9a9d1d10df75dcb37869407f423e35b4ff481727da512e353e4d8\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://6d1192bbd114be4db374ab948ef0fb51adc6b761c0ebc89a3db5452020dba295\",\"dweb:/ipfs/QmSEuTdDdH94wzFzQpbNoMzHrc15jAKKaqY9o5b6gfPxNG\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol\":{\"keccak256\":\"0x5b477c2ed876faebabeb74cc0782b0ab94604e6c9c6b353f2feb590a9d4bb8be\",\"urls\":[\"bzz-raw://a7fa647b58f49f1edec40d08ce21c57eb09d6d997bff51e45f5131e37250a621\",\"dweb:/ipfs/QmShnFxuyiyiDW3YCKNTWgxrYuqfY2L1BF7LGghjp4byfS\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapRouter.sol\":{\"keccak256\":\"0x0f82eb81d6120ca760947fdcee6b2c9fbd802e9e7611ab5eee68f02932f5c28c\",\"urls\":[\"bzz-raw://eb768cf099570e3785e2911c17ffe9b393416b00fc97749068224d809c600cb3\",\"dweb:/ipfs/QmT7MJxoJ8roHxVZbTaFYeNSXn4skoNqSRc2tXCRem2WBX\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/callback/IPocketSwapCallback.sol\":{\"keccak256\":\"0xffbcd8cdb9c7d99b074a3ae0910741cd15299ca3e8b839bd1fc6e603f41b7416\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ba374100d9322737f1b0d77967d2ea7efb0aca8c699977cbe288de1e81d93f15\",\"dweb:/ipfs/QmSfUvwjqGPHfdRWVazC2QgsJFc3LDrhykQ2tbccDr3Dhv\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/BytesLib.sol\":{\"keccak256\":\"0xe3f32ff71155048b7df6cce81cbd5c1a642589083550a0c7609ffcab0f603ed1\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c72bcdf4acf6d12562e8a4cd4ff9d66b249bf4d7ca8862c6d424964684cabffb\",\"dweb:/ipfs/QmQqnzPPExnxeWgx3akMCFUchxMTriS4xsQ9pMSaY6b1tB\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol\":{\"keccak256\":\"0xcf5f0289bb95804c4acf792a0fb2eaa134df76e8c91899a9b60682091453b66f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a8760a0f3f100973c415db41079720a4a1dd3b1e24158924fda58120553b28a6\",\"dweb:/ipfs/Qmcj1rLVms83JjUGYjMvcrWNqNBSLzNX8q4M8akxjoudeL\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/Path.sol\":{\"keccak256\":\"0xf145381d62cca33d5911f3b8ad46e094cb2fda0941512d4be328eadfe28d2847\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://54d10e0c6ddb048e3ab705a6d67ebc1f7e97c81e9bbc74dadf8bd1e865a67435\",\"dweb:/ipfs/QmUuvJNpxS4q215HWfoAb8cvwK3vMsPvC3x29iQCnYFiSB\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PocketSwapLibrary.sol\":{\"keccak256\":\"0x749a769a54c7012c9840d51c127a797b1460876e73ed371da7c99af6415be464\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://cf0534ae798b91488df946cba9b1e1bd624d5d479227009f1cca2c3375edf851\",\"dweb:/ipfs/Qman5TfYhWfA6djzjvsaU5S9JsRQ9qA25BhzeSo6zA2Ko9\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/SafeMath.sol\":{\"keccak256\":\"0x9ea215227e02c4462247124b424db9dc7364f7d5ac0961debf46c16d5861ad21\",\"urls\":[\"bzz-raw://1c02a26140f0789d05f820916aaebb2981ce714b67022f0bb7c635c91454f490\",\"dweb:/ipfs/QmR5BDEdyncBMss8vRgzK6jsGrBRkk4wqgNNHNmzi36k11\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/TransferHelper.sol\":{\"keccak256\":\"0xea0834dbcc078c90c7dd5b9b118606f3de06dc6373becfcec6dbb823ba3582dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://892a95126757501574ff9ddb556b5dd6c88dc131171794df2c7025ca2a892951\",\"dweb:/ipfs/QmbZWtiCiNF8Ly2So6G1Ehq6MEdDcWMaaFgqwE4hnHodqK\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xbd74f587ab9b9711801baf667db1426e4a03fd2d7f15af33e0e0d0394e7cef76\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d0913dfbfce90d170df0d496ad7596c0778518e5fa7aba6c32562522546f66b\",\"dweb:/ipfs/QmR6B8nLj2PJf5e1JWD9Nk7ErkAwkqUwadCnvE82FJr1RU\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -177,61 +177,61 @@
         142
       ],
       "BlockTimestamp": [
-        2509
+        2506
       ],
       "BytesLib": [
-        3941
+        3938
       ],
       "IERC20": [
-        5239
+        5236
       ],
       "IPeripheryImmutableState": [
-        3291
+        3288
       ],
       "IPocketSwapCallback": [
-        3805
+        3802
       ],
       "IPocketSwapERC20": [
-        3431
+        3428
       ],
       "IPocketSwapFactory": [
-        3504
+        3501
       ],
       "IPocketSwapLiquidityRouter": [
-        3560
+        3557
       ],
       "IPocketSwapPair": [
-        3690
+        3687
       ],
       "IPocketSwapRouter": [
-        3792
+        3789
       ],
       "LiquidityProcessing": [
-        2673
+        2670
       ],
       "LiquidityRouter": [
         335
       ],
       "PairAddress": [
-        4190
+        4187
       ],
       "Path": [
-        4290
+        4287
       ],
       "PeripheryImmutableState": [
-        2789
+        2786
       ],
       "PeripheryValidation": [
-        3006
+        3003
       ],
       "PocketSwapLibrary": [
-        4740
+        4737
       ],
       "SafeMath": [
-        4815
+        4812
       ],
       "TransferHelper": [
-        5089
+        5086
       ]
     },
     "id": 336,
@@ -264,7 +264,7 @@
         "id": 146,
         "nodeType": "ImportDirective",
         "scope": 336,
-        "sourceUnit": 2674,
+        "sourceUnit": 2671,
         "src": "86:44:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -275,7 +275,7 @@
         "id": 147,
         "nodeType": "ImportDirective",
         "scope": 336,
-        "sourceUnit": 3007,
+        "sourceUnit": 3004,
         "src": "131:44:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -286,7 +286,7 @@
         "id": 148,
         "nodeType": "ImportDirective",
         "scope": 336,
-        "sourceUnit": 5090,
+        "sourceUnit": 5087,
         "src": "176:40:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -297,7 +297,7 @@
         "id": 149,
         "nodeType": "ImportDirective",
         "scope": 336,
-        "sourceUnit": 4191,
+        "sourceUnit": 4188,
         "src": "217:37:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -310,10 +310,10 @@
               "id": 150,
               "name": "PeripheryImmutableState",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2789,
+              "referencedDeclaration": 2786,
               "src": "293:23:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PeripheryImmutableState_$2789",
+                "typeIdentifier": "t_contract$_PeripheryImmutableState_$2786",
                 "typeString": "contract PeripheryImmutableState"
               }
             },
@@ -326,10 +326,10 @@
               "id": 152,
               "name": "PeripheryValidation",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3006,
+              "referencedDeclaration": 3003,
               "src": "318:19:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PeripheryValidation_$3006",
+                "typeIdentifier": "t_contract$_PeripheryValidation_$3003",
                 "typeString": "contract PeripheryValidation"
               }
             },
@@ -342,10 +342,10 @@
               "id": 154,
               "name": "LiquidityProcessing",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2673,
+              "referencedDeclaration": 2670,
               "src": "339:19:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_LiquidityProcessing_$2673",
+                "typeIdentifier": "t_contract$_LiquidityProcessing_$2670",
                 "typeString": "contract LiquidityProcessing"
               }
             },
@@ -355,31 +355,31 @@
           }
         ],
         "contractDependencies": [
-          2509,
-          2673,
-          2789,
-          3006,
-          3291,
-          3560
+          2506,
+          2670,
+          2786,
+          3003,
+          3288,
+          3557
         ],
         "contractKind": "contract",
         "fullyImplemented": false,
         "id": 335,
         "linearizedBaseContracts": [
           335,
-          2673,
-          3560,
-          3006,
-          2789,
-          3291,
-          2509
+          2670,
+          3557,
+          3003,
+          2786,
+          3288,
+          2506
         ],
         "name": "LiquidityRouter",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              3535
+              3532
             ],
             "body": {
               "id": 240,
@@ -446,7 +446,7 @@
                             "referencedDeclaration": 157,
                             "src": "611:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                             }
                           },
@@ -457,7 +457,7 @@
                           "lValueRequested": false,
                           "memberName": "amount0Desired",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3515,
+                          "referencedDeclaration": 3512,
                           "src": "611:21:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -473,7 +473,7 @@
                             "referencedDeclaration": 157,
                             "src": "646:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                             }
                           },
@@ -484,7 +484,7 @@
                           "lValueRequested": false,
                           "memberName": "amount1Desired",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3517,
+                          "referencedDeclaration": 3514,
                           "src": "646:21:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -500,7 +500,7 @@
                             "referencedDeclaration": 157,
                             "src": "681:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                             }
                           },
@@ -511,7 +511,7 @@
                           "lValueRequested": false,
                           "memberName": "amount0Min",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3519,
+                          "referencedDeclaration": 3516,
                           "src": "681:17:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -527,7 +527,7 @@
                             "referencedDeclaration": 157,
                             "src": "712:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                             }
                           },
@@ -538,7 +538,7 @@
                           "lValueRequested": false,
                           "memberName": "amount1Min",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3521,
+                          "referencedDeclaration": 3518,
                           "src": "712:17:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -558,7 +558,7 @@
                                     "referencedDeclaration": 157,
                                     "src": "803:6:1",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                                      "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                                       "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                                     }
                                   },
@@ -569,7 +569,7 @@
                                   "lValueRequested": false,
                                   "memberName": "token0",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 3509,
+                                  "referencedDeclaration": 3506,
                                   "src": "803:13:1",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -585,7 +585,7 @@
                                     "referencedDeclaration": 157,
                                     "src": "818:6:1",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                                      "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                                       "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                                     }
                                   },
@@ -596,7 +596,7 @@
                                   "lValueRequested": false,
                                   "memberName": "token1",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 3511,
+                                  "referencedDeclaration": 3508,
                                   "src": "818:13:1",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -697,10 +697,10 @@
                             "name": "LiquidityCallbackData",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2530,
+                            "referencedDeclaration": 2527,
                             "src": "743:21:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_struct$_LiquidityCallbackData_$2530_storage_ptr_$",
+                              "typeIdentifier": "t_type$_t_struct$_LiquidityCallbackData_$2527_storage_ptr_$",
                               "typeString": "type(struct LiquidityProcessing.LiquidityCallbackData storage pointer)"
                             }
                           },
@@ -718,7 +718,7 @@
                           "src": "743:124:1",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_LiquidityCallbackData_$2530_memory_ptr",
+                            "typeIdentifier": "t_struct$_LiquidityCallbackData_$2527_memory_ptr",
                             "typeString": "struct LiquidityProcessing.LiquidityCallbackData memory"
                           }
                         }
@@ -742,7 +742,7 @@
                             "typeString": "uint256"
                           },
                           {
-                            "typeIdentifier": "t_struct$_LiquidityCallbackData_$2530_memory_ptr",
+                            "typeIdentifier": "t_struct$_LiquidityCallbackData_$2527_memory_ptr",
                             "typeString": "struct LiquidityProcessing.LiquidityCallbackData memory"
                           }
                         ],
@@ -750,10 +750,10 @@
                         "name": "_addLiquidity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2672,
+                        "referencedDeclaration": 2669,
                         "src": "584:13:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_struct$_LiquidityCallbackData_$2530_memory_ptr_$returns$_t_uint256_$_t_uint256_$",
+                          "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_struct$_LiquidityCallbackData_$2527_memory_ptr_$returns$_t_uint256_$_t_uint256_$",
                           "typeString": "function (uint256,uint256,uint256,uint256,struct LiquidityProcessing.LiquidityCallbackData memory) returns (uint256,uint256)"
                         }
                       },
@@ -823,7 +823,7 @@
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2768,
+                        "referencedDeclaration": 2765,
                         "src": "930:7:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -839,7 +839,7 @@
                           "referencedDeclaration": 157,
                           "src": "939:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                           }
                         },
@@ -850,7 +850,7 @@
                         "lValueRequested": false,
                         "memberName": "token0",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3509,
+                        "referencedDeclaration": 3506,
                         "src": "939:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -866,7 +866,7 @@
                           "referencedDeclaration": 157,
                           "src": "954:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                           }
                         },
@@ -877,7 +877,7 @@
                         "lValueRequested": false,
                         "memberName": "token1",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3511,
+                        "referencedDeclaration": 3508,
                         "src": "954:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -905,10 +905,10 @@
                         "name": "PairAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4190,
+                        "referencedDeclaration": 4187,
                         "src": "903:11:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_PairAddress_$4190_$",
+                          "typeIdentifier": "t_type$_t_contract$_PairAddress_$4187_$",
                           "typeString": "type(library PairAddress)"
                         }
                       },
@@ -919,7 +919,7 @@
                       "lValueRequested": false,
                       "memberName": "computeAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4145,
+                      "referencedDeclaration": 4142,
                       "src": "903:26:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_pure$_t_address_$_t_address_$_t_address_$returns$_t_address_$",
@@ -956,7 +956,7 @@
                           "referencedDeclaration": 157,
                           "src": "1010:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                           }
                         },
@@ -967,7 +967,7 @@
                         "lValueRequested": false,
                         "memberName": "token0",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3509,
+                        "referencedDeclaration": 3506,
                         "src": "1010:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1049,10 +1049,10 @@
                         "name": "TransferHelper",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 5089,
+                        "referencedDeclaration": 5086,
                         "src": "978:14:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_TransferHelper_$5089_$",
+                          "typeIdentifier": "t_type$_t_contract$_TransferHelper_$5086_$",
                           "typeString": "type(library TransferHelper)"
                         }
                       },
@@ -1063,7 +1063,7 @@
                       "lValueRequested": false,
                       "memberName": "safeTransferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4970,
+                      "referencedDeclaration": 4967,
                       "src": "978:31:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1101,7 +1101,7 @@
                           "referencedDeclaration": 157,
                           "src": "1093:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                            "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                           }
                         },
@@ -1112,7 +1112,7 @@
                         "lValueRequested": false,
                         "memberName": "token1",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3511,
+                        "referencedDeclaration": 3508,
                         "src": "1093:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1194,10 +1194,10 @@
                         "name": "TransferHelper",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 5089,
+                        "referencedDeclaration": 5086,
                         "src": "1061:14:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_TransferHelper_$5089_$",
+                          "typeIdentifier": "t_type$_t_contract$_TransferHelper_$5086_$",
                           "typeString": "type(library TransferHelper)"
                         }
                       },
@@ -1208,7 +1208,7 @@
                       "lValueRequested": false,
                       "memberName": "safeTransferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4970,
+                      "referencedDeclaration": 4967,
                       "src": "1061:31:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1266,7 +1266,7 @@
                             "referencedDeclaration": 157,
                             "src": "1183:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                              "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                             }
                           },
@@ -1277,7 +1277,7 @@
                           "lValueRequested": false,
                           "memberName": "recipient",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3513,
+                          "referencedDeclaration": 3510,
                           "src": "1183:16:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -1318,10 +1318,10 @@
                             "name": "IPocketSwapPair",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3690,
+                            "referencedDeclaration": 3687,
                             "src": "1156:15:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_IPocketSwapPair_$3690_$",
+                              "typeIdentifier": "t_type$_t_contract$_IPocketSwapPair_$3687_$",
                               "typeString": "type(contract IPocketSwapPair)"
                             }
                           },
@@ -1336,7 +1336,7 @@
                           "src": "1156:21:1",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                            "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                             "typeString": "contract IPocketSwapPair"
                           }
                         },
@@ -1347,7 +1347,7 @@
                         "lValueRequested": false,
                         "memberName": "mint",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3654,
+                        "referencedDeclaration": 3651,
                         "src": "1156:26:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_uint256_$",
@@ -1397,7 +1397,7 @@
                       "referencedDeclaration": 157,
                       "src": "479:6:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                        "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                         "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams calldata"
                       }
                     },
@@ -1408,7 +1408,7 @@
                     "lValueRequested": false,
                     "memberName": "deadline",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 3523,
+                    "referencedDeclaration": 3520,
                     "src": "479:15:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1422,7 +1422,7 @@
                   "name": "checkDeadline",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3005,
+                  "referencedDeclaration": 3002,
                   "src": "465:13:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint256_$",
@@ -1456,17 +1456,17 @@
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_calldata_ptr",
+                    "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_calldata_ptr",
                     "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams"
                   },
                   "typeName": {
                     "id": 156,
                     "name": "AddLiquidityParams",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3524,
+                    "referencedDeclaration": 3521,
                     "src": "387:18:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddLiquidityParams_$3524_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddLiquidityParams_$3521_storage_ptr",
                       "typeString": "struct IPocketSwapLiquidityRouter.AddLiquidityParams"
                     }
                   },
@@ -1568,7 +1568,7 @@
           },
           {
             "baseFunctions": [
-              3559
+              3556
             ],
             "body": {
               "id": 333,
@@ -1591,17 +1591,17 @@
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                        "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                         "typeString": "contract IPocketSwapPair"
                       },
                       "typeName": {
                         "id": 255,
                         "name": "IPocketSwapPair",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 3690,
+                        "referencedDeclaration": 3687,
                         "src": "1399:15:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                           "typeString": "contract IPocketSwapPair"
                         }
                       },
@@ -1618,7 +1618,7 @@
                             "name": "factory",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2768,
+                            "referencedDeclaration": 2765,
                             "src": "1478:7:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -1634,7 +1634,7 @@
                               "referencedDeclaration": 243,
                               "src": "1487:6:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                                "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                                 "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                               }
                             },
@@ -1645,7 +1645,7 @@
                             "lValueRequested": false,
                             "memberName": "tokenA",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 3537,
+                            "referencedDeclaration": 3534,
                             "src": "1487:13:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -1661,7 +1661,7 @@
                               "referencedDeclaration": 243,
                               "src": "1502:6:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                                "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                                 "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                               }
                             },
@@ -1672,7 +1672,7 @@
                             "lValueRequested": false,
                             "memberName": "tokenB",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 3539,
+                            "referencedDeclaration": 3536,
                             "src": "1502:13:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -1700,10 +1700,10 @@
                             "name": "PairAddress",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 4190,
+                            "referencedDeclaration": 4187,
                             "src": "1451:11:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_PairAddress_$4190_$",
+                              "typeIdentifier": "t_type$_t_contract$_PairAddress_$4187_$",
                               "typeString": "type(library PairAddress)"
                             }
                           },
@@ -1714,7 +1714,7 @@
                           "lValueRequested": false,
                           "memberName": "computeAddress",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 4145,
+                          "referencedDeclaration": 4142,
                           "src": "1451:26:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_pure$_t_address_$_t_address_$_t_address_$returns$_t_address_$",
@@ -1748,10 +1748,10 @@
                       "name": "IPocketSwapPair",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3690,
+                      "referencedDeclaration": 3687,
                       "src": "1422:15:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_IPocketSwapPair_$3690_$",
+                        "typeIdentifier": "t_type$_t_contract$_IPocketSwapPair_$3687_$",
                         "typeString": "type(contract IPocketSwapPair)"
                       }
                     },
@@ -1766,7 +1766,7 @@
                     "src": "1422:104:1",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                       "typeString": "contract IPocketSwapPair"
                     }
                   },
@@ -1812,7 +1812,7 @@
                             "referencedDeclaration": 256,
                             "src": "1574:4:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                              "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                               "typeString": "contract IPocketSwapPair"
                             }
                           }
@@ -1820,7 +1820,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                              "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                               "typeString": "contract IPocketSwapPair"
                             }
                           ],
@@ -1867,7 +1867,7 @@
                           "referencedDeclaration": 243,
                           "src": "1581:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                           }
                         },
@@ -1878,7 +1878,7 @@
                         "lValueRequested": false,
                         "memberName": "liquidity",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3541,
+                        "referencedDeclaration": 3538,
                         "src": "1581:16:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1909,7 +1909,7 @@
                         "referencedDeclaration": 256,
                         "src": "1536:4:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                           "typeString": "contract IPocketSwapPair"
                         }
                       },
@@ -1920,7 +1920,7 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3396,
+                      "referencedDeclaration": 3393,
                       "src": "1536:17:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -2017,7 +2017,7 @@
                           "referencedDeclaration": 243,
                           "src": "1684:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                           }
                         },
@@ -2028,7 +2028,7 @@
                         "lValueRequested": false,
                         "memberName": "recipient",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3547,
+                        "referencedDeclaration": 3544,
                         "src": "1684:16:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -2051,7 +2051,7 @@
                         "referencedDeclaration": 256,
                         "src": "1674:4:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                          "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                           "typeString": "contract IPocketSwapPair"
                         }
                       },
@@ -2062,7 +2062,7 @@
                       "lValueRequested": false,
                       "memberName": "burn",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3663,
+                      "referencedDeclaration": 3660,
                       "src": "1674:9:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_uint256_$_t_uint256_$",
@@ -2134,7 +2134,7 @@
                           "referencedDeclaration": 243,
                           "src": "1760:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                           }
                         },
@@ -2145,7 +2145,7 @@
                         "lValueRequested": false,
                         "memberName": "tokenA",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3537,
+                        "referencedDeclaration": 3534,
                         "src": "1760:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -2161,7 +2161,7 @@
                           "referencedDeclaration": 243,
                           "src": "1775:6:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                            "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                             "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                           }
                         },
@@ -2172,7 +2172,7 @@
                         "lValueRequested": false,
                         "memberName": "tokenB",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 3539,
+                        "referencedDeclaration": 3536,
                         "src": "1775:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -2196,10 +2196,10 @@
                         "name": "PocketSwapLibrary",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4740,
+                        "referencedDeclaration": 4737,
                         "src": "1731:17:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_PocketSwapLibrary_$4740_$",
+                          "typeIdentifier": "t_type$_t_contract$_PocketSwapLibrary_$4737_$",
                           "typeString": "type(library PocketSwapLibrary)"
                         }
                       },
@@ -2210,7 +2210,7 @@
                       "lValueRequested": false,
                       "memberName": "sortTokens",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4347,
+                      "referencedDeclaration": 4344,
                       "src": "1731:28:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_pure$_t_address_$_t_address_$returns$_t_address_$_t_address_$",
@@ -2304,7 +2304,7 @@
                             "referencedDeclaration": 243,
                             "src": "1820:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                              "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                             }
                           },
@@ -2315,7 +2315,7 @@
                           "lValueRequested": false,
                           "memberName": "tokenA",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3537,
+                          "referencedDeclaration": 3534,
                           "src": "1820:13:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -2480,7 +2480,7 @@
                             "referencedDeclaration": 243,
                             "src": "1915:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                              "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                             }
                           },
@@ -2491,7 +2491,7 @@
                           "lValueRequested": false,
                           "memberName": "amountAMin",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3543,
+                          "referencedDeclaration": 3540,
                           "src": "1915:17:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2601,7 +2601,7 @@
                             "referencedDeclaration": 243,
                             "src": "2005:6:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                              "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                               "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                             }
                           },
@@ -2612,7 +2612,7 @@
                           "lValueRequested": false,
                           "memberName": "amountBMin",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 3545,
+                          "referencedDeclaration": 3542,
                           "src": "2005:17:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2704,7 +2704,7 @@
                       "referencedDeclaration": 243,
                       "src": "1331:6:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                        "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                         "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams calldata"
                       }
                     },
@@ -2715,7 +2715,7 @@
                     "lValueRequested": false,
                     "memberName": "deadline",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 3549,
+                    "referencedDeclaration": 3546,
                     "src": "1331:15:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -2729,7 +2729,7 @@
                   "name": "checkDeadline",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3005,
+                  "referencedDeclaration": 3002,
                   "src": "1317:13:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$_t_uint256_$",
@@ -2763,17 +2763,17 @@
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_calldata_ptr",
+                    "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_calldata_ptr",
                     "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams"
                   },
                   "typeName": {
                     "id": 242,
                     "name": "RemoveLiquidityParams",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3550,
+                    "referencedDeclaration": 3547,
                     "src": "1238:21:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3550_storage_ptr",
+                      "typeIdentifier": "t_struct$_RemoveLiquidityParams_$3547_storage_ptr",
                       "typeString": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams"
                     }
                   },
@@ -2862,61 +2862,61 @@
           142
         ],
         "BlockTimestamp": [
-          2509
+          2506
         ],
         "BytesLib": [
-          3941
+          3938
         ],
         "IERC20": [
-          5239
+          5236
         ],
         "IPeripheryImmutableState": [
-          3291
+          3288
         ],
         "IPocketSwapCallback": [
-          3805
+          3802
         ],
         "IPocketSwapERC20": [
-          3431
+          3428
         ],
         "IPocketSwapFactory": [
-          3504
+          3501
         ],
         "IPocketSwapLiquidityRouter": [
-          3560
+          3557
         ],
         "IPocketSwapPair": [
-          3690
+          3687
         ],
         "IPocketSwapRouter": [
-          3792
+          3789
         ],
         "LiquidityProcessing": [
-          2673
+          2670
         ],
         "LiquidityRouter": [
           335
         ],
         "PairAddress": [
-          4190
+          4187
         ],
         "Path": [
-          4290
+          4287
         ],
         "PeripheryImmutableState": [
-          2789
+          2786
         ],
         "PeripheryValidation": [
-          3006
+          3003
         ],
         "PocketSwapLibrary": [
-          4740
+          4737
         ],
         "SafeMath": [
-          4815
+          4812
         ],
         "TransferHelper": [
-          5089
+          5086
         ]
       },
       "license": "Unlicensed"
@@ -2948,7 +2948,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 2674,
+          "SourceUnit": 2671,
           "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/LiquidityProcessing.sol",
           "file": "./abstract/LiquidityProcessing.sol",
           "scope": 336,
@@ -2963,7 +2963,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 3007,
+          "SourceUnit": 3004,
           "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryValidation.sol",
           "file": "./abstract/PeripheryValidation.sol",
           "scope": 336,
@@ -2978,7 +2978,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 5090,
+          "SourceUnit": 5087,
           "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/TransferHelper.sol",
           "file": "./libraries/TransferHelper.sol",
           "scope": 336,
@@ -2993,7 +2993,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 4191,
+          "SourceUnit": 4188,
           "absolutePath": "/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol",
           "file": "./libraries/PairAddress.sol",
           "scope": 336,
@@ -3010,23 +3010,23 @@
         "attributes": {
           "abstract": true,
           "contractDependencies": [
-            2509,
-            2673,
-            2789,
-            3006,
-            3291,
-            3560
+            2506,
+            2670,
+            2786,
+            3003,
+            3288,
+            3557
           ],
           "contractKind": "contract",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
             335,
-            2673,
-            3560,
-            3006,
-            2789,
-            3291,
-            2509
+            2670,
+            3557,
+            3003,
+            2786,
+            3288,
+            2506
           ],
           "name": "LiquidityRouter",
           "scope": 336
@@ -3038,7 +3038,7 @@
               {
                 "attributes": {
                   "name": "PeripheryImmutableState",
-                  "referencedDeclaration": 2789,
+                  "referencedDeclaration": 2786,
                   "type": "contract PeripheryImmutableState"
                 },
                 "id": 150,
@@ -3056,7 +3056,7 @@
               {
                 "attributes": {
                   "name": "PeripheryValidation",
-                  "referencedDeclaration": 3006,
+                  "referencedDeclaration": 3003,
                   "type": "contract PeripheryValidation"
                 },
                 "id": 152,
@@ -3074,7 +3074,7 @@
               {
                 "attributes": {
                   "name": "LiquidityProcessing",
-                  "referencedDeclaration": 2673,
+                  "referencedDeclaration": 2670,
                   "type": "contract LiquidityProcessing"
                 },
                 "id": 154,
@@ -3089,7 +3089,7 @@
           {
             "attributes": {
               "baseFunctions": [
-                3535
+                3532
               ],
               "functionSelector": "8d4d72e5",
               "implemented": true,
@@ -3129,7 +3129,7 @@
                       {
                         "attributes": {
                           "name": "AddLiquidityParams",
-                          "referencedDeclaration": 3524,
+                          "referencedDeclaration": 3521,
                           "type": "struct IPocketSwapLiquidityRouter.AddLiquidityParams"
                         },
                         "id": 156,
@@ -3238,7 +3238,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3005,
+                      "referencedDeclaration": 3002,
                       "type": "modifier (uint256)",
                       "value": "checkDeadline"
                     },
@@ -3253,7 +3253,7 @@
                       "isPure": false,
                       "lValueRequested": false,
                       "member_name": "deadline",
-                      "referencedDeclaration": 3523,
+                      "referencedDeclaration": 3520,
                       "type": "uint256"
                     },
                     "children": [
@@ -3370,14 +3370,14 @@
                                       "typeString": "uint256"
                                     },
                                     {
-                                      "typeIdentifier": "t_struct$_LiquidityCallbackData_$2530_memory_ptr",
+                                      "typeIdentifier": "t_struct$_LiquidityCallbackData_$2527_memory_ptr",
                                       "typeString": "struct LiquidityProcessing.LiquidityCallbackData memory"
                                     }
                                   ],
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2672,
+                                  "referencedDeclaration": 2669,
                                   "type": "function (uint256,uint256,uint256,uint256,struct LiquidityProcessing.LiquidityCallbackData memory) returns (uint256,uint256)",
                                   "value": "_addLiquidity"
                                 },
@@ -3392,7 +3392,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "amount0Desired",
-                                  "referencedDeclaration": 3515,
+                                  "referencedDeclaration": 3512,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -3421,7 +3421,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "amount1Desired",
-                                  "referencedDeclaration": 3517,
+                                  "referencedDeclaration": 3514,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -3450,7 +3450,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "amount0Min",
-                                  "referencedDeclaration": 3519,
+                                  "referencedDeclaration": 3516,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -3479,7 +3479,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "amount1Min",
-                                  "referencedDeclaration": 3521,
+                                  "referencedDeclaration": 3518,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -3532,7 +3532,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2530,
+                                      "referencedDeclaration": 2527,
                                       "type": "type(struct LiquidityProcessing.LiquidityCallbackData storage pointer)",
                                       "value": "LiquidityCallbackData"
                                     },
@@ -3600,7 +3600,7 @@
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "token0",
-                                          "referencedDeclaration": 3509,
+                                          "referencedDeclaration": 3506,
                                           "type": "address"
                                         },
                                         "children": [
@@ -3629,7 +3629,7 @@
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "token1",
-                                          "referencedDeclaration": 3511,
+                                          "referencedDeclaration": 3508,
                                           "type": "address"
                                         },
                                         "children": [
@@ -3774,7 +3774,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "computeAddress",
-                              "referencedDeclaration": 4145,
+                              "referencedDeclaration": 4142,
                               "type": "function (address,address,address) pure returns (address)"
                             },
                             "children": [
@@ -3783,7 +3783,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4190,
+                                  "referencedDeclaration": 4187,
                                   "type": "type(library PairAddress)",
                                   "value": "PairAddress"
                                 },
@@ -3801,7 +3801,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2768,
+                              "referencedDeclaration": 2765,
                               "type": "address",
                               "value": "factory"
                             },
@@ -3816,7 +3816,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "token0",
-                              "referencedDeclaration": 3509,
+                              "referencedDeclaration": 3506,
                               "type": "address"
                             },
                             "children": [
@@ -3845,7 +3845,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "token1",
-                              "referencedDeclaration": 3511,
+                              "referencedDeclaration": 3508,
                               "type": "address"
                             },
                             "children": [
@@ -3919,7 +3919,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "safeTransferFrom",
-                              "referencedDeclaration": 4970,
+                              "referencedDeclaration": 4967,
                               "type": "function (address,address,address,uint256)"
                             },
                             "children": [
@@ -3928,7 +3928,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5089,
+                                  "referencedDeclaration": 5086,
                                   "type": "type(library TransferHelper)",
                                   "value": "TransferHelper"
                                 },
@@ -3948,7 +3948,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "token0",
-                              "referencedDeclaration": 3509,
+                              "referencedDeclaration": 3506,
                               "type": "address"
                             },
                             "children": [
@@ -4076,7 +4076,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "safeTransferFrom",
-                              "referencedDeclaration": 4970,
+                              "referencedDeclaration": 4967,
                               "type": "function (address,address,address,uint256)"
                             },
                             "children": [
@@ -4085,7 +4085,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5089,
+                                  "referencedDeclaration": 5086,
                                   "type": "type(library TransferHelper)",
                                   "value": "TransferHelper"
                                 },
@@ -4105,7 +4105,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "token1",
-                              "referencedDeclaration": 3511,
+                              "referencedDeclaration": 3508,
                               "type": "address"
                             },
                             "children": [
@@ -4244,7 +4244,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "mint",
-                                  "referencedDeclaration": 3654,
+                                  "referencedDeclaration": 3651,
                                   "type": "function (address) external returns (uint256)"
                                 },
                                 "children": [
@@ -4274,7 +4274,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 3690,
+                                          "referencedDeclaration": 3687,
                                           "type": "type(contract IPocketSwapPair)",
                                           "value": "IPocketSwapPair"
                                         },
@@ -4312,7 +4312,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "recipient",
-                                  "referencedDeclaration": 3513,
+                                  "referencedDeclaration": 3510,
                                   "type": "address"
                                 },
                                 "children": [
@@ -4362,7 +4362,7 @@
           {
             "attributes": {
               "baseFunctions": [
-                3559
+                3556
               ],
               "functionSelector": "84cec855",
               "implemented": true,
@@ -4402,7 +4402,7 @@
                       {
                         "attributes": {
                           "name": "RemoveLiquidityParams",
-                          "referencedDeclaration": 3550,
+                          "referencedDeclaration": 3547,
                           "type": "struct IPocketSwapLiquidityRouter.RemoveLiquidityParams"
                         },
                         "id": 242,
@@ -4485,7 +4485,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 3005,
+                      "referencedDeclaration": 3002,
                       "type": "modifier (uint256)",
                       "value": "checkDeadline"
                     },
@@ -4500,7 +4500,7 @@
                       "isPure": false,
                       "lValueRequested": false,
                       "member_name": "deadline",
-                      "referencedDeclaration": 3549,
+                      "referencedDeclaration": 3546,
                       "type": "uint256"
                     },
                     "children": [
@@ -4551,7 +4551,7 @@
                           {
                             "attributes": {
                               "name": "IPocketSwapPair",
-                              "referencedDeclaration": 3690,
+                              "referencedDeclaration": 3687,
                               "type": "contract IPocketSwapPair"
                             },
                             "id": 255,
@@ -4589,7 +4589,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3690,
+                              "referencedDeclaration": 3687,
                               "type": "type(contract IPocketSwapPair)",
                               "value": "IPocketSwapPair"
                             },
@@ -4633,7 +4633,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "computeAddress",
-                                  "referencedDeclaration": 4145,
+                                  "referencedDeclaration": 4142,
                                   "type": "function (address,address,address) pure returns (address)"
                                 },
                                 "children": [
@@ -4642,7 +4642,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 4190,
+                                      "referencedDeclaration": 4187,
                                       "type": "type(library PairAddress)",
                                       "value": "PairAddress"
                                     },
@@ -4660,7 +4660,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2768,
+                                  "referencedDeclaration": 2765,
                                   "type": "address",
                                   "value": "factory"
                                 },
@@ -4675,7 +4675,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "tokenA",
-                                  "referencedDeclaration": 3537,
+                                  "referencedDeclaration": 3534,
                                   "type": "address"
                                 },
                                 "children": [
@@ -4704,7 +4704,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "tokenB",
-                                  "referencedDeclaration": 3539,
+                                  "referencedDeclaration": 3536,
                                   "type": "address"
                                 },
                                 "children": [
@@ -4779,7 +4779,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "transferFrom",
-                              "referencedDeclaration": 3396,
+                              "referencedDeclaration": 3393,
                               "type": "function (address,address,uint256) external returns (bool)"
                             },
                             "children": [
@@ -4848,7 +4848,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3690",
+                                      "typeIdentifier": "t_contract$_IPocketSwapPair_$3687",
                                       "typeString": "contract IPocketSwapPair"
                                     }
                                   ],
@@ -4897,7 +4897,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "liquidity",
-                              "referencedDeclaration": 3541,
+                              "referencedDeclaration": 3538,
                               "type": "uint256"
                             },
                             "children": [
@@ -5017,7 +5017,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "burn",
-                              "referencedDeclaration": 3663,
+                              "referencedDeclaration": 3660,
                               "type": "function (address) external returns (uint256,uint256)"
                             },
                             "children": [
@@ -5046,7 +5046,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "recipient",
-                              "referencedDeclaration": 3547,
+                              "referencedDeclaration": 3544,
                               "type": "address"
                             },
                             "children": [
@@ -5145,7 +5145,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "sortTokens",
-                              "referencedDeclaration": 4347,
+                              "referencedDeclaration": 4344,
                               "type": "function (address,address) pure returns (address,address)"
                             },
                             "children": [
@@ -5154,7 +5154,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 4740,
+                                  "referencedDeclaration": 4737,
                                   "type": "type(library PocketSwapLibrary)",
                                   "value": "PocketSwapLibrary"
                                 },
@@ -5174,7 +5174,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tokenA",
-                              "referencedDeclaration": 3537,
+                              "referencedDeclaration": 3534,
                               "type": "address"
                             },
                             "children": [
@@ -5203,7 +5203,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tokenB",
-                              "referencedDeclaration": 3539,
+                              "referencedDeclaration": 3536,
                               "type": "address"
                             },
                             "children": [
@@ -5318,7 +5318,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "tokenA",
-                                      "referencedDeclaration": 3537,
+                                      "referencedDeclaration": 3534,
                                       "type": "address"
                                     },
                                     "children": [
@@ -5530,7 +5530,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "amountAMin",
-                                  "referencedDeclaration": 3543,
+                                  "referencedDeclaration": 3540,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -5657,7 +5657,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "amountBMin",
-                                  "referencedDeclaration": 3545,
+                                  "referencedDeclaration": 3542,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -5735,7 +5735,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-27T08:51:56.004Z",
+  "updatedAt": "2021-04-28T07:08:27.027Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

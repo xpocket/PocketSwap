@@ -3,7 +3,7 @@ pragma solidity >=0.5.0;
 
 /// @title Provides functions for deriving a pair address from the factory, tokens, and the fee
 library PairAddress {
-    bytes32 internal constant PAIR_INIT_CODE_HASH = 0xe93988bba273a30d79fea0644fea8866386363bf8643d0b7643fcf9191ece162;
+    bytes32 internal constant PAIR_INIT_CODE_HASH = 0xccd9a5928307a79006651bee290ebecf5b5f3429cf6e692d8aeed239e6628a1c;
 
     /// @notice The identifying key of the pair
     struct PairKey {
