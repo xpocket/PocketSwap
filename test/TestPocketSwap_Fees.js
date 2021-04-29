@@ -34,7 +34,7 @@ contract("PocketSwap Fees", accounts => {
             .then(async () => {
                 const acc = accounts[9]
                 await factory.createPair(token_2.address, pocket_token.address)
-                await AddLiquidity(acc, [token_2, pocket_token], [BigInt(1e40), BigInt(1e40)])
+                await AddLiquidity(acc, [token_2, pocket_token], ["10000000000000000000000000", "10000000000000000000000000"])
             })
     })
 
@@ -48,7 +48,7 @@ contract("PocketSwap Fees", accounts => {
         await checkFees(1.9)
     })
     it("50% fees to LP", async () => {
-        await checkFees(1.9)
+        await checkFees(50)
     })
 
     async function AddLiquidity(liqAcc, tokens, liq, pocket_liq) {
@@ -78,11 +78,11 @@ contract("PocketSwap Fees", accounts => {
 
     const checkFees = async (feePercent) => {
         await factory.setFee(feePercent * 1e7)
-        const token_1_liq = BigInt(1e24)
-        const token_2_liq = BigInt(1e12)
-        const pocket_liq = BigInt(1e12)
-        const tokenIn = BigInt(1e20)
-        const totalLiq = BigInt(Math.sqrt(parseInt(token_1_liq * token_2_liq)))
+        const token_1_liq = BigInt("1000000000000000000000000")
+        const token_2_liq = BigInt("1000000000000")
+        const pocket_liq  = BigInt("1000000000000")
+        const tokenIn     = BigInt("100000000000000000000")
+        const totalLiq    = BigInt(Math.sqrt(parseInt(token_1_liq * token_2_liq)))
 
         const liqAcc = accounts[0];
         { // adding liqudity
@@ -90,7 +90,7 @@ contract("PocketSwap Fees", accounts => {
         }
 
         let acc0LiquidityBalance = await pair.balanceOf(liqAcc)
-        assert.equal(acc0LiquidityBalance, token_1_liq - burnedLiquidity, 'Liquidity Balance')
+        assert.equal(acc0LiquidityBalance, (totalLiq - burnedLiquidity).toString(), 'Liquidity Balance')
 
         const out = await router.getAmountsOut(tokenIn.toString(), [token_1.address, token_2.address]);
         const outRef = out[1]
@@ -122,7 +122,7 @@ contract("PocketSwap Fees", accounts => {
         let token1BalanceExpected = BigInt(pairBalance1) * BigInt(acc0LiquidityBalance) / totalLiq
         let token2BalanceExpected = BigInt(pairBalance2) * BigInt(acc0LiquidityBalance) / totalLiq
 
-        pair.approve(router.address, acc0LiquidityBalance.toString(), {from: liqAcc})
+        await pair.approve(router.address, acc0LiquidityBalance.toString(), {from: liqAcc})
         await router.removeLiquidity({
             tokenA: token_1.address,
             tokenB: token_2.address,

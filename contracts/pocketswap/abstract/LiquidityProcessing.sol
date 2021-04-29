@@ -31,7 +31,8 @@ IPocketSwapLiquidityRouter
     )
     internal
     returns (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket) {
-        address _factory = factory; // gas saving
+        address _factory = factory;
+        // gas saving
         (address tokenA, address tokenB) = data.path.decodeFirstPool();
 
         // create the pair if it doesn't exist yet
@@ -60,13 +61,13 @@ IPocketSwapLiquidityRouter
         if (tokenA != address(pocket) && tokenB != address(pocket)) {
             address[] memory path = new address[](2);
             path[0] = pocket;
-            path[1] = tokenA;
-            if (IPocketSwapFactory(_factory).getPair(tokenA, pocket) != address(0)) {
-                amountAPocket = PocketSwapLibrary.getAmountsIn(address(this), amountA, path)[0];
+            if (IPocketSwapFactory(_factory).getPair(pocket, tokenA) != address(0)) {
+                path[1] = tokenA;
+                amountAPocket = PocketSwapLibrary.getAmountsIn(_factory, amountA, path)[0];
             }
-            path[1] = tokenB;
-            if (IPocketSwapFactory(_factory).getPair(tokenB, pocket) != address(0)) {
-                amountBPocket = PocketSwapLibrary.getAmountsIn(address(this), amountB, path)[0];
+            if (IPocketSwapFactory(_factory).getPair(pocket, tokenB) != address(0)) {
+                path[1] = tokenB;
+                amountBPocket = PocketSwapLibrary.getAmountsIn(_factory, amountB, path)[0];
             }
         }
     }
