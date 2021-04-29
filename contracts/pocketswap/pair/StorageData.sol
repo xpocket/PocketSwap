@@ -12,5 +12,4 @@ abstract contract StorageData is IPocketSwapPair {
 
     uint public override price0CumulativeLast;
     uint public override price1CumulativeLast;
-    uint public override kLast; // reserve0 * reserve1, as of immediately after the most recent liquidity event
 }

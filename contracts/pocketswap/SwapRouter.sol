@@ -6,13 +6,11 @@ import "./libraries/PocketSwapLibrary.sol";
 import "./libraries/CallbackValidation.sol";
 import "./abstract/PeripheryValidation.sol";
 import "./abstract/SwapProcessing.sol";
-import "./abstract/PeripheryPayments.sol";
 import "./abstract/Multicall.sol";
 
 abstract contract SwapRouter is
 PeripheryImmutableState,
 PeripheryValidation,
-PeripheryPayments,
 Multicall,
 SwapProcessing
 {

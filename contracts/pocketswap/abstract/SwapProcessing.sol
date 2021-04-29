@@ -9,11 +9,13 @@ import {PocketSwapLibrary} from '../libraries/PocketSwapLibrary.sol';
 import "../interfaces/IPocketSwapPair.sol";
 import "../interfaces/IPocketSwapRouter.sol";
 import "./PeripheryImmutableState.sol";
+import "./PeripheryPayments.sol";
 
 /// @title Processing routing functions
 abstract contract SwapProcessing is
 IPocketSwapRouter,
-PeripheryImmutableState
+PeripheryImmutableState,
+PeripheryPayments
 {
     using Path for bytes;
 
@@ -69,7 +71,8 @@ PeripheryImmutableState
     ) private {
         (address tokenIn, address tokenOut) = data.path.decodeFirstPool();
         IPocketSwapPair pair = pairFor(tokenIn, tokenOut);
-        TransferHelper.safeTransferFrom(tokenIn, msg.sender, address(pair), amountIn);
+
+        pay(tokenIn, msg.sender, address(pair), amountIn);
 
         (address token0,) = PocketSwapLibrary.sortTokens(tokenIn, tokenOut);
         (uint amount0Out, uint amount1Out) = tokenIn == token0 ? (uint(0), amountOut) : (amountOut, uint(0));

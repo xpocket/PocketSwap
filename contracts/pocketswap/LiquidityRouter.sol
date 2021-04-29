@@ -4,8 +4,8 @@ pragma abicoder v2;
 
 import "./abstract/LiquidityProcessing.sol";
 import "./abstract/PeripheryValidation.sol";
-import "./libraries/TransferHelper.sol";
 import "./libraries/PairAddress.sol";
+import "./interfaces/IPocketSwapRouter.sol";
 
 abstract contract LiquidityRouter is
 PeripheryImmutableState,
@@ -33,36 +33,39 @@ LiquidityProcessing
 
         address pair = PairAddress.computeAddress(factory, params.token0, params.token1);
 
-        if (params.token1 != address(pocket) && params.token0 == address(pocket)) {
+        amountPocket = 0;
+        if (params.token0 != address(pocket) && params.token1 != address(pocket)) {
             require(amountAPocket > 0 || amountBPocket > 0, "Cannot calculate POCKET value");
             address pairAPocket = IPocketSwapFactory(factory).getPair(params.token0, pocket);
             address pairBPocket = IPocketSwapFactory(factory).getPair(params.token1, pocket);
 
             if (amountAPocket > 0) {// found price POCKET -> tokenA
-                if (pairBPocket == address(0)) {// create pair POCKET -> tokenB if doesn't exists
-                    pairBPocket = IPocketSwapFactory(factory).createPair(params.token1, pocket);
-                }
-                // Additing Liquidity to POCKET->tokenB
                 amountPocket = amountAPocket;
-                uint amountB2PocketPair = amountB / 2;
-                amountB -= amountB2PocketPair;
-                TransferHelper.safeTransferFrom(params.token1, msg.sender, pairBPocket, amountB2PocketPair);
-                IPocketSwapPair(pairBPocket).mint(params.recipient);
+
+                uint amountPocketSwap = amountA / 2;
+                amountA -= amountPocketSwap;
+
+                address pocketPair = PairAddress.computeAddress(factory, params.token0, pocket);
+                pay(pocket, msg.sender, pocketPair, amountPocket);
+                (address token0,) = PocketSwapLibrary.sortTokens(params.token0, pocket);
+                (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amountPocketSwap) : (amountPocketSwap, uint(0));
+                IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, pair, "");
             } else {// found price POCKET -> tokenB
-                if (pairAPocket == address(0)) {// create pair POCKET -> tokenA if doesn't exists
-                    pairAPocket = IPocketSwapFactory(factory).createPair(params.token0, pocket);
-                }
-                // Additing Liquidity to POCKET->tokenA
                 amountPocket = amountBPocket;
-                uint amountA2PocketPair = amountA / 2;
-                amountA -= amountA2PocketPair;
-                TransferHelper.safeTransferFrom(params.token0, msg.sender, pairAPocket, amountA2PocketPair);
-                IPocketSwapPair(pairAPocket).mint(params.recipient);
+
+                uint amountPocketSwap = amountB / 2;
+                amountB -= amountPocketSwap;
+
+                address pocketPair = PairAddress.computeAddress(factory, params.token1, pocket);
+                pay(pocket, msg.sender, pocketPair, amountPocket);
+                (address token0,) = PocketSwapLibrary.sortTokens(params.token1, pocket);
+                (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amountPocketSwap) : (amountPocketSwap, uint(0));
+                IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, pair, "");
             }
         }
 
-        TransferHelper.safeTransferFrom(params.token0, msg.sender, pair, amountA);
-        TransferHelper.safeTransferFrom(params.token1, msg.sender, pair, amountB);
+        pay(params.token0, msg.sender, pair, amountA);
+        pay(params.token1, msg.sender, pair, amountB);
         liquidity = IPocketSwapPair(pair).mint(params.recipient);
     }
 

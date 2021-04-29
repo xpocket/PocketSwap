@@ -9,10 +9,12 @@ import "../libraries/Path.sol";
 import "../libraries/Math.sol";
 import "../libraries/PocketSwapLibrary.sol";
 import "./PeripheryImmutableState.sol";
+import "./PeripheryPayments.sol";
 
 abstract contract LiquidityProcessing is
+IPocketSwapLiquidityRouter,
 PeripheryImmutableState,
-IPocketSwapLiquidityRouter
+PeripheryPayments
 {
     using Path for bytes;
 
@@ -63,11 +65,11 @@ IPocketSwapLiquidityRouter
             path[0] = pocket;
             if (IPocketSwapFactory(_factory).getPair(pocket, tokenA) != address(0)) {
                 path[1] = tokenA;
-                amountAPocket = PocketSwapLibrary.getAmountsIn(_factory, amountA, path)[0];
+                amountAPocket = PocketSwapLibrary.getAmountsIn(_factory, amountA/2, path)[0];
             }
             if (IPocketSwapFactory(_factory).getPair(pocket, tokenB) != address(0)) {
                 path[1] = tokenB;
-                amountBPocket = PocketSwapLibrary.getAmountsIn(_factory, amountB, path)[0];
+                amountBPocket = PocketSwapLibrary.getAmountsIn(_factory, amountB/2, path)[0];
             }
         }
     }

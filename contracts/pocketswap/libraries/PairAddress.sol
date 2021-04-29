@@ -3,7 +3,7 @@ pragma solidity >=0.5.0;
 
 /// @title Provides functions for deriving a pair address from the factory, tokens, and the fee
 library PairAddress {
-    bytes32 internal constant PAIR_INIT_CODE_HASH = 0xccd9a5928307a79006651bee290ebecf5b5f3429cf6e692d8aeed239e6628a1c;
+    bytes32 internal constant PAIR_INIT_CODE_HASH = 0xb83fc6187b04dcd80c9ddf1dec2c83ef944bc37585322234a298bcea4450549a;
 
     /// @notice Deterministically computes the pair address given the factory and PairKey
     /// @param factory The PocketSwap factory contract address

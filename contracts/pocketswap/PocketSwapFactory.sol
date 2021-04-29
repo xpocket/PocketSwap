@@ -6,15 +6,14 @@ import './PocketSwapPair.sol';
 import './interfaces/IPocketSwapFactory.sol';
 
 contract PocketSwapFactory is IPocketSwapFactory {
-    address public override feeTo;
-    address public override feeToSetter;
+    address public override feeSetter;
     uint256 public override fee = 3e6; // 1e9 = 100%; 1e8 = 10%; 1e7 = 1%; 1e6 = 0.1% ....
 
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
 
-    constructor(address _feeToSetter) {
-        feeToSetter = _feeToSetter;
+    constructor(address _feeSetter) {
+        feeSetter = _feeSetter;
     }
 
     function allPairsLength() external override view returns (uint) {
@@ -40,18 +39,13 @@ contract PocketSwapFactory is IPocketSwapFactory {
     }
 
     function setFee(uint256 _fee) external override {
-        require(msg.sender == feeToSetter, 'PocketSwap:FORBIDDEN');
+        require(msg.sender == feeSetter, 'PocketSwap:FORBIDDEN');
         require(_fee < 1e18, 'PocketSwap:BIG_FEE');
         fee = _fee;
     }
 
-    function setFeeTo(address _feeTo) external override {
-        require(msg.sender == feeToSetter, 'PocketSwap:FORBIDDEN');
-        feeTo = _feeTo;
-    }
-
-    function setFeeToSetter(address _feeToSetter) external override {
-        require(msg.sender == feeToSetter, 'PocketSwap:FORBIDDEN');
-        feeToSetter = _feeToSetter;
+    function setFeeSetter(address _feeSetter) external override {
+        require(msg.sender == feeSetter, 'PocketSwap:FORBIDDEN');
+        feeSetter = _feeSetter;
     }
 }
