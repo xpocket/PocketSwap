@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity >=0.6.12;
+pragma solidity =0.8.4;
 pragma abicoder v2;
 
 import '../libraries/Path.sol';
@@ -50,7 +50,6 @@ PeripheryPayments
     function exactOutputInternal(
         uint256 amountOut,
         address recipient,
-        uint160 sqrtPriceLimitX96,
         SwapCallbackData memory data
     ) internal returns (uint256 amountIn) {
         (address tokenOut, address tokenIn) = data.path.decodeFirstPool();

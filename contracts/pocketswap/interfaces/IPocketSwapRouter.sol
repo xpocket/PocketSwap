@@ -1,4 +1,4 @@
-pragma solidity >=0.6.12;
+pragma solidity =0.8.4;
 pragma abicoder v2;
 
 import './callback/IPocketSwapCallback.sol';
@@ -13,13 +13,14 @@ interface IPocketSwapRouter is IPocketSwapCallback {
     ) external view returns (IPocketSwapPair);
 
     struct SwapParams {
-        address tokenIn;
-        address tokenOut;
-        address recipient;
-        uint256 deadline;
-        uint256 amountIn;
-        uint256 amountOutMinimum;
+        address tokenIn; // Address of the token you're sending for a SWAP
+        address tokenOut; // Address of the token you're going to receive
+        address recipient; // Address which will receive tokenOut
+        uint256 deadline; // will revert if transaction was confirmed too late
+        uint256 amountIn; // amount of the tokenIn to be swapped
+        uint256 amountOutMinimum; // minimum amount you're expecting to receive
     }
+
     /// @notice Swaps `amountIn` of one token for as much as possible of another token
     /// @param params The parameters necessary for the swap, encoded as `SwapParams` in calldata
     /// @return amountOut The amount of the received token

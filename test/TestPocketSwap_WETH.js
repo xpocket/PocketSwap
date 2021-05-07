@@ -112,6 +112,7 @@ contract("PocketSwap Fees", accounts => {
             liquidity: acc0LiquidityBalance.toString(), // liq
             amountAMin: token1BalanceExpected.toString(),
             amountBMin: token2BalanceExpected.toString(),
+            rewards: pocket_token.address,
             recipient: liqAcc,
             deadline: deadline(),
         }, {from: liqAcc})

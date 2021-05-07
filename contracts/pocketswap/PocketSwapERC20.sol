@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: Unlicensed
-pragma solidity >=0.6.12;
+pragma solidity =0.8.4;
 
-import './libraries/SafeMath.sol';
 import "./interfaces/IPocketSwapERC20.sol";
+import "./libraries/PlainMath.sol";
 
 contract PocketSwapERC20 is IPocketSwapERC20 {
-    using SafeMath for uint;
+    using PlainMath for uint;
 
     string public constant override name = 'PocketSwap';
     string public constant override symbol = 'PS-PAIR';
@@ -69,7 +69,7 @@ contract PocketSwapERC20 is IPocketSwapERC20 {
     }
 
     function transferFrom(address from, address to, uint value) external override returns (bool) {
-        if (allowance[from][msg.sender] != uint(-1)) {
+        if (allowance[from][msg.sender] != type(uint).max) {
             allowance[from][msg.sender] = allowance[from][msg.sender].sub(value);
         }
         _transfer(from, to, value);

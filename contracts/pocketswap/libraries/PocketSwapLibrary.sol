@@ -1,15 +1,14 @@
 // SPDX-License-Identifier: Unlicensed
-pragma solidity >=0.6.12;
+pragma solidity =0.8.4;
 
 import './PairAddress.sol';
-import './SafeMath.sol';
-import './FullMath.sol';
 import "../interfaces/IPocketSwapFactory.sol";
 import "../interfaces/IPocketSwapPair.sol";
-import "../../../Uniswap/uniswap-lib/contracts/libraries/AddressStringUtil.sol";
+import "./AddressStringUtil.sol";
+import "./PlainMath.sol";
 
 library PocketSwapLibrary {
-    using SafeMath for uint;
+    using PlainMath for uint;
     using AddressStringUtil for address;
 
     // returns sorted token addresses, used to handle return values from pairs sorted in this order

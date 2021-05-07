@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicensed
-pragma solidity >=0.6.12;
+pragma solidity =0.8.4;
 pragma abicoder v2;
 
 import "./libraries/PocketSwapLibrary.sol";
@@ -7,6 +7,7 @@ import "./libraries/CallbackValidation.sol";
 import "./abstract/PeripheryValidation.sol";
 import "./abstract/SwapProcessing.sol";
 import "./abstract/Multicall.sol";
+import "./libraries/PlainMath.sol";
 
 abstract contract SwapRouter is
 PeripheryImmutableState,
@@ -14,7 +15,7 @@ PeripheryValidation,
 Multicall,
 SwapProcessing
 {
-    using SafeMath for uint;
+    using PlainMath for uint;
     using Path for bytes;
 
     /// @dev Used as the placeholder value for amountInCached, because the computed amount in for an exact output swap
@@ -91,17 +92,9 @@ SwapProcessing
         ? (tokenIn < tokenOut, uint256(amount0Delta))
         : (tokenOut < tokenIn, uint256(amount1Delta));
 
-        /*if (isExactInput) {
-            pay(tokenIn, data.payer, msg.sender, amountToPay);
-        } else */{ // either initiate the next swap or pay
-            if (data.path.hasMultiplePools()) {
-                data.path = data.path.skipToken();
-                exactOutputInternal(amountToPay, msg.sender, 0, data);
-            }/* else {
-                amountInCached = amountToPay;
-                tokenIn = tokenOut; // swap in/out because exact output swaps are reversed
-                pay(tokenIn, data.payer, msg.sender, amountToPay);
-            }*/
+        if (!isExactInput && data.path.hasMultiplePools()) {
+            data.path = data.path.skipToken();
+            exactOutputInternal(amountToPay, msg.sender, data);
         }
     }
 
@@ -123,7 +116,7 @@ SwapProcessing
     public
     view
     virtual
-    /*override*/
+        /*override*/
     returns (uint amountOut)
     {
         return PocketSwapLibrary.getAmountOut(factory, amountIn, reserveIn, reserveOut);
@@ -133,7 +126,7 @@ SwapProcessing
     public
     view
     virtual
-    /*override*/
+        /*override*/
     returns (uint amountIn)
     {
         return PocketSwapLibrary.getAmountIn(factory, amountOut, reserveIn, reserveOut);
@@ -143,7 +136,7 @@ SwapProcessing
     public
     view
     virtual
-    /*override*/
+        /*override*/
     returns (uint[] memory amounts)
     {
         return PocketSwapLibrary.getAmountsOut(factory, amountIn, path);
@@ -153,7 +146,7 @@ SwapProcessing
     public
     view
     virtual
-    /*override*/
+        /*override*/
     returns (uint[] memory amounts)
     {
         return PocketSwapLibrary.getAmountsIn(factory, amountOut, path);

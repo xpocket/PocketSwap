@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: Unlicensed
-pragma solidity >=0.6.12;
+pragma solidity =0.8.4;
 
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
 import './libraries/Math.sol';
-import './libraries/Strings.sol';
 import './libraries/UQ112x112.sol';
 
 import './PocketSwapERC20.sol';
@@ -12,12 +11,13 @@ import './interfaces/IPocketSwapFactory.sol';
 import "./interfaces/IPocketSwapPair.sol";
 import "./interfaces/callback/IPocketSwapCallback.sol";
 import "./pair/StorageData.sol";
+import "./libraries/PlainMath.sol";
 
 contract PocketSwapPair is
 PocketSwapERC20,
 StorageData
 {
-    using SafeMath  for uint;
+    using PlainMath  for uint;
     using UQ112x112 for uint224;
 
     bytes4 private constant SELECTOR = bytes4(keccak256(bytes('transfer(address,uint256)')));
@@ -46,7 +46,7 @@ StorageData
         require(success && (data.length == 0 || abi.decode(data, (bool))), 'PocketSwap: TRANSFER_FAILED');
     }
 
-    constructor() public {
+    constructor() {
         factory = msg.sender;
     }
 
@@ -60,7 +60,7 @@ StorageData
 
     // update reserves and, on the first call per block, price accumulators
     function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reserve1) private {
-        require(balance0 <= uint112(- 1) && balance1 <= uint112(- 1), 'PocketSwap: OVERFLOW');
+        require(balance0 <= type(uint112).max && balance1 <= type(uint112).max, 'PocketSwap: OVERFLOW');
         uint32 blockTimestamp = uint32(block.timestamp % 2 ** 32);
         uint32 timeElapsed = blockTimestamp - blockTimestampLast;
         // overflow is desired
@@ -171,25 +171,6 @@ StorageData
 
         _update(balance0, balance1, _reserve0, _reserve1);
         emit Swap(msg.sender, amount0In, amount1In, amount0Out, amount1Out, to);
-    }
-
-    function uint2str(uint _i) internal pure returns (string memory _uintAsString) {
-        if (_i == 0) {
-            return "0";
-        }
-        uint j = _i;
-        uint len;
-        while (j != 0) {
-            len++;
-            j /= 10;
-        }
-        bytes memory bstr = new bytes(len);
-        uint k = len - 1;
-        while (_i != 0) {
-            bstr[k--] = byte(uint8(48 + _i % 10));
-            _i /= 10;
-        }
-        return string(bstr);
     }
 
     // force balances to match reserves
