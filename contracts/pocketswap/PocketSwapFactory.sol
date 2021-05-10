@@ -12,8 +12,8 @@ contract PocketSwapFactory is IPocketSwapFactory {
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
 
-    constructor(address _feeSetter) {
-        feeSetter = _feeSetter;
+    constructor() {
+        feeSetter = msg.sender;
     }
 
     function allPairsLength() external override view returns (uint) {

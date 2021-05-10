@@ -2,21 +2,23 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import {PocketSwapFactory, IPocketSwapFactory} from "./pocketswap/PocketSwapFactory.sol";
-import {PocketSwapRouter, IPocketSwapRouter} from "./pocketswap/PocketSwapRouter.sol";
+import {IPocketSwapFactory} from "./pocketswap/interfaces/IPocketSwapFactory.sol";
+import {IPocketSwapRouter} from "./pocketswap/interfaces/IPocketSwapRouter.sol";
 import {Pocket} from "./Pocket.sol";
 
 contract PocketSwap {
-    IPocketSwapFactory public factory;
-    IPocketSwapRouter public router;
-    Pocket public pocketToken;
+    struct PocketSwapInitializeParams {
+        address router;
+        address factory;
+        address pocket;
+    }
 
-    bool public initialized;
+    address public factory;
+    address public router;
+    address public pocketToken;
+
+    uint public initialized = 2;
     address _owner;
-
-    address public tokenHoldersFee;
-    uint public rewardsPerToken;
-    mapping(address => uint) public takenReward;
 
     modifier onlyOwner() {
         if (msg.sender == _owner) _;
@@ -26,19 +28,20 @@ contract PocketSwap {
         _owner = msg.sender;
     }
 
-    function initialize(
-        address _WETH9,
-        string memory name_,
-        string memory symbol_,
-        uint256 supply_
-    ) external onlyOwner {
-        address creator = msg.sender;
-        pocketToken = new Pocket(name_, symbol_, supply_);
-        factory = new PocketSwapFactory(creator);
-        router = new PocketSwapRouter(address(factory), _WETH9, address(pocketToken));
+    function owner() external returns (address) {
+        return _owner;
+    }
+
+    function initialize(PocketSwapInitializeParams calldata params) external onlyOwner {
+        require(initialized == 2);
+        initialized = 1;
+
+        pocketToken = params.pocket;
+        factory = params.factory;
+        router = params.router;
     }
 
     function swap(IPocketSwapRouter.SwapParams calldata params) external {
-        router.swap(params);
+        IPocketSwapRouter(router).swap(params);
     }
 }

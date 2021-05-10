@@ -1,5 +1,7 @@
 const helper = require("./helper");
 const ERC20 = artifacts.require("mocks/MockERC20.sol")
+const Pocket = artifacts.require("Pocket.sol")
+const PocketSwap = artifacts.require("PocketSwap.sol")
 const PocketSwapFactory = artifacts.require("pocketswap/PocketSwapFactory.sol")
 const PocketSwapRouter = artifacts.require("pocketswap/PocketSwapRouter.sol")
 const PocketSwapPair = artifacts.require("pocketswap/PocketSwapPair.sol")
@@ -13,6 +15,7 @@ contract("PocketSwap Fees", accounts => {
     let factory
     let router
     let pair
+    let pocketSwap
 
     const deadline = () => {
         return parseInt(Date.now() / 1000) + 15 * 60
@@ -24,10 +27,16 @@ contract("PocketSwap Fees", accounts => {
             ERC20.new(),
             ERC20.new(),
             ERC20.new(),
-            PocketSwapFactory.new(accounts[0])
-        ]).then(([a, b, c, d, e]) => [token_1, token_2, pocket_token, WETH, factory] = [a, b, c, d, e])
+            PocketSwapFactory.new(),
+            PocketSwap.new()
+        ]).then(([a, b, c, d, e, f]) => [token_1, token_2, pocket_token, WETH, factory, pocketSwap] = [a, b, c, d, e, f])
             .then(() => PocketSwapRouter.new(factory.address, WETH.address, pocket_token.address))
             .then(a => router = a)
+            .then(() => pocketSwap.initialize({
+                router: router.address,
+                factory: factory.address,
+                pocket: pocket_token.address
+            }))
             .then(() => factory.createPair(token_1.address, token_2.address))
             .then(() => factory.getPair(token_1.address, token_2.address))
             .then(a => PocketSwapPair.at(a))
@@ -81,9 +90,9 @@ contract("PocketSwap Fees", accounts => {
         await factory.setFee(feePercent * 1e7)
         const token_1_liq = BigInt("1000000000000000000000000")
         const token_2_liq = BigInt("1000000000000")
-        const pocket_liq  = BigInt("1000000000000")
-        const tokenIn     = BigInt("100000000000000000000")
-        const totalLiq    = BigInt(Math.sqrt(parseInt(token_1_liq * token_2_liq)))
+        const pocket_liq = BigInt("1000000000000")
+        const tokenIn = BigInt("100000000000000000000")
+        const totalLiq = BigInt(Math.sqrt(parseInt(token_1_liq * token_2_liq)))
 
         const liqAcc = accounts[0];
         await AddLiquidity(liqAcc, [token_1, token_2], [token_1_liq, token_2_liq], pocket_liq);
