@@ -48,4 +48,8 @@ contract PocketSwapFactory is IPocketSwapFactory {
         require(msg.sender == feeSetter, 'PocketSwap:FORBIDDEN');
         feeSetter = _feeSetter;
     }
+
+    function holdersFee() external view returns(uint256) {
+        return fee * 5 / 30; // POCKET holders are getting 5/30 of the fees
+    }
 }

@@ -163,7 +163,7 @@ StorageData
         uint amount1In = balance1 > _reserve1 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
         require(amount0In > 0 || amount1In > 0, 'PocketSwap: INSUFFICIENT_INPUT_AMOUNT');
         {// scope for reserve{0,1}Adjusted, avoids stack too deep errors
-            uint fee = IPocketSwapFactory(factory).fee();
+            uint fee = IPocketSwapFactory(factory).fee() - IPocketSwapFactory(factory).holdersFee();
             uint balance0Adjusted = balance0.mul(1e9).sub(amount0In.mul(fee));
             uint balance1Adjusted = balance1.mul(1e9).sub(amount1In.mul(fee));
             require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9 ** 2), "PocketSwap: K");

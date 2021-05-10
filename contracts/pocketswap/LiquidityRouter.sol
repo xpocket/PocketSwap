@@ -34,7 +34,7 @@ LiquidityProcessing
         address pair = PairAddress.computeAddress(factory, params.token0, params.token1);
 
         amountPocket = 0;
-        if (params.token0 != address(pocket) && params.token1 != address(pocket)) {
+        if (params.token0 != pocket && params.token1 != pocket) {
             require(amountAPocket > 0 || amountBPocket > 0, "Cannot calculate POCKET value");
             address pairAPocket = IPocketSwapFactory(factory).getPair(params.token0, pocket);
             address pairBPocket = IPocketSwapFactory(factory).getPair(params.token1, pocket);

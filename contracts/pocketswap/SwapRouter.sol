@@ -92,6 +92,30 @@ SwapProcessing
         ? (tokenIn < tokenOut, uint256(amount0Delta))
         : (tokenOut < tokenIn, uint256(amount1Delta));
 
+        uint256 holdersFee = IPocketSwapFactory(factory).holdersFee();
+
+        if (tokenIn != pocket && tokenOut != pocket) {
+            // finding POCKET pair
+            address token = tokenIn;
+            address pocketPair = IPocketSwapFactory(factory).getPair(tokenIn, pocket);
+            if (pocketPair == address(0)) {
+                pocketPair = IPocketSwapFactory(factory).getPair(tokenOut, pocket);
+                token = tokenOut;
+                if (pocketPair == address(0)) {
+                    revert("No POCKET pair");
+                }
+            }
+
+            uint amount = IERC20(token).balanceOf(msg.sender) * holdersFee / 1e9;
+            pay(token, msg.sender, pocketPair, amountPocket);
+            (address token0,) = PocketSwapLibrary.sortTokens(token, pocket);
+            (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amount) : (amount, uint(0));
+            IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, token, "");
+        } else {
+            uint256 feeAmount = IERC20(pocket).balanceOf(msg.sender) * holdersFee / 1e9;
+            TransferHelper.safeTransferFrom(pocket, msg.sender, pocket, feeAmount);
+        }
+
         if (!isExactInput && data.path.hasMultiplePools()) {
             data.path = data.path.skipToken();
             exactOutputInternal(amountToPay, msg.sender, data);

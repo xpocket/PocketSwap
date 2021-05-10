@@ -60,7 +60,7 @@ PeripheryPayments
 
         amountAPocket = 0;
         amountBPocket = 0;
-        if (tokenA != address(pocket) && tokenB != address(pocket)) {
+        if (tokenA != pocket && tokenB != pocket) {
             address[] memory path = new address[](2);
             path[0] = pocket;
             if (IPocketSwapFactory(_factory).getPair(pocket, tokenA) != address(0)) {
