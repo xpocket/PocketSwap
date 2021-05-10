@@ -49,7 +49,7 @@ contract PocketSwapFactory is IPocketSwapFactory {
         feeSetter = _feeSetter;
     }
 
-    function holdersFee() external view returns(uint256) {
+    function holdersFee() external view override returns(uint256) {
         return fee * 5 / 30; // POCKET holders are getting 5/30 of the fees
     }
 }

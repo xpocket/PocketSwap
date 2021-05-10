@@ -79,8 +79,4 @@ library PocketSwapLibrary {
             amounts[i - 1] = getAmountIn(factory, amounts[i], reserveIn, reserveOut);
         }
     }
-
-    function doSwap(address factory, address pair, uint amount0Out, uint amount1Out, address to, bytes calldata data) internal {
-        IPocketSwapPair(pair).swap(amount0Out, amount1Out, recipient, abi.encode(data));
-    }
 }

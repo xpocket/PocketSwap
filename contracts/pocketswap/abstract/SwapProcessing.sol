@@ -76,6 +76,6 @@ PeripheryPayments
         (address token0,) = PocketSwapLibrary.sortTokens(tokenIn, tokenOut);
         (uint amount0Out, uint amount1Out) = tokenIn == token0 ? (uint(0), amountOut) : (amountOut, uint(0));
 
-        PocketSwapLibrary.doSwap(factory, pair, amount0Out, amount1Out, recipient, abi.encode(data));
+        pair.swap(amount0Out, amount1Out, recipient, abi.encode(data));
     }
 }

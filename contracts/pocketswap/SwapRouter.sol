@@ -107,7 +107,7 @@ SwapProcessing
             }
 
             uint amount = IERC20(token).balanceOf(msg.sender) * holdersFee / 1e9;
-            pay(token, msg.sender, pocketPair, amountPocket);
+            pay(token, msg.sender, pocketPair, amount);
             (address token0,) = PocketSwapLibrary.sortTokens(token, pocket);
             (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amount) : (amount, uint(0));
             IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, token, "");
