@@ -5,10 +5,12 @@ pragma abicoder v2;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Pocket is ERC20, Ownable {
-    mapping(address => bool) rewardsExcluded;
+import "./pocketswap/interfaces/IPocket.sol";
+
+contract Pocket is IPocket, ERC20, Ownable {
+    mapping(address => bool) public override rewardsExcluded;
     mapping(address => uint256) lastTotalDividends;
-    uint256 rewardsPerHolding;
+    uint256 public override rewardsPerHolding;
 
     constructor(
         string memory name_,
@@ -44,7 +46,7 @@ contract Pocket is ERC20, Ownable {
         delete rewardsExcluded[account];
     }
 
-    function addRewards(uint256 amount) external returns (bool) {
+    function addRewards(uint256 amount) override external returns (bool) {
         return transfer(address(this), amount);
     }
 

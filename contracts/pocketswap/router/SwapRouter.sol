@@ -2,14 +2,29 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import "./libraries/PocketSwapLibrary.sol";
-import "./libraries/CallbackValidation.sol";
-import "./abstract/PeripheryValidation.sol";
-import "./abstract/SwapProcessing.sol";
-import "./abstract/Multicall.sol";
-import "./libraries/PlainMath.sol";
+import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
+
+import {SwapProcessing} from "./swap/SwapProcessing.sol";
+
+import {PeripheryValidation} from "../abstract/PeripheryValidation.sol";
+import {PeripheryImmutableState} from "../abstract/PeripheryImmutableState.sol";
+import {Multicall} from "../abstract/Multicall.sol";
+
+import {IPocketSwapCallback} from "../interfaces/callback/IPocketSwapCallback.sol";
+import {IPocketSwapRouter} from "../interfaces/IPocketSwapRouter.sol";
+import {IPocketSwapPair} from "../interfaces/IPocketSwapPair.sol";
+import {IPocketSwapFactory} from "../interfaces/IPocketSwapFactory.sol";
+import {IPocket} from "../interfaces/IPocket.sol";
+
+import {PocketSwapLibrary} from "../libraries/PocketSwapLibrary.sol";
+import {CallbackValidation} from "../libraries/CallbackValidation.sol";
+import {PlainMath} from "../libraries/PlainMath.sol";
+import {Path} from "../libraries/Path.sol";
+import {TransferHelper} from "../libraries/TransferHelper.sol";
 
 abstract contract SwapRouter is
+IPocketSwapCallback,
+IPocketSwapRouter,
 PeripheryImmutableState,
 PeripheryValidation,
 Multicall,
@@ -98,6 +113,7 @@ SwapProcessing
             // finding POCKET pair
             address token = tokenIn;
             address pocketPair = IPocketSwapFactory(factory).getPair(tokenIn, pocket);
+
             if (pocketPair == address(0)) {
                 pocketPair = IPocketSwapFactory(factory).getPair(tokenOut, pocket);
                 token = tokenOut;
@@ -109,8 +125,15 @@ SwapProcessing
             uint amount = IERC20(token).balanceOf(msg.sender) * holdersFee / 1e9;
             pay(token, msg.sender, pocketPair, amount);
             (address token0,) = PocketSwapLibrary.sortTokens(token, pocket);
-            (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amount) : (amount, uint(0));
-            IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, token, "");
+
+            address[] memory path = new address[](2);
+            path[0] = pocket;
+            path[1] = token;
+            uint amountOut = PocketSwapLibrary.getAmountsOut(factory, amount, path)[1];
+
+            (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amountOut) : (amountOut, uint(0));
+            IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, address(this), "");
+            IPocket(pocket).addRewards(IERC20(pocket).balanceOf(address(this)));
         } else {
             uint256 feeAmount = IERC20(pocket).balanceOf(msg.sender) * holdersFee / 1e9;
             TransferHelper.safeTransferFrom(pocket, msg.sender, pocket, feeAmount);
@@ -160,7 +183,7 @@ SwapProcessing
     public
     view
     virtual
-        /*override*/
+    override
     returns (uint[] memory amounts)
     {
         return PocketSwapLibrary.getAmountsOut(factory, amountIn, path);
@@ -170,7 +193,7 @@ SwapProcessing
     public
     view
     virtual
-        /*override*/
+    override
     returns (uint[] memory amounts)
     {
         return PocketSwapLibrary.getAmountsIn(factory, amountOut, path);

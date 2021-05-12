@@ -4,6 +4,7 @@ pragma solidity =0.8.4;
 
 import './PocketSwapPair.sol';
 import './interfaces/IPocketSwapFactory.sol';
+import './libraries/PairAddress.sol';
 
 contract PocketSwapFactory is IPocketSwapFactory {
     address public override feeSetter;
@@ -35,6 +36,10 @@ contract PocketSwapFactory is IPocketSwapFactory {
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);
+
+        require(pair == PairAddress.computeAddress(address(this), token0, token1), "WWZ");
+        require(pair == PairAddress.computeAddress(address(this), token1, token0), "WWZ");
+
         emit PairCreated(token0, token1, pair, allPairs.length);
     }
 

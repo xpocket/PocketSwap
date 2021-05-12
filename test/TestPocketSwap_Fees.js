@@ -1,6 +1,6 @@
 const helper = require("./helper");
 const ERC20 = artifacts.require("mocks/MockERC20.sol")
-const Pocket = artifacts.require("Pocket.sol")
+const Pocket = artifacts.require("mocks/MockPocket.sol")
 const PocketSwap = artifacts.require("PocketSwap.sol")
 const PocketSwapFactory = artifacts.require("pocketswap/PocketSwapFactory.sol")
 const PocketSwapRouter = artifacts.require("pocketswap/PocketSwapRouter.sol")
@@ -25,25 +25,31 @@ contract("PocketSwap Fees", accounts => {
         await Promise.all([
             ERC20.new(),
             ERC20.new(),
-            ERC20.new(),
+            Pocket.new(),
             ERC20.new(),
             PocketSwapFactory.new(),
-            PocketSwap.new()
-        ]).then(([a, b, c, d, e, f]) => [token_1, token_2, pocket_token, WETH, factory, pocketSwap] = [a, b, c, d, e, f])
+        ]).then(([a, b, c, d, e]) => [token_1, token_2, pocket_token, WETH, factory] = [a, b, c, d, e])
             .then(() => PocketSwapRouter.new(factory.address, WETH.address, pocket_token.address))
             .then(a => router = a)
-            .then(() => pocketSwap.initialize({
-                router: router.address,
-                factory: factory.address,
-                pocket: pocket_token.address
-            }))
+            .then(() => PocketSwap.new(router.address, factory.address, pocket_token.address, WETH.address))
+            .then(a => pocketSwap = a)
             .then(() => factory.createPair(token_1.address, token_2.address))
             .then(() => factory.getPair(token_1.address, token_2.address))
             .then(a => PocketSwapPair.at(a))
             .then(p => pair = p)
+            // .then(p => {
+            //     console.log(`Factory: ${factory.address}`)
+            //     console.log(`Router: ${router.address}`)
+            //     console.log(`PocketSwap: ${pocketSwap.address}`)
+            //     console.log(`Pocket: ${pocket_token.address}`)
+            //     console.log(`Token1: ${token_1.address}`)
+            //     console.log(`Token2: ${token_2.address}`)
+            //     console.log(`Token1:Token2 pair: ${p.address}`)
+            // })
             .then(async () => {
                 const acc = accounts[9]
                 await factory.createPair(token_2.address, pocket_token.address)
+                // console.log(`Token2:Pocket pair: ${await factory.getPair(token_2.address, pocket_token.address)}`)
                 await AddLiquidity(acc, [token_2, pocket_token], ["10000000000000000000000000", "10000000000000000000000000"])
             })
     })
@@ -57,24 +63,24 @@ contract("PocketSwap Fees", accounts => {
     it("1.9% fees to LP", async () => {
         await checkFees(1.9)
     })
-    it("50% fees to LP", async () => {
-        await checkFees(50)
+    it("35% fees to LP", async () => {
+        await checkFees(35)
     })
 
     async function AddLiquidity(liqAcc, tokens, liq, pocket_liq) {
         const [token_1, token_2] = tokens
         const [token_1_liq, token_2_liq] = liq
         await token_1.mint(liqAcc, token_1_liq.toString(), {from: liqAcc})
-        await token_1.approve(router.address, token_1_liq.toString(), {from: liqAcc})
+        await token_1.approve(pocketSwap.address, token_1_liq.toString(), {from: liqAcc})
         await token_2.mint(liqAcc, token_2_liq.toString(), {from: liqAcc})
-        await token_2.approve(router.address, token_2_liq.toString(), {from: liqAcc})
+        await token_2.approve(pocketSwap.address, token_2_liq.toString(), {from: liqAcc})
 
         if (pocket_liq) {
             await pocket_token.mint(liqAcc, pocket_liq.toString(), {from: liqAcc})
-            await pocket_token.approve(router.address, pocket_liq.toString(), {from: liqAcc})
+            await pocket_token.approve(pocketSwap.address, pocket_liq.toString(), {from: liqAcc})
         }
 
-        await router.addLiquidity({
+        await pocketSwap.addLiquidity({
             token0: token_1.address,
             token1: token_2.address,
             recipient: liqAcc,
@@ -100,15 +106,15 @@ contract("PocketSwap Fees", accounts => {
         let acc0LiquidityBalance = await pair.balanceOf(liqAcc)
         assert.equal(acc0LiquidityBalance, (totalLiq - burnedLiquidity).toString(), 'Liquidity Balance')
 
-        const out = await router.getAmountsOut(tokenIn.toString(), [token_1.address, token_2.address]);
+        const out = await pocketSwap.getAmountsOut(tokenIn.toString(), [token_1.address, token_2.address]);
         const outRef = out[1]
 
         let expectedOut = helper.expectOutput(tokenIn, feePercent * 1e7, [token_1_liq, token_2_liq])
         assert.equal(outRef.toString(), expectedOut.toString(), `correct exchange - ${feePercent}%`)
 
         await token_1.mint(accounts[1], tokenIn.toString(), {from: accounts[1]})
-        await token_1.approve(router.address, tokenIn.toString(), {from: accounts[1]})
-        await router.swap({
+        await token_1.approve(pocketSwap.address, tokenIn.toString(), {from: accounts[1]})
+        await pocketSwap.swap({
             tokenIn: token_1.address,
             tokenOut: token_2.address,
             recipient: accounts[1],
@@ -125,8 +131,8 @@ contract("PocketSwap Fees", accounts => {
         let token1BalanceExpected = BigInt(pairBalance1) * BigInt(acc0LiquidityBalance) / totalLiq
         let token2BalanceExpected = BigInt(pairBalance2) * BigInt(acc0LiquidityBalance) / totalLiq
 
-        await pair.approve(router.address, acc0LiquidityBalance.toString(), {from: liqAcc})
-        await router.removeLiquidity({
+        await pair.approve(pocketSwap.address, acc0LiquidityBalance.toString(), {from: liqAcc})
+        await pocketSwap.removeLiquidity({
             tokenA: token_1.address,
             tokenB: token_2.address,
             liquidity: acc0LiquidityBalance.toString(), // liq

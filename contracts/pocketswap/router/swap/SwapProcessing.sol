@@ -2,14 +2,14 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import '../libraries/Path.sol';
-import '../libraries/PairAddress.sol';
-import '../libraries/TransferHelper.sol';
-import {PocketSwapLibrary} from '../libraries/PocketSwapLibrary.sol';
-import "../interfaces/IPocketSwapPair.sol";
-import "../interfaces/IPocketSwapRouter.sol";
-import "./PeripheryImmutableState.sol";
-import "./PeripheryPayments.sol";
+import {PocketSwapLibrary} from '../../libraries/PocketSwapLibrary.sol';
+import {Path} from '../../libraries/Path.sol';
+import {PairAddress} from '../../libraries/PairAddress.sol';
+import {TransferHelper} from '../../libraries/TransferHelper.sol';
+import {IPocketSwapPair} from "../../interfaces/IPocketSwapPair.sol";
+import {IPocketSwapRouter} from "../../interfaces/IPocketSwapRouter.sol";
+import {PeripheryImmutableState} from "../../abstract/PeripheryImmutableState.sol";
+import {PeripheryPayments} from "../../abstract/PeripheryPayments.sol";
 
 /// @title Processing routing functions
 abstract contract SwapProcessing is

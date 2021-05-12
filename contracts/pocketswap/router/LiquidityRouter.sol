@@ -2,12 +2,20 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import "./abstract/LiquidityProcessing.sol";
-import "./abstract/PeripheryValidation.sol";
-import "./libraries/PairAddress.sol";
-import "./interfaces/IPocketSwapRouter.sol";
+import {LiquidityProcessing} from "./liquidity/LiquidityProcessing.sol";
+
+import {PeripheryValidation} from "../abstract/PeripheryValidation.sol";
+import {PeripheryImmutableState} from "../abstract/PeripheryImmutableState.sol";
+
+import {IPocketSwapLiquidityRouter} from "../interfaces/IPocketSwapLiquidityRouter.sol";
+import {IPocketSwapPair} from "../interfaces/IPocketSwapPair.sol";
+import {IPocketSwapFactory} from "../interfaces/IPocketSwapFactory.sol";
+
+import {PairAddress} from "../libraries/PairAddress.sol";
+import {PocketSwapLibrary} from "../libraries/PocketSwapLibrary.sol";
 
 abstract contract LiquidityRouter is
+IPocketSwapLiquidityRouter,
 PeripheryImmutableState,
 PeripheryValidation,
 LiquidityProcessing
@@ -21,17 +29,12 @@ LiquidityProcessing
         uint amountAPocket;
         uint amountBPocket;
 
-        (amountA, amountB, amountAPocket, amountBPocket) = _addLiquidity(
-            params.amount0Desired,
-            params.amount1Desired,
-            params.amount0Min,
-            params.amount1Min,
-            LiquidityCallbackData(
-            {path : abi.encodePacked(params.token0, params.token1), payer : msg.sender}
-            )
-        );
-
         address pair = PairAddress.computeAddress(factory, params.token0, params.token1);
+
+        (amountA, amountB, amountAPocket, amountBPocket) = calcLiquidity(params);
+        pay(params.token0, msg.sender, pair, amountA);
+        pay(params.token1, msg.sender, pair, amountB);
+        liquidity = IPocketSwapPair(pair).mint(params.recipient);
 
         amountPocket = 0;
         if (params.token0 != pocket && params.token1 != pocket) {
@@ -63,10 +66,19 @@ LiquidityProcessing
                 IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, pair, "");
             }
         }
+    }
 
-        pay(params.token0, msg.sender, pair, amountA);
-        pay(params.token1, msg.sender, pair, amountB);
-        liquidity = IPocketSwapPair(pair).mint(params.recipient);
+    function calcLiquidity(AddLiquidityParams calldata params) public override view
+    returns (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket) {
+        (amountA, amountB, amountAPocket, amountBPocket) = _addLiquidity(
+            params.amount0Desired,
+            params.amount1Desired,
+            params.amount0Min,
+            params.amount1Min,
+            LiquidityCallbackData(
+            {path : abi.encodePacked(params.token0, params.token1), payer : msg.sender}
+            )
+        );
     }
 
     function removeLiquidity(RemoveLiquidityParams calldata params)

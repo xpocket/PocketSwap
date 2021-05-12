@@ -2,14 +2,14 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import "../interfaces/IPocketSwapLiquidityRouter.sol";
-import "../interfaces/IPocketSwapRouter.sol";
-import '../interfaces/IPocketSwapFactory.sol';
-import "../libraries/Path.sol";
-import "../libraries/Math.sol";
-import "../libraries/PocketSwapLibrary.sol";
-import "./PeripheryImmutableState.sol";
-import "./PeripheryPayments.sol";
+import {IPocketSwapLiquidityRouter} from "../../interfaces/IPocketSwapLiquidityRouter.sol";
+import {IPocketSwapRouter} from "../../interfaces/IPocketSwapRouter.sol";
+import {IPocketSwapFactory} from '../../interfaces/IPocketSwapFactory.sol';
+import {Path} from "../../libraries/Path.sol";
+import {Math} from "../../libraries/Math.sol";
+import {PocketSwapLibrary} from "../../libraries/PocketSwapLibrary.sol";
+import {PeripheryImmutableState} from "../../abstract/PeripheryImmutableState.sol";
+import {PeripheryPayments} from "../../abstract/PeripheryPayments.sol";
 
 abstract contract LiquidityProcessing is
 IPocketSwapLiquidityRouter,
@@ -31,16 +31,12 @@ PeripheryPayments
         uint amountBMin,
         LiquidityCallbackData memory data
     )
-    internal
+    internal view
     returns (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket) {
-        address _factory = factory;
         // gas saving
-        (address tokenA, address tokenB) = data.path.decodeFirstPool();
+        address _factory = factory;
 
-        // create the pair if it doesn't exist yet
-        if (IPocketSwapFactory(_factory).getPair(tokenA, tokenB) == address(0)) {
-            IPocketSwapFactory(_factory).createPair(tokenA, tokenB);
-        }
+        (address tokenA, address tokenB) = data.path.decodeFirstPool();
         (uint reserveA, uint reserveB) = PocketSwapLibrary.getReserves(_factory, tokenA, tokenB);
 
         if (reserveA == 0 && reserveB == 0) {
@@ -60,7 +56,7 @@ PeripheryPayments
 
         amountAPocket = 0;
         amountBPocket = 0;
-        if (tokenA != pocket && tokenB != pocket) {
+        if (tokenA != address(pocket) && tokenB != address(pocket)) {
             address[] memory path = new address[](2);
             path[0] = pocket;
             if (IPocketSwapFactory(_factory).getPair(pocket, tokenA) != address(0)) {

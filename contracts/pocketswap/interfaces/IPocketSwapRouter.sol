@@ -64,4 +64,8 @@ interface IPocketSwapRouter is IPocketSwapCallback {
     /// @param params The parameters necessary for the multi-hop swap, encoded as `OutputParams` in calldata
     /// @return amountIn The amount of the input token
     function exactOutput(OutputParams calldata params) external payable returns (uint256 amountIn);
+
+    function getAmountsOut(uint amountIn, address[] memory path) external view returns (uint[] memory amounts);
+
+    function getAmountsIn(uint amountOut, address[] memory path) external view returns (uint[] memory amounts);
 }

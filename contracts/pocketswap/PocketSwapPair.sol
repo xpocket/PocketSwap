@@ -21,6 +21,7 @@ StorageData
     using UQ112x112 for uint224;
 
     bytes4 private constant SELECTOR = bytes4(keccak256(bytes('transfer(address,uint256)')));
+    bytes4 private constant ASELECTOR = bytes4(keccak256(bytes('approve(address,uint256)')));
 
     uint112 private reserve0;           // uses single storage slot, accessible via getReserves
     uint112 private reserve1;           // uses single storage slot, accessible via getReserves
@@ -44,6 +45,11 @@ StorageData
     function _safeTransfer(address token, address to, uint value) private {
         (bool success, bytes memory data) = token.call(abi.encodeWithSelector(SELECTOR, to, value));
         require(success && (data.length == 0 || abi.decode(data, (bool))), 'PocketSwap: TRANSFER_FAILED');
+    }
+
+    function _safeApprove(address token, address to, uint value) private {
+        (bool success, bytes memory data) = token.call(abi.encodeWithSelector(ASELECTOR, to, value));
+        require(success && (data.length == 0 || abi.decode(data, (bool))), 'PocketSwap: APPROVE_FAILED');
     }
 
     constructor() {
@@ -144,18 +150,11 @@ StorageData
             address _token0 = token0;
             address _token1 = token1;
             require(to != _token0 && to != _token1, 'PocketSwap: INVALID_TO');
+            // optimistically transfer tokens
             if (amount0Out > 0) _safeTransfer(_token0, to, amount0Out);
             // optimistically transfer tokens
             if (amount1Out > 0) _safeTransfer(_token1, to, amount1Out);
-            // optimistically transfer tokens
-            if (data.length > 0) {
-                try IPocketSwapCallback(msg.sender).pocketSwapCallback(amount0Out, amount1Out, data) {
-                } catch Error(string memory reason) {
-                    revert(string(abi.encodePacked("NOK: ", reason)));
-                } catch {
-                    revert("UNKNWN!");
-                }
-            }
+
             balance0 = IERC20(_token0).balanceOf(address(this));
             balance1 = IERC20(_token1).balanceOf(address(this));
         }
@@ -163,12 +162,25 @@ StorageData
         uint amount1In = balance1 > _reserve1 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
         require(amount0In > 0 || amount1In > 0, 'PocketSwap: INSUFFICIENT_INPUT_AMOUNT');
         {// scope for reserve{0,1}Adjusted, avoids stack too deep errors
-            uint fee = IPocketSwapFactory(factory).fee() - IPocketSwapFactory(factory).holdersFee();
+            uint fee = IPocketSwapFactory(factory).fee();
             uint balance0Adjusted = balance0.mul(1e9).sub(amount0In.mul(fee));
             uint balance1Adjusted = balance1.mul(1e9).sub(amount1In.mul(fee));
             require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1e9 ** 2), "PocketSwap: K");
         }
 
+        if (data.length > 0) {
+            uint holderFee = IPocketSwapFactory(factory).holdersFee();
+            _safeApprove(token0, msg.sender, balance0 * holderFee / 1e9);
+            _safeApprove(token1, msg.sender, balance1 * holderFee / 1e9);
+            try IPocketSwapCallback(msg.sender).pocketSwapCallback(amount0Out, amount1Out, data) {
+            } catch Error(string memory reason) {
+                revert(string(abi.encodePacked("NOK: ", reason)));
+            } catch (bytes memory reason) {
+                revert(string(abi.encodePacked("NOK b!: ", string(reason))));
+            }
+            _safeApprove(token0, msg.sender, 0);
+            _safeApprove(token1, msg.sender, 0);
+        }
         _update(balance0, balance1, _reserve0, _reserve1);
         emit Swap(msg.sender, amount0In, amount1In, amount0Out, amount1Out, to);
     }

@@ -4,7 +4,7 @@ pragma solidity =0.8.4;
 import "../interfaces/IPocketSwapPair.sol";
 
 abstract contract StorageData is IPocketSwapPair {
-    uint public override constant MINIMUM_LIQUIDITY = 1e3;
+    uint public constant override MINIMUM_LIQUIDITY = 1e3;
 
     address public override factory;
     address public override token0;

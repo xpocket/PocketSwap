@@ -2,8 +2,8 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import "./SwapRouter.sol";
-import "./LiquidityRouter.sol";
+import "./router/SwapRouter.sol";
+import "./router/LiquidityRouter.sol";
 import "./abstract/PeripheryImmutableState.sol";
 
 contract PocketSwapRouter is

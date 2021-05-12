@@ -19,6 +19,9 @@ interface IPocketSwapLiquidityRouter {
     payable
     returns (uint amountA, uint amountB, uint amountPocket, uint liquidity);
 
+    function calcLiquidity(AddLiquidityParams calldata params) external view
+    returns (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket);
+
     struct RemoveLiquidityParams {
         address tokenA; // Address of the First token in Pair
         address tokenB; // Address of the Second token in Pair
