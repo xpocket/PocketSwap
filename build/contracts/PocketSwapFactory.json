@@ -54,7 +54,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -67,7 +68,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -80,7 +82,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -104,7 +107,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -117,7 +121,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -180,7 +185,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"PairCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"allPairs\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"allPairsLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"createPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeSetter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"getPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"holdersFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fee\",\"type\":\"uint256\"}],\"name\":\"setFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_feeSetter\",\"type\":\"address\"}],\"name\":\"setFeeSetter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/PocketSwapFactory.sol\":\"PocketSwapFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/PocketSwapERC20.sol\":{\"keccak256\":\"0x8b3d6bbdac817382be8ccf37e0cc269b83af9df2e184c7efeb08397cef338388\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://00583f08f1218ab4984763e7f5a06de8f93559ad391523ae39fcc09416574dfa\",\"dweb:/ipfs/QmP3paCa6mBMTr5Zdg9qYNPnMdZqioCpiRnJLwBn6Xx9FL\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/PocketSwapFactory.sol\":{\"keccak256\":\"0x727a2b676a681c83874b55fdb62f75710dd284a1362d34ebe2506f4ac5ab6684\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://fc835c3cf2c47b2d3aeb72cd7b05962e5f4d492a3e6eb5ea3edcc55797875275\",\"dweb:/ipfs/Qmcv7iGFNoCTppSrKnMbt2RCGDPJwyN7up8bopeb8quDbS\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/PocketSwapPair.sol\":{\"keccak256\":\"0x69f4393474ca6fc96588639701e34a85b08e373d72a570e048c43a2bb937446e\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://7355687b1c4942c2c95f2f8b548b92d2caa4280544a84a10e94fe285110656cf\",\"dweb:/ipfs/QmRrpMefyywSXfbAvRVWmS8oa6Kx9EkXAXgtcJ89KaWCb1\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapERC20.sol\":{\"keccak256\":\"0x370ec833d0b2d89243a8c49fa7b42c36e8c2e7877bb521e089f34d91a6ceb853\",\"urls\":[\"bzz-raw://40bff1a74f556b1c84d25d22d077b868fcc4c37d275b13290af35764c0dc2dd9\",\"dweb:/ipfs/Qmf7T8xYfu16mXRExXbipDNnw1ohjQ7mKTeBaDafzGqS6U\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapFactory.sol\":{\"keccak256\":\"0x666f3fc68dca411c26283320b2241b2bd4454fe194f19c4b78517abb57f2f033\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://91621ee9de2df6ed38b08caca4317a550a7f777ad74dd5a821a6881632c1229a\",\"dweb:/ipfs/QmaCvNUdwaXJ6uzEJBWGpnNoeRm9SzRfgBDEVnYfqFeYRi\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol\":{\"keccak256\":\"0x1de7d3ca007a851760838fbc1a29882bc2e21e90b3820d649bab940b613da665\",\"urls\":[\"bzz-raw://f51778da5a04b1b82ddac5dbcc77d29db08facb7e4cc8056adb124f9e25997e7\",\"dweb:/ipfs/QmScE4xWsqa3RF7GoHGofTvNvFy59puP2s6FJAEqFjtBTs\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/callback/IPocketSwapCallback.sol\":{\"keccak256\":\"0xffbcd8cdb9c7d99b074a3ae0910741cd15299ca3e8b839bd1fc6e603f41b7416\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ba374100d9322737f1b0d77967d2ea7efb0aca8c699977cbe288de1e81d93f15\",\"dweb:/ipfs/QmSfUvwjqGPHfdRWVazC2QgsJFc3LDrhykQ2tbccDr3Dhv\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/Math.sol\":{\"keccak256\":\"0x9057591ba330f33e8af1ec9e618c30f6819c99f0660fdb2373b7c104c182315b\",\"urls\":[\"bzz-raw://46d0ffc4ebe42776ee34bb01f4c784ab9bcb43a0c78168c026ed89c868c0792c\",\"dweb:/ipfs/QmQtt2vfgKov9EVLEQ5xmWwyuZzkCRrCc5vZGrNBs2QPyC\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol\":{\"keccak256\":\"0xad02d7deee35d7fbc1dc4a0db18ad6c76dfafa0cf836a0c60122288ee2dc3d43\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3d81e8ce28526de1c62479a905461179356b5410caee914166d8942d9b834759\",\"dweb:/ipfs/Qmca3YaEWSh2vQBTAGGhJHZaiNsWa3DnBfJBq1Zo5BPfpw\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PlainMath.sol\":{\"keccak256\":\"0x222e25063d20b43d211205abf6729e1b9c91972e1501790f8e24fcfb5f6c1df3\",\"urls\":[\"bzz-raw://4b759cc674c72673753e8521a32a8c72c68d91ebcd1a0dc074907ff8f8e04a72\",\"dweb:/ipfs/QmT72Jk27cwXxHQbj4J2nuQ1FK3NdESYV1U5GAdj1PBawz\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/UQ112x112.sol\":{\"keccak256\":\"0xcb95f28dce1327158af80a3ffcfacaa608617afbffd4c7991f236117124698bf\",\"urls\":[\"bzz-raw://90fb6358954f295bc1b3dfe9cbc875c1da16e48c48f54028ad817dadbe3600d7\",\"dweb:/ipfs/QmfKtQdwxkmTBMU38NDsB2eGZeFDYhzodDH6JDN3rL4WJ1\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/pair/StorageData.sol\":{\"keccak256\":\"0x5b807e9db8d75c8c64a46f3970c4683b01694503c4826276250ce2101a763ef6\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://eed0785fe951a00871b092bf86e26a8895ce8b936386a44e548932aa37e79e7c\",\"dweb:/ipfs/QmeDbGTF1zHD9sg3hwa2LaUdgWBi6CVUVewZuXP3AbKwQ4\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]}},\"version\":1}",
@@ -10120,7 +10126,8 @@
   },
   "networks": {},
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-05-17T10:32:55.018Z",
+  "updatedAt": "2021-05-17T10:55:41.918Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

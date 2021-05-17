@@ -7,17 +7,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 import "./pocketswap/interfaces/IPocket.sol";
 
-contract Pocket is IPocket, ERC20, Ownable {
+contract Pocket is IPocket, ERC20("XPocket", "POCKET"), Ownable {
     mapping(address => bool) public override rewardsExcluded;
     mapping(address => uint256) lastTotalDividends;
     uint256 public override rewardsPerHolding;
 
-    constructor(
-        string memory name_,
-        string memory symbol_,
-        uint256 supply_
-    ) ERC20(name_, symbol_) {
-        _mint(msg.sender, supply_);
+    constructor() {
+        _mint(msg.sender, 50_000_000e18);
     }
 
     function _calcRewards(address account) internal view virtual returns (uint256) {

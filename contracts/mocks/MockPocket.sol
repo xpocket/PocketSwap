@@ -3,7 +3,7 @@ pragma solidity =0.8.4;
 
 import '../Pocket.sol';
 
-contract MockPocket is Pocket("Pocket", "POCKET", 100500) {
+contract MockPocket is Pocket {
     function mint(address to, uint value) external {
         _mint(to, value);
     }

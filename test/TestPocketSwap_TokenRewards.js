@@ -4,7 +4,7 @@ contract("PocketSwap Token Rewards", accounts => {
     let pocket_token
 
     before(async () => {
-        await PocketToken.new("POCKET", "POCKET", "100500")
+        await PocketToken.new()
             .then(p => pocket_token = p)
     })
 

@@ -33,7 +33,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -109,7 +110,8 @@
         }
       ],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -185,7 +187,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -198,7 +201,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -227,7 +231,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -256,7 +261,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -280,7 +286,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -304,7 +311,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -323,7 +331,8 @@
         }
       ],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -347,7 +356,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -360,7 +370,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -412,7 +423,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -478,7 +490,8 @@
         }
       ],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -529,7 +542,8 @@
         }
       ],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -575,7 +589,8 @@
         }
       ],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -598,7 +613,8 @@
       "name": "sweepToken",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -616,7 +632,8 @@
       "name": "unwrapWETH9",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_WETH9\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_pocketToken\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"WETH9\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount0Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.AddLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"addLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountPocket\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount0Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Desired\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount0Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Min\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.AddLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"calcLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAPocket\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBPocket\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveOut\",\"type\":\"uint256\"}],\"name\":\"getAmountIn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveOut\",\"type\":\"uint256\"}],\"name\":\"getAmountOut\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"}],\"name\":\"getAmountsIn\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"path\",\"type\":\"address[]\"}],\"name\":\"getAmountsOut\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multicall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"pairFor\",\"outputs\":[{\"internalType\":\"contract IPocketSwapPair\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pocket\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount0Delta\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount1Delta\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"pocketSwapCallback\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"reserveB\",\"type\":\"uint256\"}],\"name\":\"quote\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"liquidity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountAMin\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountBMin\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"rewards\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapLiquidityRouter.RemoveLiquidityParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"removeLiquidity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountA\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountB\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenIn\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenOut\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountOutMinimum\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapRouter.SwapParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"swap\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes\",\"name\":\"path\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountOutMinimum\",\"type\":\"uint256\"}],\"internalType\":\"struct IPocketSwapRouter.SwapMultiParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"swapMulti\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountMinimum\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"sweepToken\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountMinimum\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"}],\"name\":\"unwrapWETH9\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"multicall(bytes[])\":{\"details\":\"The `msg.value` should not be trusted for any method callable from multicall.\",\"params\":{\"data\":\"The encoded function data for each of the calls to make to this contract\"},\"returns\":{\"results\":\"The results from each of the calls passed in via data\"}},\"swap((address,address,address,uint256,uint256,uint256))\":{\"params\":{\"params\":\"The parameters necessary for the swap, encoded as `SwapParams` in calldata\"},\"returns\":{\"amountOut\":\"The amount of the received token\"}},\"swapMulti((bytes,address,uint256,uint256,uint256))\":{\"params\":{\"params\":\"The parameters necessary for the multi-hop swap, encoded as `SwapMultiParams` in calldata\"},\"returns\":{\"amountOut\":\"The amount of the received token\"}},\"sweepToken(address,uint256,address)\":{\"details\":\"The amountMinimum parameter prevents malicious contracts from stealing the token from users\",\"params\":{\"amountMinimum\":\"The minimum amount of token required for a transfer\",\"recipient\":\"The destination address of the token\",\"token\":\"The contract address of the token which will be transferred to `recipient`\"}},\"unwrapWETH9(uint256,address)\":{\"details\":\"The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users.\",\"params\":{\"amountMinimum\":\"The minimum amount of WETH9 to unwrap\",\"recipient\":\"The address receiving ETH\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"multicall(bytes[])\":{\"notice\":\"Call multiple functions in the current contract and return the data from all of them if they all succeed\"},\"swap((address,address,address,uint256,uint256,uint256))\":{\"notice\":\"Swaps `amountIn` of one token for as much as possible of another token\"},\"swapMulti((bytes,address,uint256,uint256,uint256))\":{\"notice\":\"Swaps `amountIn` of one token for as much as possible of another along the specified path\"},\"sweepToken(address,uint256,address)\":{\"notice\":\"Sends the full amount of a token held by this contract to the given recipient\"},\"unwrapWETH9(uint256,address)\":{\"notice\":\"Unwraps the contract's WETH9 balance and sends it to recipient as ETH.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/PocketSwapRouter.sol\":\"PocketSwapRouter\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/PocketSwapRouter.sol\":{\"keccak256\":\"0xf7c4dcdcf71cd7fb9cfb1cfd5fd513f24d70aa7b101eff01a8acafeebfd691db\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://d42528e274e124b4d6c242364696a181165bdb21964111ca89e57cfab423a894\",\"dweb:/ipfs/QmdaTYyG22pEQZ1nybaxqiv6qhC5YHsKKmVV74prw952Gb\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/BlockTimestamp.sol\":{\"keccak256\":\"0x43a99c28097a55769f1aef692457f3adeaa844de36d07c3e2779d3665611459c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f3d01f4f1dbdff9981c645aa25164eee6646da85a95a96da2be66f50df1a69cc\",\"dweb:/ipfs/QmTVcqcfDbmz2oNwDqxYBCewgsUDxuJb9DpLqzjpBC9Qc3\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/Multicall.sol\":{\"keccak256\":\"0x61e646823e234478c3a719118833f54efce0be80eaa99edf846c6dc0241c9ae2\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1eb6218daba9ecc3368871c147dee6f5bf88b72a0ca8f412a4d3745ca095cd7c\",\"dweb:/ipfs/QmdBpZXP63muZ8R4mPCiYimp5j6DiRmA3SfaVAXaoS3kxN\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryImmutableState.sol\":{\"keccak256\":\"0xbaeddfd2bc12909ae4671c571c5207b0c070eefd782e24dbd30c42f58289b674\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6c9cdd92425223a9f0bbd2106fff09688d1686e46c5f799c5b796fa09c9e88de\",\"dweb:/ipfs/QmQup41cutVM9JyHFikfbMNWfufZV3EpYUYFi6RigWeAuV\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryPayments.sol\":{\"keccak256\":\"0x19db50b70dfcd032fca2e760c4630fbe5c85e49a39871db8e4351a8c3119164a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://4ca27c3c7ba9aaefcd44bf12f460a9be8e684ed26d1747ab7149325c496f7bd8\",\"dweb:/ipfs/Qmca244o47GyC6h7uYsL7gHSHcYrDcTxW2bt7gsKo5NEBd\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/abstract/PeripheryValidation.sol\":{\"keccak256\":\"0x04a38e15872da91b41abfd0338e1fe959790c9f0deb24111437fd0835cbf4948\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://19fc58ce8140faaaf9e0cd588444c3961550add0575a0fa9a5141cf51211066f\",\"dweb:/ipfs/QmPW2KiaZCX9x5DbrL6vUM478AbPQ1APPizuvJpALeBUCQ\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IMulticall.sol\":{\"keccak256\":\"0xa8f9d0061ee730a522dc4bae6bd5cabb3e997e2c5983da183e912bdca93dfa7b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://496b68d4f72d58cc83cf51bd9cc9c99aaa46dc3c3df7c951a9e50ba29ee33016\",\"dweb:/ipfs/Qmc3bkXwuRP8mDpcKgvLgbCKn8tD8PGCaBjnLHSPMJCRGD\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryImmutableState.sol\":{\"keccak256\":\"0x39f3de492b6c939b4bd5da2ddf3e56112b69194f58213c966f05ed510509fa44\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c4c194eed2e8aa3d03dcfb4998d421379c8c0b51c0eaa3a33b069f3861928735\",\"dweb:/ipfs/QmUfLpP7Q7Nm1Y8CHKf2ZQw6PGHJh9VqbJCovhNzFoHGfg\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPeripheryPayments.sol\":{\"keccak256\":\"0x8d9a73f1ddaae2625042c414cb6227c1067536ec25d9b8feb621fda9ef666798\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d8a7a2085d4159430bfc04fb18820d475e2911c4323b23dd9828c1a1f774cbc2\",\"dweb:/ipfs/QmS4eWdrDeN2bA3NmVp39SNGPnErtK15mfkRWGtpMQqVny\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocket.sol\":{\"keccak256\":\"0xbac3d4900fd84f44513c079c72c732fe8488f2cdee080ecc44d79a823d13a1d7\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://c5adb7c3af2fd3310364dcb18ea3b083a76c22cd4c6fd1ff83fe69b6b507e8e1\",\"dweb:/ipfs/QmV4TJdrjfjv5Xr2uMhK1zDZnpQ44d3uaHNVDNYF4Yz9jV\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapERC20.sol\":{\"keccak256\":\"0x370ec833d0b2d89243a8c49fa7b42c36e8c2e7877bb521e089f34d91a6ceb853\",\"urls\":[\"bzz-raw://40bff1a74f556b1c84d25d22d077b868fcc4c37d275b13290af35764c0dc2dd9\",\"dweb:/ipfs/Qmf7T8xYfu16mXRExXbipDNnw1ohjQ7mKTeBaDafzGqS6U\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapFactory.sol\":{\"keccak256\":\"0x666f3fc68dca411c26283320b2241b2bd4454fe194f19c4b78517abb57f2f033\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://91621ee9de2df6ed38b08caca4317a550a7f777ad74dd5a821a6881632c1229a\",\"dweb:/ipfs/QmaCvNUdwaXJ6uzEJBWGpnNoeRm9SzRfgBDEVnYfqFeYRi\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapLiquidityRouter.sol\":{\"keccak256\":\"0xda839e38a614a3824c0828c5d3f83384c7b00b1ff8b68916ffe24a3843f73fa8\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://a7ca4ab34a2557e8e5b888a45ef696c168411970a2f506c91d68546d8981e5ef\",\"dweb:/ipfs/QmWznxgL8P7Y5VU9VuWj8cX8QifsYyPYfiBN96QSUughVG\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapPair.sol\":{\"keccak256\":\"0x1de7d3ca007a851760838fbc1a29882bc2e21e90b3820d649bab940b613da665\",\"urls\":[\"bzz-raw://f51778da5a04b1b82ddac5dbcc77d29db08facb7e4cc8056adb124f9e25997e7\",\"dweb:/ipfs/QmScE4xWsqa3RF7GoHGofTvNvFy59puP2s6FJAEqFjtBTs\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/IPocketSwapRouter.sol\":{\"keccak256\":\"0x62a626769c630332bb1d2b87f6f675acefb24ab33bf313a0dd79f81cd9e60bcb\",\"urls\":[\"bzz-raw://da7fe53d8d7a2e44e0f8ee087f3eab2fc62ab87fa046b0851b17eb7566bf5472\",\"dweb:/ipfs/QmahE2MHEsAkqY2rCczgLpFnHj575LDkSUUkFDCpEL9Mwv\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/callback/IPocketSwapCallback.sol\":{\"keccak256\":\"0xffbcd8cdb9c7d99b074a3ae0910741cd15299ca3e8b839bd1fc6e603f41b7416\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ba374100d9322737f1b0d77967d2ea7efb0aca8c699977cbe288de1e81d93f15\",\"dweb:/ipfs/QmSfUvwjqGPHfdRWVazC2QgsJFc3LDrhykQ2tbccDr3Dhv\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/interfaces/external/IWETH9.sol\":{\"keccak256\":\"0xd513860a7b9ea6b1bb1163a8707510bc28a636d5751246b99371f559a18ed0be\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3d0a121b03415cc9f6a1b23c092fa581a864dd07a560b2aa0bdbfe50a5024004\",\"dweb:/ipfs/QmbKU3Vq73cPx2b7S17eJWXCpc14rSmgLEnHoueHu3GesC\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/AddressStringUtil.sol\":{\"keccak256\":\"0x734733fac180412eab925eebe12baed6aaa56426cf366dd4fc07674749944c80\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://37e8ef79f54b2821df61cf42703719671f6a1c751e5e54ac4157db66a43b8af2\",\"dweb:/ipfs/QmWpqWACUMFi7oJjQh7DbwSeRkAFT3G8LuNdnGUV24zgqJ\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/BytesLib.sol\":{\"keccak256\":\"0xca8f9eede9b9e5552d228eca7e5973a451f07c38db121f8a154f0a34091923ba\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://d1688f6d450b6328fc04112bd7806095e00bc0a839f6be06dd284c2fa2330d8e\",\"dweb:/ipfs/QmZWomDNDmWsQYp7QENDJcQvf8XnjNSXe6MwMqN1tb6u9R\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/CallbackValidation.sol\":{\"keccak256\":\"0x46db5624eb014a02cef74ab6ce3cbcec924a1a7ee8d7046a2da98d7c3a771c0e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e29310b01918afa2ac269e1dae38effe22fc4d03fcddbea3b7796e1ea5083637\",\"dweb:/ipfs/QmdJMGeWrdBmHJsWLjs8sY3gbzL6LaKZtKV6nNDTCNvRd9\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/Math.sol\":{\"keccak256\":\"0x9057591ba330f33e8af1ec9e618c30f6819c99f0660fdb2373b7c104c182315b\",\"urls\":[\"bzz-raw://46d0ffc4ebe42776ee34bb01f4c784ab9bcb43a0c78168c026ed89c868c0792c\",\"dweb:/ipfs/QmQtt2vfgKov9EVLEQ5xmWwyuZzkCRrCc5vZGrNBs2QPyC\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PairAddress.sol\":{\"keccak256\":\"0xad02d7deee35d7fbc1dc4a0db18ad6c76dfafa0cf836a0c60122288ee2dc3d43\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3d81e8ce28526de1c62479a905461179356b5410caee914166d8942d9b834759\",\"dweb:/ipfs/Qmca3YaEWSh2vQBTAGGhJHZaiNsWa3DnBfJBq1Zo5BPfpw\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/Path.sol\":{\"keccak256\":\"0xf145381d62cca33d5911f3b8ad46e094cb2fda0941512d4be328eadfe28d2847\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://54d10e0c6ddb048e3ab705a6d67ebc1f7e97c81e9bbc74dadf8bd1e865a67435\",\"dweb:/ipfs/QmUuvJNpxS4q215HWfoAb8cvwK3vMsPvC3x29iQCnYFiSB\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PlainMath.sol\":{\"keccak256\":\"0x222e25063d20b43d211205abf6729e1b9c91972e1501790f8e24fcfb5f6c1df3\",\"urls\":[\"bzz-raw://4b759cc674c72673753e8521a32a8c72c68d91ebcd1a0dc074907ff8f8e04a72\",\"dweb:/ipfs/QmT72Jk27cwXxHQbj4J2nuQ1FK3NdESYV1U5GAdj1PBawz\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/PocketSwapLibrary.sol\":{\"keccak256\":\"0xbb2f3e416a4c68d25f82477897f71cd4dcc26fed56041044ad8f60fc64ee0e70\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://1f58e5259d41b575325d57eb645cc0f0af901b30cb8f9f09bcb4ffcc577e1a01\",\"dweb:/ipfs/QmXCRiqCQa9thPqLn622YX3h3TSfDAP6w5Wd9d4d2PytT8\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/libraries/TransferHelper.sol\":{\"keccak256\":\"0xea0834dbcc078c90c7dd5b9b118606f3de06dc6373becfcec6dbb823ba3582dc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://892a95126757501574ff9ddb556b5dd6c88dc131171794df2c7025ca2a892951\",\"dweb:/ipfs/QmbZWtiCiNF8Ly2So6G1Ehq6MEdDcWMaaFgqwE4hnHodqK\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/router/LiquidityRouter.sol\":{\"keccak256\":\"0x8771f61d3e16bc2a4359ea0d18ec5ba60ba023b1f4bbb6ff8c855beae46cca72\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://9abfefdc1d6643cdd97768d564e7a3945ac7de0d8052e1fb47702f0a7beeadb1\",\"dweb:/ipfs/QmPBvsfJ5LgCbhK3gRAk6PA1zGtK78F8eJdVSPEAyWGRqi\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/router/SwapRouter.sol\":{\"keccak256\":\"0xad3dfba3b3ec9a80f12597e3db26f60790582ed1c23e2ce84563349607270ac5\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://76f716e4175e15ff2b17d9bf6429926bd69124a1f73fbe846127be779d78febe\",\"dweb:/ipfs/QmcG3VWiNRAiXcp4sB6wCjeQLSq2rGhpHDkib77krswaSG\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/router/liquidity/LiquidityProcessing.sol\":{\"keccak256\":\"0xa329d93628e797b0ed75a91e63f803bc613ef053e079255d1eb0517601168842\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://bfca2c9f1543f40ea9a5b7b3011aa06d4f785a1a976e96589bc660daff584af1\",\"dweb:/ipfs/QmaxNU8ctXCYNpA6UnyTVPBoiYoUbk4mAc8AB21G2Yyn5w\"]},\"/Users/ilyk/projects/midgardtech/xpocket-PocketSwap/contracts/pocketswap/router/swap/SwapProcessing.sol\":{\"keccak256\":\"0xfb3667520bc59889a301c371bff96259185a2eb01761bbd4a52bcdebf2d14e74\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a40685cda1583aace4a033fb90c86bd8ab6c775f98fd8d4fd21c1e1ac8446848\",\"dweb:/ipfs/QmUZhANqubfEKhv3stqnX9b1RdyYSyoHbAABK9jFRqeai4\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]}},\"version\":1}",
@@ -20868,7 +20885,8 @@
   },
   "networks": {},
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-05-17T10:37:52.121Z",
+  "updatedAt": "2021-05-17T10:55:41.931Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
