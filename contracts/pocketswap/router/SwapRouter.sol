@@ -146,14 +146,6 @@ SwapProcessing
     }
 
 
-    function exactOutput(OutputParams calldata params) external payable override returns (uint256 amountIn) {
-        amountIn = 0;
-    }
-
-    function exactOutputSingle(OutputSingleParams calldata params) external payable override returns (uint256 amountIn) {
-        amountIn = 0;
-    }
-
     // **** LIBRARY FUNCTIONS ****
     function quote(uint amountA, uint reserveA, uint reserveB) public pure virtual /*override*/ returns (uint amountB) {
         return PocketSwapLibrary.quote(amountA, reserveA, reserveB);

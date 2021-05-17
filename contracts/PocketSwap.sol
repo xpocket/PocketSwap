@@ -35,7 +35,7 @@ contract PocketSwap is PeripheryImmutableState, PeripheryPayments {
         router = router_;
     }
 
-    function owner() external returns (address) {
+    function owner() external view returns (address) {
         return _owner;
     }
 

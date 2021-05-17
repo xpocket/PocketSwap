@@ -67,7 +67,6 @@ abstract contract PeripheryPayments is IPeripheryPayments, PeripheryImmutableSta
         address recipient,
         uint256 value
     ) internal {
-        uint256 selfBalance;
         // pull payment
         TransferHelper.safeApprove(token, recipient, value);
     }

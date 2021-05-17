@@ -39,8 +39,6 @@ LiquidityProcessing
         amountPocket = 0;
         if (params.token0 != pocket && params.token1 != pocket) {
             require(amountAPocket > 0 || amountBPocket > 0, "Cannot calculate POCKET value");
-            address pairAPocket = IPocketSwapFactory(factory).getPair(params.token0, pocket);
-            address pairBPocket = IPocketSwapFactory(factory).getPair(params.token1, pocket);
 
             if (amountAPocket > 0) {// found price POCKET -> tokenA
                 amountPocket = amountAPocket;

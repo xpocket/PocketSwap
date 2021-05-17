@@ -38,33 +38,6 @@ interface IPocketSwapRouter is IPocketSwapCallback {
     /// @return amountOut The amount of the received token
     function swapMulti(SwapMultiParams calldata params) external payable returns (uint256 amountOut);
 
-    struct OutputSingleParams {
-        address tokenIn;
-        address tokenOut;
-        uint24 fee;
-        address recipient;
-        uint256 deadline;
-        uint256 amountOut;
-        uint256 amountInMaximum;
-        uint160 sqrtPriceLimitX96;
-    }
-    /// @notice Swaps as little as possible of one token for `amountOut` of another token
-    /// @param params The parameters necessary for the swap, encoded as `OutputSingleParams` in calldata
-    /// @return amountIn The amount of the input token
-    function exactOutputSingle(OutputSingleParams calldata params) external payable returns (uint256 amountIn);
-
-    struct OutputParams {
-        bytes path;
-        address recipient;
-        uint256 deadline;
-        uint256 amountOut;
-        uint256 amountInMaximum;
-    }
-    /// @notice Swaps as little as possible of one token for `amountOut` of another along the specified path (reversed)
-    /// @param params The parameters necessary for the multi-hop swap, encoded as `OutputParams` in calldata
-    /// @return amountIn The amount of the input token
-    function exactOutput(OutputParams calldata params) external payable returns (uint256 amountIn);
-
     function getAmountsOut(uint amountIn, address[] memory path) external view returns (uint[] memory amounts);
 
     function getAmountsIn(uint amountOut, address[] memory path) external view returns (uint[] memory amounts);
