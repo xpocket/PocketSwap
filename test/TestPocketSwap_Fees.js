@@ -1,10 +1,10 @@
 const helper = require("./helper");
 const ERC20 = artifacts.require("mocks/MockERC20.sol")
 const Pocket = artifacts.require("mocks/MockPocket.sol")
-const PocketSwap = artifacts.require("PocketSwap.sol")
 const PocketSwapFactory = artifacts.require("pocketswap/PocketSwapFactory.sol")
 const PocketSwapRouter = artifacts.require("pocketswap/PocketSwapRouter.sol")
 const PocketSwapPair = artifacts.require("pocketswap/PocketSwapPair.sol")
+const PocketSwap = artifacts.require("PocketSwap.sol")
 
 contract("PocketSwap Fees", accounts => {
     const burnedLiquidity = BigInt(1000);
@@ -13,7 +13,6 @@ contract("PocketSwap Fees", accounts => {
     let pocket_token
     let WETH
     let factory
-    let router
     let pair
     let pocketSwap
 
@@ -22,6 +21,7 @@ contract("PocketSwap Fees", accounts => {
     }
 
     beforeEach(async () => {
+        let router
         await Promise.all([
             ERC20.new(),
             ERC20.new(),
