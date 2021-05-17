@@ -15,6 +15,8 @@ contract("PocketSwap Fees", accounts => {
     let factory
     let pair
     let pocketSwap
+    let token2pocket_liq1 = "10000000000000000000000000";
+    let token2pocket_liq2 = "10000000000000000000000000";
 
     const deadline = () => {
         return parseInt(Date.now() / 1000) + 15 * 60
@@ -50,7 +52,7 @@ contract("PocketSwap Fees", accounts => {
                 const acc = accounts[9]
                 await factory.createPair(token_2.address, pocket_token.address)
                 // console.log(`Token2:Pocket pair: ${await factory.getPair(token_2.address, pocket_token.address)}`)
-                await AddLiquidity(acc, [token_2, pocket_token], ["10000000000000000000000000", "10000000000000000000000000"])
+                await AddLiquidity(acc, [token_2, pocket_token], [token2pocket_liq1, token2pocket_liq2])
             })
     })
 
@@ -130,7 +132,11 @@ contract("PocketSwap Fees", accounts => {
 
         let token1BalanceExpected = BigInt(pairBalance1) * BigInt(acc0LiquidityBalance) / totalLiq
         let token2BalanceExpected = BigInt(pairBalance2) * BigInt(acc0LiquidityBalance) / totalLiq
+        let pocketRewardsBalanceExpected = helper.expectOutput(token2BalanceExpected, feePercent * 1e7, [
+            BigInt(token2pocket_liq1), BigInt(token2pocket_liq2)
+        ])
 
+        let was_acc0PocketBalance = await pocket_token.balanceOf(liqAcc);
         await pair.approve(pocketSwap.address, acc0LiquidityBalance.toString(), {from: liqAcc})
         await pocketSwap.removeLiquidity({
             tokenA: token_1.address,
@@ -144,9 +150,10 @@ contract("PocketSwap Fees", accounts => {
         }, {from: liqAcc})
 
         let acc0Balance1 = await token_1.balanceOf(liqAcc);
-        let acc0Balance2 = await token_2.balanceOf(liqAcc);
+        let now_acc0PocketBalance = await pocket_token.balanceOf(liqAcc);
+        let acc0PocketBalance = now_acc0PocketBalance-was_acc0PocketBalance
 
         assert.equal(acc0Balance1.toString(), token1BalanceExpected.toString(), `Token1: ${feePercent}% Fee to LP`)
-        assert.equal(acc0Balance2.toString(), token2BalanceExpected.toString(), `Token2: ${feePercent}% Fee to LP`)
+        assert.equal(acc0PocketBalance.toString(), pocketRewardsBalanceExpected.toString(), `Pocket: ${feePercent}% Fee to LP`)
     }
 })

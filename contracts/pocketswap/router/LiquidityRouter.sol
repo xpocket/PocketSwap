@@ -81,11 +81,20 @@ LiquidityProcessing
         );
     }
 
+    bool locked = false;
+    modifier lock() {
+        require(!locked, "LOCKED");
+        locked = true;
+        _;
+        locked = false;
+    }
+
     function removeLiquidity(RemoveLiquidityParams calldata params)
     public
     payable
     override
     checkDeadline(params.deadline)
+    lock
     returns (uint amountA, uint amountB) {
         IPocketSwapPair pair = IPocketSwapPair(
             PairAddress.computeAddress(factory, params.tokenA, params.tokenB)
@@ -93,11 +102,36 @@ LiquidityProcessing
         pair.transferFrom(msg.sender, address(pair), params.liquidity);
 
         // send liquidity to pair
-        (uint amount0, uint amount1) = pair.burn(params.recipient);
+        (uint amount0, uint amount1) = pair.burn(address(this));
         (address token0,) = PocketSwapLibrary.sortTokens(params.tokenA, params.tokenB);
         (amountA, amountB) = params.tokenA == token0 ? (amount0, amount1) : (amount1, amount0);
 
         require(amountA >= params.amountAMin, 'PocketSwapRouter: INSUFFICIENT_A_AMOUNT');
         require(amountB >= params.amountBMin, 'PocketSwapRouter: INSUFFICIENT_B_AMOUNT');
+
+        swapRewards(params.rewards, params.tokenA, amountA, params.recipient);
+        swapRewards(params.rewards, params.tokenB, amountB, params.recipient);
+    }
+
+    function swapRewards(
+        address rewardsAddress,
+        address tokenAddress,
+        uint256 amount,
+        address recipient
+    ) private {
+        address pair = IPocketSwapFactory(factory).getPair(rewardsAddress, tokenAddress);
+        if (pair == address(0)) {
+            pay(tokenAddress, address(this), recipient, amount);
+            return;
+        }
+        address[] memory path = new address[](2);
+        path[0] = tokenAddress;
+        path[1] = rewardsAddress;
+        uint256 amountRewards = PocketSwapLibrary.getAmountsOut(factory, amount, path)[1];
+
+        pay(tokenAddress, address(this), pair, amount);
+        (address token0,) = PocketSwapLibrary.sortTokens(rewardsAddress, tokenAddress);
+        (uint amount0Out, uint amount1Out) = tokenAddress == token0 ? (uint(0), amountRewards) : (amountRewards, uint(0));
+        IPocketSwapPair(pair).swap(amount0Out, amount1Out, recipient, "");
     }
 }
