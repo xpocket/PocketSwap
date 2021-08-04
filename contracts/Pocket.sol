@@ -11,6 +11,7 @@ contract Pocket is IPocket, ERC20("XPocket", "POCKET"), Ownable {
     mapping(address => bool) public override rewardsExcluded;
     mapping(address => uint256) public lastTotalDividends;
     uint256 public rewardsIncludedSupply;
+    uint256 private totalDividends;
 
     constructor() {
         _mint(msg.sender, 50e6 ether);
@@ -24,15 +25,20 @@ contract Pocket is IPocket, ERC20("XPocket", "POCKET"), Ownable {
         }
 
         uint256 _balance = ERC20.balanceOf(account);
-        uint256 _dividends = ERC20.balanceOf(address(this));
+        if (_balance == 0) {
+            return 0;
+        }
 
-        return (_balance * (_dividends - lastTotalDividends[account])) / rewardsIncludedSupply;
+        return (_balance * (totalDividends - lastTotalDividends[account])) / rewardsIncludedSupply;
     }
 
     modifier _distribute(address account) {
-        lastTotalDividends[account] = ERC20.balanceOf(address(this));
         uint256 rewards = _calcRewards(account);
-        ERC20._transfer(address(this), account, rewards);
+        lastTotalDividends[account] = totalDividends;
+
+        if (rewards > 0) {
+            super._transfer(address(this), account, rewards);
+        }
         _;
     }
 
@@ -56,9 +62,9 @@ contract Pocket is IPocket, ERC20("XPocket", "POCKET"), Ownable {
 
     function includeInRewards(address account)
     _excluded(account)
-    _distribute(account)
     external onlyOwner {
         delete rewardsExcluded[account];
+        lastTotalDividends[account] = totalDividends;
         rewardsIncludedSupply += ERC20.balanceOf(account);
     }
 
@@ -69,8 +75,12 @@ contract Pocket is IPocket, ERC20("XPocket", "POCKET"), Ownable {
     /**
      * @dev See {ERC20-_transfer}.
      */
-    function _transfer(address sender, address recipient, uint256 amount) _distribute(sender)
+    function _transfer(address sender, address recipient, uint256 amount)
+    _distribute(sender) _distribute(recipient)
     internal virtual override {
+        if (recipient == address(this)) {
+            totalDividends += amount;
+        }
         super._transfer(sender, recipient, amount);
         if (rewardsExcluded[sender] && !rewardsExcluded[recipient]) {
             rewardsIncludedSupply += amount;

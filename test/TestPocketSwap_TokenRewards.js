@@ -66,14 +66,28 @@ contract("PocketSwap Token Rewards", accounts => {
         const toSend = new BN("1000000000000000000000000")
         transferred = toSend.add(transferred)
 
+        sentTo[accounts[1]] = sentTo[accounts[1]].add(new BN("100000000000000000000000"))
+        sentTo[accounts[2]] = sentTo[accounts[2]].add(new BN("250000000000000000000000"))
+        sentTo[accounts[3]] = sentTo[accounts[3]].add(new BN("390000000000000000000000"))
+        sentTo[accounts[4]] = sentTo[accounts[4]].add(new BN("260000000000000000000000"))
+
         await pocket_token.addRewards(toSend)
 
         assert.equal((await pocket_token.balanceOf(pocket_token.address)).toString(), toSend.toString())
         assert.equal((await pocket_token.balanceOf(accounts[0])).toString(), total.sub(transferred).toString(), "No rewards")
 
-        assert.equal((await pocket_token.balanceOf(accounts[1])).toString(), sentTo[accounts[1]].add(new BN("100000000000000000000000")).toString())
-        assert.equal((await pocket_token.balanceOf(accounts[2])).toString(), sentTo[accounts[2]].add(new BN("250000000000000000000000")).toString())
-        assert.equal((await pocket_token.balanceOf(accounts[3])).toString(), sentTo[accounts[3]].add(new BN("390000000000000000000000")).toString())
-        assert.equal((await pocket_token.balanceOf(accounts[4])).toString(), sentTo[accounts[4]].add(new BN("260000000000000000000000")).toString())
+        assert.equal((await pocket_token.balanceOf(accounts[1])).toString(), sentTo[accounts[1]].toString())
+        assert.equal((await pocket_token.balanceOf(accounts[2])).toString(), sentTo[accounts[2]].toString())
+        assert.equal((await pocket_token.balanceOf(accounts[3])).toString(), sentTo[accounts[3]].toString())
+        assert.equal((await pocket_token.balanceOf(accounts[4])).toString(), sentTo[accounts[4]].toString())
+    })
+
+    it("Transfer entire balance", async () => {
+        const toSend = sentTo[accounts[1]]
+
+        await pocket_token.transfer(accounts[2], toSend, {from: accounts[1]})
+
+        assert.equal((await pocket_token.balanceOf(accounts[1])).toString(), "0")
+        assert.equal((await pocket_token.balanceOf(accounts[2])).toString(), sentTo[accounts[2]].add(sentTo[accounts[1]]).toString())
     })
 })
