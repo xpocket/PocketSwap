@@ -10,16 +10,19 @@ module.exports = async function (deployer, network, accounts) {
     let factory;
     let router;
 
+    await deployer.deploy(PocketSwapFactory);
     await Promise.all([
-        Pocket.new(),
-        PocketSwapFactory.new()
+        Pocket.deployed(),
+        PocketSwapFactory.deployed(),
     ])
         .then(([p, f]) => [pocket, factory] = [p, f])
         .then(() => console.log('POCKET address: ', pocket.address))
         .then(() => console.log('Factory address: ', factory.address))
-        .then(() => PocketSwapRouter.new(factory.address, config.WETH_ADDRESS, pocket.address))
+        .then(() => deployer.deploy(PocketSwapRouter, factory.address, config.WETH_ADDRESS, pocket.address))
+        .then(() => PocketSwapRouter.deployed())
         .then(a => router = a)
         .then(() => console.log('Router address: ', router.address))
-        .then(() => PocketSwap.new(router.address, factory.address, pocket.address, config.WETH_ADDRESS))
+        .then(() => deployer.deploy(PocketSwap, router.address, factory.address, pocket.address, config.WETH_ADDRESS))
+        .then(() => PocketSwap.deployed())
         .then(ps => console.log('PocketSwap address: ', ps.address))
 };
