@@ -50,16 +50,11 @@ contract("PocketSwap Fees", accounts => {
         await checkFees(0.3)
     })
 
-    async function AddLiquidity(liqAcc, tokens, liq, pocket_liq) {
+    async function AddLiquidity(liqAcc, tokens, liq) {
         const [token_1] = tokens
         const [token_1_liq, token_2_liq] = liq
         await token_1.mint(liqAcc, token_1_liq.toString(), {from: liqAcc})
         await token_1.approve(pocketSwap.address, token_1_liq.toString(), {from: liqAcc})
-
-        if (pocket_liq) {
-            await pocket_token.mint(liqAcc, pocket_liq.toString(), {from: liqAcc})
-            await pocket_token.approve(pocketSwap.address, pocket_liq.toString(), {from: liqAcc})
-        }
 
         await pocketSwap.addLiquidity({
             token0: token_1.address,
@@ -77,12 +72,11 @@ contract("PocketSwap Fees", accounts => {
         await factory.setFee(feePercent * 1e7)
         const token_liq = BigInt("1000000000000000")
         const eth_liq = BigInt("10000000000000000000")
-        const pocket_liq = BigInt("10000000000000000000000")
         const tokenIn = BigInt("100000000000")
         const totalLiq = BigInt(Math.floor(Math.sqrt(parseInt(token_liq * eth_liq))))
 
         const liqAcc = accounts[0]
-        await AddLiquidity(liqAcc, [token], [token_liq, eth_liq], pocket_liq)
+        await AddLiquidity(liqAcc, [token], [token_liq, eth_liq])
 
         let acc0LiquidityBalance = await pair.balanceOf(liqAcc)
         assert.isTrue(Math.abs(parseInt(BigInt(acc0LiquidityBalance) - totalLiq - burnedLiquidity)) < 1e7, 'Liquidity Balance')
@@ -131,9 +125,8 @@ contract("PocketSwap Fees", accounts => {
 
         let acc0Balance1 = await token.balanceOf(liqAcc)
         let now_acc0PocketBalance = await pocket_token.balanceOf(liqAcc);
-        let acc0PocketBalance = now_acc0PocketBalance-was_acc0PocketBalance
 
         assert.equal(acc0Balance1.toString(), token1BalanceExpected.toString(), `Token1: ${feePercent}% Fee to LP`)
-        assert.equal(BigInt(acc0PocketBalance).toString(), pocketRewardsBalanceExpected.toString(), `Pocket: ${feePercent}% Fee to LP`)
+        assert.isAbove(parseInt(now_acc0PocketBalance), parseInt(was_acc0PocketBalance), `Pocket: ${feePercent}% Fee to LP`)
     }
 })

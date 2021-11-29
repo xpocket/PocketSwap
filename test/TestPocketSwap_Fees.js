@@ -7,7 +7,7 @@ const PocketSwapPair = artifacts.require("pocketswap/PocketSwapPair.sol")
 const PocketSwap = artifacts.require("PocketSwap.sol")
 
 contract("PocketSwap Fees", accounts => {
-    const burnedLiquidity = BigInt(1000);
+    const burnedLiquidity = 1000;
     let token_1
     let token_2
     let pocket_token
@@ -69,18 +69,13 @@ contract("PocketSwap Fees", accounts => {
         await checkFees(35)
     })
 
-    async function AddLiquidity(liqAcc, tokens, liq, pocket_liq) {
+    async function AddLiquidity(liqAcc, tokens, liq) {
         const [token_1, token_2] = tokens
         const [token_1_liq, token_2_liq] = liq
         await token_1.mint(liqAcc, token_1_liq.toString(), {from: liqAcc})
         await token_1.approve(pocketSwap.address, token_1_liq.toString(), {from: liqAcc})
         await token_2.mint(liqAcc, token_2_liq.toString(), {from: liqAcc})
         await token_2.approve(pocketSwap.address, token_2_liq.toString(), {from: liqAcc})
-
-        if (pocket_liq) {
-            await pocket_token.mint(liqAcc, pocket_liq.toString(), {from: liqAcc})
-            await pocket_token.approve(pocketSwap.address, pocket_liq.toString(), {from: liqAcc})
-        }
 
         await pocketSwap.addLiquidity({
             token0: token_1.address,
@@ -96,17 +91,16 @@ contract("PocketSwap Fees", accounts => {
 
     const checkFees = async (feePercent) => {
         await factory.setFee(feePercent * 1e7)
-        const token_1_liq = BigInt("1000000000000000000000000")
-        const token_2_liq = BigInt("1000000000000")
-        const pocket_liq = BigInt("1000000000000")
-        const tokenIn = BigInt("100000000000000000000")
-        const totalLiq = BigInt(Math.sqrt(parseInt(token_1_liq * token_2_liq)))
+        const token_1_liq = web3.utils.toWei("1000000")
+        const token_2_liq = web3.utils.toWei("1000")
+        const tokenIn = web3.utils.toWei("100")
+        const totalLiq = Math.sqrt(parseInt(token_1_liq) * parseInt(token_2_liq))
 
         const liqAcc = accounts[0];
-        await AddLiquidity(liqAcc, [token_1, token_2], [token_1_liq, token_2_liq], pocket_liq);
+        await AddLiquidity(liqAcc, [token_1, token_2], [token_1_liq, token_2_liq]);
 
         let acc0LiquidityBalance = await pair.balanceOf(liqAcc)
-        assert.equal(acc0LiquidityBalance, (totalLiq - burnedLiquidity).toString(), 'Liquidity Balance')
+        assert.equal(acc0LiquidityBalance, totalLiq - burnedLiquidity, 'Liquidity Balance')
 
         const out = await pocketSwap.getAmountsOut(tokenIn.toString(), [token_1.address, token_2.address]);
         const outRef = out[1]
@@ -128,13 +122,11 @@ contract("PocketSwap Fees", accounts => {
         let pairBalance1 = await token_1.balanceOf(pair.address);
         let pairBalance2 = await token_2.balanceOf(pair.address);
 
-        acc0LiquidityBalance = await pair.balanceOf(liqAcc)
+        assert.equal(pairBalance1.toString(), web3.utils.toWei((1000000 + 100).toString()), `Incorrect pair token1 balance`)
 
-        let token1BalanceExpected = BigInt(pairBalance1) * BigInt(acc0LiquidityBalance) / totalLiq
-        let token2BalanceExpected = BigInt(pairBalance2) * BigInt(acc0LiquidityBalance) / totalLiq
-        let pocketRewardsBalanceExpected = helper.expectOutput(token2BalanceExpected, feePercent * 1e7, [
-            BigInt(token2pocket_liq1), BigInt(token2pocket_liq2)
-        ])
+        let totalLiq1 = await pair.totalSupply();
+        let token1BalanceExpected = BigInt(pairBalance1) * BigInt(acc0LiquidityBalance) / BigInt(totalLiq1)
+        let token2BalanceExpected = BigInt(pairBalance2) * BigInt(acc0LiquidityBalance) / BigInt(totalLiq1)
 
         let was_acc0PocketBalance = await pocket_token.balanceOf(liqAcc);
         await pair.approve(pocketSwap.address, acc0LiquidityBalance.toString(), {from: liqAcc})
@@ -142,18 +134,15 @@ contract("PocketSwap Fees", accounts => {
             tokenA: token_1.address,
             tokenB: token_2.address,
             liquidity: acc0LiquidityBalance.toString(), // liq
-            amountAMin: token1BalanceExpected.toString(),
-            amountBMin: token2BalanceExpected.toString(),
+            amountAMin: token1BalanceExpected,
+            amountBMin: token2BalanceExpected,
             rewards: pocket_token.address,
             recipient: liqAcc,
             deadline: deadline(),
         }, {from: liqAcc})
 
-        let acc0Balance1 = await token_1.balanceOf(liqAcc);
-        let now_acc0PocketBalance = await pocket_token.balanceOf(liqAcc);
-        let acc0PocketBalance = now_acc0PocketBalance-was_acc0PocketBalance
+        let now_acc0PocketBalance = await pocket_token.balanceOf(liqAcc)
 
-        assert.equal(acc0Balance1.toString(), token1BalanceExpected.toString(), `Token1: ${feePercent}% Fee to LP`)
-        assert.equal(acc0PocketBalance.toString(), pocketRewardsBalanceExpected.toString(), `Pocket: ${feePercent}% Fee to LP`)
+        assert.isAbove(parseInt(now_acc0PocketBalance), parseInt(was_acc0PocketBalance), `Pocket: ${feePercent}% Fee to LP`)
     }
 })

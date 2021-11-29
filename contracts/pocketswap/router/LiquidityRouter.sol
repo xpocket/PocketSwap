@@ -26,49 +26,19 @@ LiquidityProcessing
     override
     checkDeadline(params.deadline)
     returns (uint amountA, uint amountB, uint amountPocket, uint liquidity) {
-        uint amountAPocket;
-        uint amountBPocket;
-
         address pair = PairAddress.computeAddress(factory, params.token0, params.token1);
 
-        (amountA, amountB, amountAPocket, amountBPocket) = calcLiquidity(params);
+        (amountA, amountB) = calcLiquidity(params);
         pay(params.token0, msg.sender, pair, amountA);
         pay(params.token1, msg.sender, pair, amountB);
         liquidity = IPocketSwapPair(pair).mint(params.recipient);
 
         amountPocket = 0;
-        if (params.token0 != pocket && params.token1 != pocket) {
-            require(amountAPocket > 0 || amountBPocket > 0, "Cannot calculate POCKET value");
-
-            if (amountAPocket > 0) {// found price POCKET -> tokenA
-                amountPocket = amountAPocket;
-
-                uint amountPocketSwap = amountA / 2;
-                amountA -= amountPocketSwap;
-
-                address pocketPair = PairAddress.computeAddress(factory, params.token0, pocket);
-                pay(pocket, msg.sender, pocketPair, amountPocket);
-                (address token0,) = PocketSwapLibrary.sortTokens(params.token0, pocket);
-                (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amountPocketSwap) : (amountPocketSwap, uint(0));
-                IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, pair, "");
-            } else {// found price POCKET -> tokenB
-                amountPocket = amountBPocket;
-
-                uint amountPocketSwap = amountB / 2;
-                amountB -= amountPocketSwap;
-
-                address pocketPair = PairAddress.computeAddress(factory, params.token1, pocket);
-                pay(pocket, msg.sender, pocketPair, amountPocket);
-                (address token0,) = PocketSwapLibrary.sortTokens(params.token1, pocket);
-                (uint amount0Out, uint amount1Out) = pocket == token0 ? (uint(0), amountPocketSwap) : (amountPocketSwap, uint(0));
-                IPocketSwapPair(pocketPair).swap(amount0Out, amount1Out, pair, "");
-            }
-        }
     }
 
     function calcLiquidity(AddLiquidityParams calldata params) public override view
-    returns (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket) {
-        (amountA, amountB, amountAPocket, amountBPocket) = _addLiquidity(
+    returns (uint amountA, uint amountB) {
+        (amountA, amountB) = _addLiquidity(
             params.amount0Desired,
             params.amount1Desired,
             params.amount0Min,

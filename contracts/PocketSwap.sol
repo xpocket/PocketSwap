@@ -56,26 +56,13 @@ contract PocketSwap is PeripheryImmutableState, PeripheryPayments {
             IPocketSwapFactory(factory).createPair(params.token0, params.token1);
         }
 
-        (uint amountA, uint amountB, uint amountAPocket, uint amountBPocket) =
-        IPocketSwapLiquidityRouter(router).calcLiquidity(params);
+        (uint amountA, uint amountB) = IPocketSwapLiquidityRouter(router).calcLiquidity(params);
 
         // sending tokens to router
         pay(params.token0, msg.sender, address(this), amountA);
         approve(params.token0, router, amountA);
         pay(params.token1, msg.sender, address(this), amountB);
         approve(params.token1, router, amountB);
-
-        // if needed, send pocket token to router
-        if (params.token0 != pocket && params.token1 != pocket) {
-            require(amountAPocket > 0 || amountBPocket > 0, "Cannot calculate POCKET value");
-            if (amountAPocket > 0) {
-                pay(pocket, msg.sender, address(this), amountAPocket);
-                approve(pocket, router, amountAPocket);
-            } else {
-                pay(pocket, msg.sender, address(this), amountBPocket);
-                approve(pocket, router, amountBPocket);
-            }
-        }
 
         try IPocketSwapLiquidityRouter(router).addLiquidity(params) {}
         catch Error(string memory reason) {

@@ -103,9 +103,9 @@ SwapProcessing
         (address tokenIn, address tokenOut) = data.path.decodeFirstPool();
         CallbackValidation.verifyCallback(factory, tokenIn, tokenOut);
 
-        (bool isExactInput, uint256 amountToPay) = amount0Delta > 0
-        ? (tokenIn < tokenOut, uint256(amount0Delta))
-        : (tokenOut < tokenIn, uint256(amount1Delta));
+        (bool isExactInput, uint256 amountToPay, uint256 amountIn) = amount0Delta > 0
+        ? (tokenIn < tokenOut, uint256(amount0Delta), uint256(amount1Delta))
+        : (tokenOut < tokenIn, uint256(amount1Delta), uint256(amount0Delta));
 
         uint256 holdersFee = IPocketSwapFactory(factory).holdersFee();
 
@@ -113,16 +113,22 @@ SwapProcessing
             // finding POCKET pair
             address token = tokenIn;
             address pocketPair = IPocketSwapFactory(factory).getPair(tokenIn, pocket);
+            uint256 amountForFee = amountIn;
 
             if (pocketPair == address(0)) {
                 pocketPair = IPocketSwapFactory(factory).getPair(tokenOut, pocket);
                 token = tokenOut;
+                amountForFee = amountToPay;
                 if (pocketPair == address(0)) {
                     revert("No POCKET pair");
                 }
             }
 
-            uint amount = IERC20(token).balanceOf(msg.sender) * holdersFee / 1e9;
+            uint amount = amountForFee * holdersFee / 1e9;
+
+            if (token == tokenOut) {
+                amountToPay -= amount;
+            }
             pay(token, msg.sender, pocketPair, amount);
             (address token0,) = PocketSwapLibrary.sortTokens(token, pocket);
 
