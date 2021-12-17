@@ -43,6 +43,7 @@ module.exports = {
             host: "127.0.0.1",     // Localhost (default: none)
             port: 8545,            // Standard Ethereum port (default: none)
             network_id: "*",       // Any network (default: none)
+            gas: 5500000,
         },
         // Another network with more advanced options...
         // advanced: {
@@ -61,7 +62,16 @@ module.exports = {
             gas: 5500000,
             confirmations: 2,
             timeoutBlocks: 200,
-            skipDryRun: true
+            skipDryRun: true,
+            networkCheckTimeout: 10000000
+        },
+        ropsten: {
+            provider: () => new HDWalletProvider(config.mnemonic, `https://ropsten.infura.io/v3/${config.infuraProjectId}`),
+            network_id: 3,
+            gas: 5500000,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: true,
         },
         live: {
             provider: () => new HDWalletProvider(config.mnemonic, `https://mainnet.infura.io/v3/${config.infuraProjectId}`),

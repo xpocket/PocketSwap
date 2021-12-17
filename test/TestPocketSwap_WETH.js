@@ -7,7 +7,7 @@ const PocketSwapRouter = artifacts.require("pocketswap/PocketSwapRouter.sol")
 const PocketSwapPair = artifacts.require("pocketswap/PocketSwapPair.sol")
 const PocketSwap = artifacts.require("PocketSwap.sol")
 
-contract("PocketSwap Fees", accounts => {
+contract("PocketSwap WETH", accounts => {
     const burnedLiquidity = BigInt(1000)
     let token
     let pocket_token
