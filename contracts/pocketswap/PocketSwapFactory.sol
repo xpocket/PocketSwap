@@ -17,6 +17,10 @@ contract PocketSwapFactory is IPocketSwapFactory {
         feeSetter = msg.sender;
     }
 
+    function PAIR_INIT_CODE_HASH() external override pure returns (bytes32) {
+        return keccak256(abi.encodePacked(type(PocketSwapPair).creationCode));
+    }
+
     function allPairsLength() external override view returns (uint) {
         return allPairs.length;
     }

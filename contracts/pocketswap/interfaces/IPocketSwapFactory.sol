@@ -21,4 +21,6 @@ interface IPocketSwapFactory {
     function createPair(address tokenA, address tokenB) external returns (address pair);
 
     function setFeeSetter(address) external;
+
+    function PAIR_INIT_CODE_HASH() external pure returns(bytes32);
 }
