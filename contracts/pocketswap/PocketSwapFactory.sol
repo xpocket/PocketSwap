@@ -50,11 +50,15 @@ contract PocketSwapFactory is IPocketSwapFactory {
     function setFee(uint256 _fee) external override {
         require(msg.sender == feeSetter, 'PocketSwap:FORBIDDEN');
         require(_fee < 1e18, 'PocketSwap:BIG_FEE');
+
+        emit FeeUpdated(fee, _fee);
         fee = _fee;
     }
 
     function setFeeSetter(address _feeSetter) external override {
         require(msg.sender == feeSetter, 'PocketSwap:FORBIDDEN');
+
+        emit FeeSetterUpdated(feeSetter, _feeSetter);
         feeSetter = _feeSetter;
     }
 

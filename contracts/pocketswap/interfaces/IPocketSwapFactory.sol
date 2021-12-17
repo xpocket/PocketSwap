@@ -2,6 +2,9 @@
 pragma solidity =0.8.4;
 
 interface IPocketSwapFactory {
+    event FeeUpdated(uint256 oldFee, uint256 newFee);
+    event FeeSetterUpdated(address oldFeeSetter, address newFeeSetter);
+
     function fee() external view returns (uint256);
 
     function holdersFee() external view returns (uint256);
