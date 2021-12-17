@@ -153,12 +153,12 @@ SwapProcessing
 
 
     // **** LIBRARY FUNCTIONS ****
-    function quote(uint amountA, uint reserveA, uint reserveB) public pure virtual /*override*/ returns (uint amountB) {
+    function quote(uint amountA, uint reserveA, uint reserveB) external pure virtual /*override*/ returns (uint amountB) {
         return PocketSwapLibrary.quote(amountA, reserveA, reserveB);
     }
 
     function getAmountOut(uint amountIn, uint reserveIn, uint reserveOut)
-    public
+    external
     view
     virtual
         /*override*/
@@ -168,7 +168,7 @@ SwapProcessing
     }
 
     function getAmountIn(uint amountOut, uint reserveIn, uint reserveOut)
-    public
+    external
     view
     virtual
         /*override*/
@@ -178,7 +178,7 @@ SwapProcessing
     }
 
     function getAmountsOut(uint amountIn, address[] memory path)
-    public
+    external
     view
     virtual
     override
@@ -188,7 +188,7 @@ SwapProcessing
     }
 
     function getAmountsIn(uint amountOut, address[] memory path)
-    public
+    external
     view
     virtual
     override

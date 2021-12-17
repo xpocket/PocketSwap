@@ -58,7 +58,7 @@ LiquidityProcessing
     }
 
     function removeLiquidity(RemoveLiquidityParams calldata params)
-    public
+    external
     payable
     override
     checkDeadline(params.deadline)
