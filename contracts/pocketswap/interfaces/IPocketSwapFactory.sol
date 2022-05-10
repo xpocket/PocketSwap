@@ -9,6 +9,8 @@ interface IPocketSwapFactory {
 
     function holdersFee() external view returns (uint256);
 
+    function pocketAddress() external view returns (address);
+
     function setFee(uint256) external;
 
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);

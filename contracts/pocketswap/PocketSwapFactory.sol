@@ -9,12 +9,14 @@ import './libraries/PairAddress.sol';
 contract PocketSwapFactory is IPocketSwapFactory {
     address public override feeSetter;
     uint256 public override fee = 3e6; // 1e9 = 100%; 1e8 = 10%; 1e7 = 1%; 1e6 = 0.1% ....
+    address public immutable override pocketAddress;
 
     mapping(address => mapping(address => address)) public override getPair;
     address[] public override allPairs;
 
-    constructor() {
+    constructor(address _pocketAddress) {
         feeSetter = msg.sender;
+        pocketAddress = _pocketAddress;
     }
 
     function PAIR_INIT_CODE_HASH() external override pure returns (bytes32) {

@@ -2,12 +2,11 @@
 pragma solidity =0.8.4;
 pragma abicoder v2;
 
-import './callback/IPocketSwapCallback.sol';
 import "./IPocketSwapPair.sol";
 
 /// @title Router token swapping functionality
 /// @notice Functions for swapping tokens via Uniswap V3
-interface IPocketSwapRouter is IPocketSwapCallback {
+interface IPocketSwapRouter {
     function pairFor(
         address tokenA,
         address tokenB

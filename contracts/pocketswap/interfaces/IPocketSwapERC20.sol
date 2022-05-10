@@ -2,6 +2,7 @@
 pragma solidity >=0.5.0;
 
 interface IPocketSwapERC20 {
+    event PocketHoldersFeeTaken(uint256 amount);
     event Approval(address indexed owner, address indexed spender, uint value);
     event Transfer(address indexed from, address indexed to, uint value);
 

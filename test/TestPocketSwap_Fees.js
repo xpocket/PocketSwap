@@ -29,8 +29,9 @@ contract("PocketSwap Fees", accounts => {
             ERC20.new(),
             Pocket.new(),
             ERC20.new(),
-            PocketSwapFactory.new(),
-        ]).then(([a, b, c, d, e]) => [token_1, token_2, pocket_token, WETH, factory] = [a, b, c, d, e])
+        ]).then(([a, b, c, d]) => [token_1, token_2, pocket_token, WETH] = [a, b, c, d])
+            .then(() => PocketSwapFactory.new(pocket_token.address))
+            .then(a => factory = a)
             .then(() => PocketSwapRouter.new(factory.address, WETH.address, pocket_token.address))
             .then(a => router = a)
             .then(() => PocketSwap.new(router.address, factory.address, pocket_token.address, WETH.address))
@@ -51,7 +52,7 @@ contract("PocketSwap Fees", accounts => {
             .then(async () => {
                 const acc = accounts[9]
                 await factory.createPair(token_2.address, pocket_token.address)
-                // console.log(`Token2:Pocket pair: ${await factory.getPair(token_2.address, pocket_token.address)}`)
+                await pocket_token.excludeFromRewards(acc);
                 await AddLiquidity(acc, [token_2, pocket_token], [token2pocket_liq1, token2pocket_liq2])
             })
     })

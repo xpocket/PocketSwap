@@ -169,20 +169,79 @@ StorageData
         }
 
         if (data.length > 0) {
-            uint holderFee = IPocketSwapFactory(factory).holdersFee();
-            _safeApprove(token0, msg.sender, balance0 * holderFee / 1e9);
-            _safeApprove(token1, msg.sender, balance1 * holderFee / 1e9);
-            try IPocketSwapCallback(msg.sender).pocketSwapCallback(amount0Out, amount1Out, data) {
-            } catch Error(string memory reason) {
-                revert(string(abi.encodePacked("NOK: ", reason)));
-            } catch (bytes memory reason) {
-                revert(string(abi.encodePacked("NOK b!: ", string(reason))));
-            }
-            _safeApprove(token0, msg.sender, 0);
-            _safeApprove(token1, msg.sender, 0);
+            takePocketHoldersFee(amount0In, amount1In, amount0Out, amount1Out);
+            balance0 = IERC20(token0).balanceOf(address(this));
+            balance1 = IERC20(token1).balanceOf(address(this));
         }
+
         _update(balance0, balance1, _reserve0, _reserve1);
         emit Swap(msg.sender, amount0In, amount1In, amount0Out, amount1Out, to);
+    }
+
+    function takePocketHoldersFee(uint amount0In, uint amount1In, uint amount0Out, uint amount1Out)
+    private {
+        address pocket = IPocketSwapFactory(factory).pocketAddress();
+
+        if (isPocketToken()) {
+            uint256 holdersFee = IPocketSwapFactory(factory).holdersFee();
+            uint feeAmount = IERC20(pocket).balanceOf(address(this)) * holdersFee / 1e9;
+            _safeTransfer(pocket, pocket, feeAmount);
+            return;
+        }
+
+        (address pocketPair, address tokenToSwap, uint256 feeTokenAmount) =
+            findPocketPair(amount0In, amount1In, amount0Out, amount1Out, pocket);
+        _safeTransfer(tokenToSwap, pocketPair, feeTokenAmount);
+
+        bool token0Pocket = pocket < tokenToSwap;
+        uint feeAmount = getOutAmount(feeTokenAmount, pocketPair, token0Pocket);
+        (uint amount0OutT, uint amount1OutT) = token0Pocket ? (feeAmount, uint(0)) : (uint(0), feeAmount);
+        IPocketSwapPair(pocketPair).swap(amount0OutT, amount1OutT, address(this), "");
+
+        feeAmount = IERC20(pocket).balanceOf(address(this));
+        _safeTransfer(pocket, pocket, feeAmount);
+
+        emit PocketHoldersFeeTaken(feeAmount);
+    }
+
+    function getOutAmount(uint amountIn, address pocketPair, bool token0Pocket)
+    private view returns (uint amountOut) {
+        uint fee = IPocketSwapFactory(factory).fee();
+        (uint _reserve0, uint _reserve1,) = IPocketSwapPair(pocketPair).getReserves();
+        (uint reserveIn, uint reserveOut) = token0Pocket ? (_reserve1, _reserve0) : (_reserve0, _reserve1);
+
+        uint amountInWithFee = amountIn.mul(1e9 - fee);
+        uint numerator = amountInWithFee.mul(reserveOut);
+        uint denominator = reserveIn.mul(1e9).add(amountInWithFee);
+
+        amountOut = numerator / denominator;
+    }
+
+    function findPocketPair(uint amount0In, uint amount1In, uint amount0Out, uint amount1Out, address pocket) private view
+    returns (address pocketPair, address tokenToSwap, uint256 feeAmount) {
+        tokenToSwap = token0;
+        pocketPair = IPocketSwapFactory(factory).getPair(tokenToSwap, pocket);
+        uint amountToFee;
+
+        if (pocketPair != address(0)) {
+            amountToFee = amount0In > amount0Out ? amount0In : amount0Out;
+        } else {
+            tokenToSwap = token1;
+            pocketPair = IPocketSwapFactory(factory).getPair(tokenToSwap, pocket);
+            amountToFee = amount1In > amount1Out ? amount1In : amount1Out;
+
+            if (pocketPair == address(0)) {
+                revert("No POCKET pair");
+            }
+        }
+
+        uint256 holdersFee = IPocketSwapFactory(factory).holdersFee();
+        feeAmount = amountToFee * holdersFee / 1e9;
+    }
+
+    function isPocketToken() private view returns (bool) {
+        address pocket = IPocketSwapFactory(factory).pocketAddress();
+        return token0 == pocket || token1 == pocket;
     }
 
     // force balances to match reserves

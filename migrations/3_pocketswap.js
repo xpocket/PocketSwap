@@ -5,17 +5,15 @@ const Pocket = artifacts.require("Pocket.sol")
 
 const config = require("../config.json")
 
-module.exports = async function (deployer, network, accounts) {
-    let pocket;
+module.exports = async function (deployer) {
     let factory;
     let router;
 
-    await deployer.deploy(PocketSwapFactory);
-    await Promise.all([
-        Pocket.deployed(),
-        PocketSwapFactory.deployed(),
-    ])
-        .then(([p, f]) => [pocket, factory] = [p, f])
+    const pocket = await Pocket.deployed();
+
+    await deployer.deploy(PocketSwapFactory, pocket.address);
+    await PocketSwapFactory.deployed()
+        .then(f => factory = f)
         .then(() => console.log('POCKET address: ', pocket.address))
         .then(() => console.log('Factory address: ', factory.address))
         .then(() => deployer.deploy(PocketSwapRouter, factory.address, config.WETH_ADDRESS, pocket.address))

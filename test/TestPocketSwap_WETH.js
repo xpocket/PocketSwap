@@ -29,8 +29,9 @@ contract("PocketSwap WETH", accounts => {
             ERC20.new(),
             Pocket.new(),
             WETH9.new(),
-            PocketSwapFactory.new()
-        ]).then(([a, b, c, d]) => [token, pocket_token, WETH, factory] = [a, b, c, d])
+        ]).then(([a, b, c]) => [token, pocket_token, WETH] = [a, b, c])
+            .then(() => PocketSwapFactory.new(pocket_token.address))
+            .then(a => factory = a)
             .then(() => PocketSwapRouter.new(factory.address, WETH.address, pocket_token.address))
             .then(a => router = a)
             .then(() => PocketSwap.new(router.address, factory.address, pocket_token.address, WETH.address))
@@ -42,6 +43,7 @@ contract("PocketSwap WETH", accounts => {
             .then(async () => {
                 const acc = accounts[9]
                 await factory.createPair(WETH.address, pocket_token.address)
+                await pocket_token.excludeFromRewards(acc);
                 await AddLiquidity(acc, [pocket_token], [token2pocket_liq1, token2pocket_liq2])
             })
     })
