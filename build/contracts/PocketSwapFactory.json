@@ -98,7 +98,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -111,7 +112,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -124,7 +126,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -148,7 +151,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -161,7 +165,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -174,7 +179,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -187,7 +193,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -250,7 +257,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_pocketAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldFeeSetter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newFeeSetter\",\"type\":\"address\"}],\"name\":\"FeeSetterUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"oldFee\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newFee\",\"type\":\"uint256\"}],\"name\":\"FeeUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"PairCreated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"PAIR_INIT_CODE_HASH\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"allPairs\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"allPairsLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"createPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeSetter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"getPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"holdersFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pocketAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fee\",\"type\":\"uint256\"}],\"name\":\"setFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_feeSetter\",\"type\":\"address\"}],\"name\":\"setFeeSetter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/pocketswap/PocketSwapFactory.sol\":\"PocketSwapFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"project:/contracts/pocketswap/PocketSwapERC20.sol\":{\"keccak256\":\"0x8b3d6bbdac817382be8ccf37e0cc269b83af9df2e184c7efeb08397cef338388\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://00583f08f1218ab4984763e7f5a06de8f93559ad391523ae39fcc09416574dfa\",\"dweb:/ipfs/QmP3paCa6mBMTr5Zdg9qYNPnMdZqioCpiRnJLwBn6Xx9FL\"]},\"project:/contracts/pocketswap/PocketSwapFactory.sol\":{\"keccak256\":\"0xa7a9fddba70001f7963324c219f6981f94ef42dcc6367eff3bc23f5ce4230dc7\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://863d560a41c295cc36f427269e8abae208b199168e933ab4da796d5d125b8e9b\",\"dweb:/ipfs/QmZbZZY72UoDJiAyjdF74y5AkraprpsVBV5DQhNipLPbzV\"]},\"project:/contracts/pocketswap/PocketSwapPair.sol\":{\"keccak256\":\"0x7adda281950a3fd2a7fce7b7ebbd553d24d1e35dba5ba22493f3ce51edb24802\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://903d2f67a67fe00eb922f3deaad271850df9506e3a4b5607160b262547d1a28d\",\"dweb:/ipfs/QmSE1EZ57vCKcM5LS4R5hG7dGerQCEVnswXssKxUPbXCK2\"]},\"project:/contracts/pocketswap/interfaces/IPocketSwapERC20.sol\":{\"keccak256\":\"0xa3e3f80fee242aef9d4c9e5d25e742e6f64a3754463b117b91c24b6248fc9b03\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://dd312ca9009212287c373d8c1a84b816b208e8ff0e07c5b9ee1d200673e6cec7\",\"dweb:/ipfs/QmdiTjnPZUFZ1Qqrx5fEvGZWUEhbGNQ1tfwYwpJsun4udv\"]},\"project:/contracts/pocketswap/interfaces/IPocketSwapFactory.sol\":{\"keccak256\":\"0xa8e014fc7bd938109e306743ef84b68525759aad88882af360341089217292e7\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://82b6513656a2cc49eb37685cad91fe6c6fa1532667e29adbfd39721547a38486\",\"dweb:/ipfs/QmQN5VGH63arbrEMqHswTCuRXYoWb3fkoWA2t3BkSbEYLJ\"]},\"project:/contracts/pocketswap/interfaces/IPocketSwapPair.sol\":{\"keccak256\":\"0xbd2242a42f5c3c7651de1de624a4dbe74969d34d8d916e759622dfc39a22837d\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://77d4114d6416b157790998bfbddd88daa8446bce284d0f1c39b490a1946db186\",\"dweb:/ipfs/QmX9dbFq8MfXm5nNXFHTTBfn6NXeGFAN2HQgEnEb9dJfsK\"]},\"project:/contracts/pocketswap/interfaces/callback/IPocketSwapCallback.sol\":{\"keccak256\":\"0xffbcd8cdb9c7d99b074a3ae0910741cd15299ca3e8b839bd1fc6e603f41b7416\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ba374100d9322737f1b0d77967d2ea7efb0aca8c699977cbe288de1e81d93f15\",\"dweb:/ipfs/QmSfUvwjqGPHfdRWVazC2QgsJFc3LDrhykQ2tbccDr3Dhv\"]},\"project:/contracts/pocketswap/libraries/Math.sol\":{\"keccak256\":\"0xa64bfc3a224b8bc01276b994681e91a99b0de6885ace74cd68b27db9f9495eb6\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://fc1f1d7029bce63a1c6e04126f2a9232bf91ee5d6fd6cc3e093255d1c6fe1d89\",\"dweb:/ipfs/QmPAQbm2rXEtC1jc7tUeZ6aX5f45FrBy3rxVBat1DDnxjv\"]},\"project:/contracts/pocketswap/libraries/PairAddress.sol\":{\"keccak256\":\"0x6aac8cd8b94fada98c7ead28d70cbcaa14688abf19c4f6c581e4c7cf7f21a6d0\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://62544a86c184802067b904a5783e4900a112722a0b3214fb7ae4f6c7b9713290\",\"dweb:/ipfs/QmUEtX8oVJdc9ANyXfZWr7jPfin7YtCQ17Zv1BmpFSrh2e\"]},\"project:/contracts/pocketswap/libraries/PlainMath.sol\":{\"keccak256\":\"0xff3e367ace2eb88aa9f762a0a3817dcf81306f8e5176b407093306c3502ff507\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://6df7ef0bc91525818d58560194c7af05fac49eaccf8cf7252f788bf58d8bca5f\",\"dweb:/ipfs/QmYiHJwFEguwEamcJivtCkfXUZpiZDhUjaBxgjHWY88akT\"]},\"project:/contracts/pocketswap/libraries/UQ112x112.sol\":{\"keccak256\":\"0xcb95f28dce1327158af80a3ffcfacaa608617afbffd4c7991f236117124698bf\",\"urls\":[\"bzz-raw://90fb6358954f295bc1b3dfe9cbc875c1da16e48c48f54028ad817dadbe3600d7\",\"dweb:/ipfs/QmfKtQdwxkmTBMU38NDsB2eGZeFDYhzodDH6JDN3rL4WJ1\"]},\"project:/contracts/pocketswap/pair/StorageData.sol\":{\"keccak256\":\"0x5b807e9db8d75c8c64a46f3970c4683b01694503c4826276250ce2101a763ef6\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://eed0785fe951a00871b092bf86e26a8895ce8b936386a44e548932aa37e79e7c\",\"dweb:/ipfs/QmeDbGTF1zHD9sg3hwa2LaUdgWBi6CVUVewZuXP3AbKwQ4\"]}},\"version\":1}",
@@ -12148,10 +12156,17 @@
       "links": {},
       "address": "0x84e85745B27548AC029DC2c3D71FcCb39bF95719",
       "transactionHash": "0xbe5e010c779a1bbfb38fe4427d29cd36aaa7c8aa290007000dd7cc38f686333d"
+    },
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x0a2eB957FD1C62151240D0Fc01191a73C97931E7",
+      "transactionHash": "0x06fb70e94b805c8429a5bf29c774b4a7ecdf0ab845ecf8954d3ca984f4e13280"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-05-10T11:02:33.621Z",
+  "updatedAt": "2022-05-31T08:09:13.763Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

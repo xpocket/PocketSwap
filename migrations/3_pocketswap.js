@@ -2,14 +2,16 @@ const PocketSwapFactory = artifacts.require("pocketswap/PocketSwapFactory.sol")
 const PocketSwapRouter = artifacts.require("pocketswap/PocketSwapRouter.sol")
 const PocketSwap = artifacts.require("PocketSwap.sol")
 const Pocket = artifacts.require("Pocket.sol")
+const PocketOKC = artifacts.require("PocketOKC.sol")
 
 const config = require("../config.json")
 
-module.exports = async function (deployer) {
+module.exports = async function (deployer, network) {
     let factory;
     let router;
 
-    const pocket = await Pocket.deployed();
+    const PocketContract = network === 'okc' ? PocketOKC : Pocket;
+    const pocket = await PocketContract.deployed();
 
     await deployer.deploy(PocketSwapFactory, pocket.address);
     await PocketSwapFactory.deployed()

@@ -81,6 +81,13 @@ module.exports = {
             timeoutBlocks: 200,
             skipDryRun: false
         },
+        okc: {
+            provider: () => new HDWalletProvider(config.mnemonic, `https://exchainrpc.okex.org/`),
+            network_id: 66,
+            confirmations: 2,
+            timeoutBlocks: 200,
+            skipDryRun: false
+        },
         // Useful for private networks
         // private: {
         // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
